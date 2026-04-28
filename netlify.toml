@@ -1,0 +1,21 @@
+# netlify.toml
+# Place this file at the root of your site repo.
+
+[build]
+  # Where your HTML lives. If index.html is at root, leave this as "."
+  # Change to "dist" or "public" if you build to a subdirectory.
+  publish = "."
+
+  # Netlify will auto-detect and deploy functions from this folder.
+  functions = "netlify/functions"
+
+[functions]
+  # Use Node 20 for native fetch support (no node-fetch needed).
+  node_bundler = "esbuild"
+
+# ── Route /thank-you to your existing thank-you page ──────────────────────
+# If you already have this in your repo, leave it as-is.
+[[redirects]]
+  from   = "/thank-you"
+  to     = "/thank-you.html"
+  status = 200
