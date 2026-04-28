@@ -141,7 +141,7 @@ const formName = netlifyPayload?.data?.["form-name"] || netlifyPayload?.form_nam
 
   // ── 3. Extract form fields ───────────────────────────────────────────────
   // Netlify puts fields in payload.data for background functions
-  const formData = netlifyPayload?.data ?? {};
+const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
   const { name, email, phone, address } = formData;
 
   console.log(`[${timestamp}] Submission received:`, {
