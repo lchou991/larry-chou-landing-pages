@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Thanks | Larry Chou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  color-scheme: light;
+  --bg: #F6F2EA;
+  --ink: #1A1A1A;
+  --ink-mid: #4A4843;
+  --ink-soft: #7A7670;
+  --rule: #DDD8CE;
+}
+
+/* FORCE LIGHT MODE */
+@media (prefers-color-scheme: dark) {
+  html, body { background-color: #F6F2EA !important; color: #1A1A1A !important; }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #F6F2EA !important;
+  color: #1A1A1A !important;
+}
+
+nav {
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-tel {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  font-weight: 500;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+.confirm-inner {
+  max-width: 600px;
+  width: 100%;
+}
+
+.confirm-kicker {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.confirm-kicker::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--ink-soft);
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+
+h1 em {
+  font-style: italic;
+}
+
+.confirm-body {
+  font-size: 18px;
+  line-height: 1.82;
+  color: var(--ink-mid);
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+
+.confirm-body p + p {
+  margin-top: 18px;
+}
+
+.confirm-divider {
+  height: 1px;
+  background: var(--rule);
+  margin-bottom: 36px;
+}
+
+.confirm-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.confirm-contact-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.confirm-contact a {
+  font-size: 17px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.18s;
+  font-weight: 500;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.confirm-contact a:hover {
+  color: var(--ink);
+}
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.footer-info {
+  font-size: 13px;
+  color: var(--ink-mid);
+  text-align: right;
+  line-height: 1.9;
+}
+
+.footer-info a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  nav { padding: 18px 24px; }
+  main { padding: 60px 24px; align-items: flex-start; }
+  footer { flex-direction: column; gap: 14px; padding: 28px 24px; text-align: center; }
+  .footer-info { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">Larry Chou</a>
+  <a href="tel:4087591201" class="nav-tel">408.759.1201</a>
+</nav>
+
+<main>
+  <div class="confirm-inner">
+    <div class="confirm-kicker">Form received</div>
+    <h1>Thanks.<br><em>Got it.</em></h1>
+    <div class="confirm-body">
+      <p>I'll get back to you today. Submitted after hours? First thing tomorrow.</p>
+      <p>If you'd rather not wait, call or text directly.</p>
+    </div>
+    <div class="confirm-divider"></div>
+    <div class="confirm-contact">
+      <div class="confirm-contact-label">Contact Larry directly</div>
+      <a href="tel:4087591201">408.759.1201</a>
+      <a href="mailto:hey@larrychou.com">hey@larrychou.com</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">Larry Chou</div>
+  <div class="footer-info">
+    DRE #02247191 &nbsp;·&nbsp; Keller Williams Silicon Valley<br>
+    <a href="mailto:hey@larrychou.com">hey@larrychou.com</a> &nbsp;·&nbsp; <a href="tel:4087591201">408.759.1201</a>
+  </div>
+</footer>
+
+</body>
+</html>
