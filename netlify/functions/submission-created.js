@@ -131,8 +131,7 @@ export const handler = async (event) => {
     return { statusCode: 400, body: "Bad event payload" };
   }
 
-  const formName = netlifyPayload?.data?.["form-name"] || netlifyPayload?.form_name || "";
-  console.log(`[${timestamp}] Form name: "${formName}"`);
+const formName = netlifyPayload?.data?.["form-name"] || netlifyPayload?.form_name || netlifyPayload?.payload?.data?.["form-name"] || netlifyPayload?.payload?.form_name || "consult";  console.log(`[${timestamp}] Form name: "${formName}"`);
 
   // ── 2. Only process our "consult" form ──────────────────────────────────
   if (formName !== "consult") {
