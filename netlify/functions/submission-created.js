@@ -18,6 +18,10 @@ const UNIVERSAL_TAGS = [
   "16 Day Prep Campaign",
 ];
 
+const MAILER_TAGS = {
+  "/prep-plan":   "16 Day Prep Mailer 02",
+};
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -161,8 +165,9 @@ export const handler = async (event) => {
 
   // ── 3. Extract form fields ───────────────────────────────────────────────
   const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
-  const { name, email, phone, address, mailer } = formData;
-
+const { name, email, phone, address } = formData;
+const pageUrl = netlifyPayload?.payload?.data?.referrer || netlifyPayload?.data?.referrer || "";
+const mailer = Object.entries(MAILER_TAGS).find(([path]) => pageUrl.includes(path))?.[1] || "";
   console.log(`[${timestamp}] Submission received:`, {
     name: name || "(missing)",
     email: email || "(missing)",
