@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>See What I'd Do for Your Home | Larry Chou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  color-scheme: light;
+  --bg:           #F6F2EA;
+  --ink:          #1A1A1A;
+  --ink-mid:      #4A4843;
+  --ink-soft:     #7A7670;
+  --rule:         #DDD8CE;
+  --btn:          #1A1A1A;
+  --btn-text:     #F6F2EA;
+  --field-bg:     #EFEAE0;
+  --field-border: #D4CEC3;
+}
+
+html { scroll-behavior: smooth; background-color: #F6F2EA !important; }
+body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; -webkit-font-smoothing: antialiased; background-color: #F6F2EA !important; color: #1A1A1A !important; }
+
+/* FORCE LIGHT MODE */
+@media (prefers-color-scheme: dark) {
+  html, body { background-color: #F6F2EA !important; color: #1A1A1A !important; }
+  input, textarea, select { background-color: #EFEAE0 !important; color: #1A1A1A !important; border-color: #D4CEC3 !important; }
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(246,242,234,0.94);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.nav-cta { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--btn-text); background: var(--btn); padding: 10px 22px; text-decoration: none; transition: opacity 0.2s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.nav-cta:hover { opacity: 0.7; }
+
+/* TYPE */
+h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5vw, 72px); font-weight: 400; line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--ink); }
+h1 em { font-style: normal; font-weight: 600; }
+
+/* TOP SECTION — two column */
+.top-section {
+  padding: 120px 60px 52px;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* LEFT */
+.hero-sub { font-size: 18px; line-height: 1.75; color: var(--ink-mid); margin-bottom: 36px; font-weight: 400; }
+
+.stats-context { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px; font-weight: 500; }
+
+.hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.hero-stat { padding: 20px 18px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); text-align: center; }
+.hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 5px; }
+.hero-stat-label { font-size: 13px; color: var(--ink-mid); line-height: 1.45; font-weight: 400; }
+
+/* RIGHT — form */
+.form-box { border: 1px solid var(--rule); padding: 44px 40px; background: var(--bg); }
+.form-heading { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--ink); margin-bottom: 10px; line-height: 1.05; }
+.form-offer { font-size: 15px; color: var(--ink-mid); line-height: 1.65; margin-bottom: 22px; font-weight: 400; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mid); margin-bottom: 7px; font-weight: 500; }
+.form-group input { width: 100%; background: var(--field-bg); border: 1px solid var(--field-border); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.4; padding: 14px 16px; outline: none; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none; appearance: none; border-radius: 0; }
+.form-group input::placeholder { color: rgba(26,26,26,0.22); }
+.form-group input:focus { border-color: var(--ink); background: #EDE8DE; }
+
+.form-divider { height: 1px; background: var(--rule); margin: 22px 0; }
+
+.form-submit { width: 100%; background: var(--btn); color: var(--btn-text); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 20px; border: none; cursor: pointer; transition: opacity 0.2s; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.form-submit:hover { opacity: 0.72; }
+
+.form-note { font-size: 13px; color: var(--ink-mid); margin-top: 14px; text-align: center; line-height: 1.5; font-weight: 400; }
+
+.rule-line { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+/* TESTIMONIAL */
+.short-testi { background: var(--ink); color: var(--bg); padding: 80px 60px; }
+.short-testi-inner { max-width: 660px; margin: 0 auto; text-align: center; }
+.testi-setup { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(246,242,234,0.56); margin-bottom: 20px; font-weight: 500; }
+.short-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 2.6vw, 32px); font-weight: 300; line-height: 1.5; color: rgba(246,242,234,0.9); margin-bottom: 24px; }
+.short-quote-attr { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(246,242,234,0.72); font-weight: 500; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--rule); padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; }
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.footer-info { font-size: 13px; color: var(--ink-mid); text-align: right; line-height: 1.9; letter-spacing: 0.03em; }
+.footer-info a { color: var(--ink); text-decoration: none; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+
+  h1 { font-size: 44px; line-height: 1.04; }
+
+  .top-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 100px 24px 48px;
+  }
+
+  .hero-sub { font-size: 18px; }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); }
+  .hero-stat { padding: 16px 10px; }
+  .hero-stat-num { font-size: 26px; }
+  .hero-stat-label { font-size: 12px; }
+
+  .form-box { padding: 36px 24px; }
+  .form-group input { font-size: 16px; }
+  .form-heading { font-size: 26px; }
+  .form-offer { font-size: 15px; }
+
+  .short-testi { padding: 60px 24px; }
+  .short-quote { font-size: 26px; }
+
+  footer { flex-direction: column; gap: 14px; padding: 36px 24px; text-align: center; }
+  .footer-info { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">Larry Chou</a>
+  <a href="#form" class="nav-cta">Get Your Prep Plan</a>
+</nav>
+
+<div class="top-section" id="form">
+
+  <!-- LEFT: headline, subhead, stats -->
+  <div>
+    <h1>Selling your home<br>starts here.</h1>
+    <p class="hero-sub">Spend less. Show better. Sell faster.</p>
+    <div class="stats-context">From a recent San Jose sale</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">16</div>
+        <div class="hero-stat-label">Days until listed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">48 hrs</div>
+        <div class="hero-stat-label">Multiple offers</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">7 days</div>
+        <div class="hero-stat-label">Under contract</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: form -->
+  <div>
+    <div class="form-box">
+      <div class="form-heading">Get your prep plan</div>
+      <p class="form-offer">A clear breakdown of what to do, what to skip, and what it should cost. Use it yourself or have me handle it.</p>
+      <form name="consult" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="consult">
+        <input type="hidden" name="mailer" value="16 Day Prep Mailer 02">
+        <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
+
+        <div class="form-group">
+          <label for="f-name">Name</label>
+          <input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
+        </div>
+        <div class="form-group">
+          <label for="f-phone">Phone</label>
+          <input type="tel" id="f-phone" name="phone" placeholder="(408) 555-0100" autocomplete="tel" inputmode="tel" required>
+        </div>
+        <div class="form-group">
+          <label for="f-address">Property Address</label>
+          <input type="text" id="f-address" name="address" placeholder="123 Main St, San Jose, CA" autocomplete="street-address" required>
+        </div>
+
+        <div class="form-divider"></div>
+        <button type="submit" class="form-submit">Get Your Prep Plan</button>
+        <p class="form-note">I'll reach out shortly.</p>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<hr class="rule-line">
+
+<section class="short-testi">
+  <div class="short-testi-inner">
+    <p class="testi-setup">Here's what one seller said after we did this together.</p>
+    <p class="short-quote">"He helped us focus on the right work without turning it into a full renovation. Multiple offers within 48 hours and pending in 7 days."</p>
+    <div class="short-quote-attr">Seller &nbsp;|&nbsp; 1458 Portobello Dr</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Larry Chou</div>
+  <div class="footer-info">
+    DRE #02247191 &nbsp;·&nbsp; Keller Williams Silicon Valley<br>
+    <a href="mailto:hey@larrychou.com">hey@larrychou.com</a> &nbsp;·&nbsp; <a href="tel:4087591201">408.759.1201</a>
+  </div>
+</footer>
+
+</body>
+</html>
