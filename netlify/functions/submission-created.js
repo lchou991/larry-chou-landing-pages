@@ -18,6 +18,7 @@ const UNIVERSAL_TAGS = [
   "16 Day Prep Campaign",
 ];
 
+// Add new mailers here as you create them — one line per mailer
 const MAILER_TAGS = {
   "/prep-plan":   "16 Day Prep Mailer 02",
 };
@@ -26,10 +27,6 @@ const MAILER_TAGS = {
 // Helpers
 // ---------------------------------------------------------------------------
 
-/**
- * Split a single full-name string into { firstName, lastName }.
- * Handles: "Jane", "Jane Smith", "Mary Jo Watson"
- */
 function splitName(fullName = "") {
   const parts = fullName.trim().split(/\s+/);
   if (parts.length === 0 || (parts.length === 1 && parts[0] === "")) {
@@ -38,85 +35,64 @@ function splitName(fullName = "") {
   if (parts.length === 1) {
     return { firstName: parts[0], lastName: "" };
   }
-  const firstName = parts[0];
-  const lastName = parts.slice(1).join(" ");
-  return { firstName, lastName };
+  return { firstName: parts[0], lastName: parts.slice(1).join(" ") };
 }
 
-/**
- * Normalize a phone string to plain digits for logging only.
- */
 function normalizePhone(phone = "") {
   return phone.replace(/\D/g, "");
 }
 
-/**
- * Build the Follow Up Boss event payload from a Netlify form payload.
- */
-function buildFubPayload(formData, mailer = "") {
-  const { name = "", email = "", phone = "", address = "", mailer = "" } = formData;
+function getMailerTag(pageUrl) {
+  const match = Object.entries(MAILER_TAGS).find(([path]) => pageUrl.includes(path));
+  return match ? match[1] : "";
+}
+
+function buildFubPayload(formData, mailerTag) {
+  const { name = "", email = "", phone = "", address = "" } = formData;
   const { firstName, lastName } = splitName(name);
 
   const message = address
     ? `Seller form submitted from website. Property address: ${address}`
     : "Seller form submitted from website.";
 
-  // Build tag list: always include universal tags, add mailer tag if present
   const tags = [...UNIVERSAL_TAGS];
-  if (mailer) {
-    tags.push(mailer);
+  if (mailerTag) {
+    tags.push(mailerTag);
   }
 
-  const person = {
-    firstName,
-    lastName,
-    tags,
-  };
+  const person = { firstName, lastName, tags };
 
-  if (email) {
-    person.emails = [{ value: email }];
-  }
-
-  if (phone) {
-    person.phones = [{ value: phone }];
-  }
-
-  if (address) {
-    person.propertyStreet = address;
-  }
+  if (email)   person.emails         = [{ value: email }];
+  if (phone)   person.phones         = [{ value: phone }];
+  if (address) person.propertyStreet = address;
 
   return {
-    source: "LarryChou.com",
-    system: "Netlify",
-    type: "Seller Inquiry",
+    source:  "LarryChou.com",
+    system:  "Netlify",
+    type:    "Seller Inquiry",
     message,
     person,
   };
 }
 
-/**
- * Send the event to Follow Up Boss.
- * Returns { ok, status, body }.
- */
 async function sendToFub(payload) {
-  const apiKey = process.env.FUB_API_KEY;
-  const xSystem = process.env.FUB_X_SYSTEM;
-  const xSystemKey = process.env.FUB_X_SYSTEM_KEY;
+  const apiKey      = process.env.FUB_API_KEY;
+  const xSystem     = process.env.FUB_X_SYSTEM;
+  const xSystemKey  = process.env.FUB_X_SYSTEM_KEY;
 
-  if (!apiKey) throw new Error("FUB_API_KEY environment variable is not set.");
-  if (!xSystem) throw new Error("FUB_X_SYSTEM environment variable is not set.");
+  if (!apiKey)     throw new Error("FUB_API_KEY environment variable is not set.");
+  if (!xSystem)    throw new Error("FUB_X_SYSTEM environment variable is not set.");
   if (!xSystemKey) throw new Error("FUB_X_SYSTEM_KEY environment variable is not set.");
 
-  // Basic auth: username = API key, password = empty string
   const credentials = Buffer.from(`${apiKey}:`).toString("base64");
 
   const response = await fetch(FUB_EVENTS_URL, {
     method: "POST",
     headers: {
       "Authorization": `Basic ${credentials}`,
-      "Content-Type": "application/json",
-      "X-System": xSystem,
-      "X-System-Key": xSystemKey,
+      "Content-Type":  "application/json",
+      "X-System":      xSystem,
+      "X-System-Key":  xSystemKey,
     },
     body: JSON.stringify(payload),
   });
@@ -148,16 +124,16 @@ export const handler = async (event) => {
     return { statusCode: 400, body: "Bad event payload" };
   }
 
+  // ── 2. Check form name ───────────────────────────────────────────────────
   const formName =
-    netlifyPayload?.data?.["form-name"] ||
-    netlifyPayload?.form_name ||
     netlifyPayload?.payload?.data?.["form-name"] ||
+    netlifyPayload?.data?.["form-name"] ||
     netlifyPayload?.payload?.form_name ||
-    "consult";
+    netlifyPayload?.form_name ||
+    "";
 
   console.log(`[${timestamp}] Form name: "${formName}"`);
 
-  // ── 2. Only process our "consult" form ──────────────────────────────────
   if (formName !== "consult") {
     console.log(`[${timestamp}] Ignoring submission from unrelated form: "${formName}"`);
     return { statusCode: 200, body: "Ignored — not the consult form" };
@@ -165,27 +141,30 @@ export const handler = async (event) => {
 
   // ── 3. Extract form fields ───────────────────────────────────────────────
   const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
-const { name, email, phone, address } = formData;
-const pageUrl = netlifyPayload?.payload?.data?.referrer || netlifyPayload?.data?.referrer || "";
-const mailer = Object.entries(MAILER_TAGS).find(([path]) => pageUrl.includes(path))?.[1] || "";
+  const { name, email, phone, address } = formData;
+
+  // ── 4. Detect which page the submission came from ────────────────────────
+  const pageUrl   = netlifyPayload?.payload?.data?.referrer || netlifyPayload?.data?.referrer || "";
+  const mailerTag = getMailerTag(pageUrl);
+
   console.log(`[${timestamp}] Submission received:`, {
-    name: name || "(missing)",
-    email: email || "(missing)",
-    phone: phone ? `****${normalizePhone(phone).slice(-4)}` : "(missing)",
+    name:    name    || "(missing)",
+    email:   email   || "(missing)",
+    phone:   phone   ? `****${normalizePhone(phone).slice(-4)}` : "(missing)",
     address: address || "(missing)",
-    mailer: mailer || "(none — root page)",
+    mailer:  mailerTag || "(none — root page)",
   });
 
-  // ── 4. Basic field validation ────────────────────────────────────────────
+  // ── 5. Basic validation ──────────────────────────────────────────────────
   if (!name && !email && !phone) {
     console.warn(`[${timestamp}] Submission appears empty — skipping FUB call`);
     return { statusCode: 200, body: "Skipped — no usable contact data" };
   }
 
-  // ── 5. Build and send FUB payload ───────────────────────────────────────
+  // ── 6. Build and send FUB payload ───────────────────────────────────────
   let fubPayload;
   try {
-    fubPayload = buildFubPayload(formData, mailer);
+    fubPayload = buildFubPayload(formData, mailerTag);
     console.log(`[${timestamp}] Sending to Follow Up Boss:`, {
       ...fubPayload,
       person: {
@@ -207,15 +186,12 @@ const mailer = Object.entries(MAILER_TAGS).find(([path]) => pageUrl.includes(pat
     return { statusCode: 200, body: "FUB send failed (logged)" };
   }
 
-  // ── 6. Log FUB response ──────────────────────────────────────────────────
+  // ── 7. Log result ────────────────────────────────────────────────────────
   if (result.ok) {
     const fubId = result.body?.id || result.body?.eventId || "(no id returned)";
     console.log(`[${timestamp}] ✅ FUB accepted submission. status=${result.status} id=${fubId} tags=${fubPayload.person.tags.join(", ")}`);
   } else {
-    console.error(
-      `[${timestamp}] ❌ FUB rejected submission. status=${result.status} body=`,
-      JSON.stringify(result.body)
-    );
+    console.error(`[${timestamp}] ❌ FUB rejected submission. status=${result.status} body=`, JSON.stringify(result.body));
   }
 
   return { statusCode: 200, body: "OK" };
