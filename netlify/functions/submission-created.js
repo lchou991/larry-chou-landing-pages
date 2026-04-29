@@ -11,6 +11,13 @@
 
 const FUB_EVENTS_URL = "https://api.followupboss.com/v1/events";
 
+// Tags applied to every consult submission regardless of source
+const UNIVERSAL_TAGS = [
+  "Seller",
+  "Seller Inquiry",
+  "16 Day Prep Campaign",
+];
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -28,13 +35,12 @@ function splitName(fullName = "") {
     return { firstName: parts[0], lastName: "" };
   }
   const firstName = parts[0];
-  const lastName = parts.slice(1).join(" "); // preserve middle names in last
+  const lastName = parts.slice(1).join(" ");
   return { firstName, lastName };
 }
 
 /**
- * Normalize a phone string to a plain digit string for dedup logging.
- * Does NOT modify the value sent to FUB — we send exactly what came in.
+ * Normalize a phone string to plain digits for logging only.
  */
 function normalizePhone(phone = "") {
   return phone.replace(/\D/g, "");
@@ -44,16 +50,23 @@ function normalizePhone(phone = "") {
  * Build the Follow Up Boss event payload from a Netlify form payload.
  */
 function buildFubPayload(formData) {
-  const { name = "", email = "", phone = "", address = "" } = formData;
+  const { name = "", email = "", phone = "", address = "", mailer = "" } = formData;
   const { firstName, lastName } = splitName(name);
 
   const message = address
     ? `Seller form submitted from website. Property address: ${address}`
     : "Seller form submitted from website.";
 
+  // Build tag list: always include universal tags, add mailer tag if present
+  const tags = [...UNIVERSAL_TAGS];
+  if (mailer) {
+    tags.push(mailer);
+  }
+
   const person = {
     firstName,
     lastName,
+    tags,
   };
 
   if (email) {
@@ -69,7 +82,7 @@ function buildFubPayload(formData) {
   }
 
   return {
-    source: "larrychou.com",
+    source: "LarryChou.com",
     system: "Netlify",
     type: "Seller Inquiry",
     message,
@@ -131,7 +144,14 @@ export const handler = async (event) => {
     return { statusCode: 400, body: "Bad event payload" };
   }
 
-const formName = netlifyPayload?.data?.["form-name"] || netlifyPayload?.form_name || netlifyPayload?.payload?.data?.["form-name"] || netlifyPayload?.payload?.form_name || "consult";  console.log(`[${timestamp}] Form name: "${formName}"`);
+  const formName =
+    netlifyPayload?.data?.["form-name"] ||
+    netlifyPayload?.form_name ||
+    netlifyPayload?.payload?.data?.["form-name"] ||
+    netlifyPayload?.payload?.form_name ||
+    "consult";
+
+  console.log(`[${timestamp}] Form name: "${formName}"`);
 
   // ── 2. Only process our "consult" form ──────────────────────────────────
   if (formName !== "consult") {
@@ -140,15 +160,15 @@ const formName = netlifyPayload?.data?.["form-name"] || netlifyPayload?.form_nam
   }
 
   // ── 3. Extract form fields ───────────────────────────────────────────────
-  // Netlify puts fields in payload.data for background functions
-const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
-  const { name, email, phone, address } = formData;
+  const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
+  const { name, email, phone, address, mailer } = formData;
 
   console.log(`[${timestamp}] Submission received:`, {
     name: name || "(missing)",
     email: email || "(missing)",
-    phone: phone ? `****${normalizePhone(phone).slice(-4)}` : "(missing)", // mask for logs
+    phone: phone ? `****${normalizePhone(phone).slice(-4)}` : "(missing)",
     address: address || "(missing)",
+    mailer: mailer || "(none — root page)",
   });
 
   // ── 4. Basic field validation ────────────────────────────────────────────
@@ -163,7 +183,6 @@ const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
     fubPayload = buildFubPayload(formData);
     console.log(`[${timestamp}] Sending to Follow Up Boss:`, {
       ...fubPayload,
-      // redact emails/phones in logs for privacy
       person: {
         ...fubPayload.person,
         emails: fubPayload.person.emails ? ["[redacted]"] : undefined,
@@ -179,24 +198,19 @@ const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
   try {
     result = await sendToFub(fubPayload);
   } catch (err) {
-    // Network or credential config error
     console.error(`[${timestamp}] FUB request threw an exception:`, err.message);
-    // Return 200 so Netlify doesn't retry indefinitely — log is the record
     return { statusCode: 200, body: "FUB send failed (logged)" };
   }
 
   // ── 6. Log FUB response ──────────────────────────────────────────────────
   if (result.ok) {
-    // FUB /v1/events returns 200 even for duplicates — it deduplicates internally
     const fubId = result.body?.id || result.body?.eventId || "(no id returned)";
-    console.log(`[${timestamp}] ✅ FUB accepted submission. status=${result.status} id=${fubId}`);
+    console.log(`[${timestamp}] ✅ FUB accepted submission. status=${result.status} id=${fubId} tags=${fubPayload.person.tags.join(", ")}`);
   } else {
-    // 4xx usually means bad credentials or malformed payload; log full body
     console.error(
       `[${timestamp}] ❌ FUB rejected submission. status=${result.status} body=`,
       JSON.stringify(result.body)
     );
-    // Still return 200 to Netlify — retrying won't fix a 4xx
   }
 
   return { statusCode: 200, body: "OK" };
