@@ -53,7 +53,7 @@ function normalizePhone(phone = "") {
 /**
  * Build the Follow Up Boss event payload from a Netlify form payload.
  */
-function buildFubPayload(formData) {
+function buildFubPayload(formData, mailer = "") {
   const { name = "", email = "", phone = "", address = "", mailer = "" } = formData;
   const { firstName, lastName } = splitName(name);
 
@@ -185,7 +185,7 @@ const mailer = Object.entries(MAILER_TAGS).find(([path]) => pageUrl.includes(pat
   // ── 5. Build and send FUB payload ───────────────────────────────────────
   let fubPayload;
   try {
-    fubPayload = buildFubPayload(formData);
+    fubPayload = buildFubPayload(formData, mailer);
     console.log(`[${timestamp}] Sending to Follow Up Boss:`, {
       ...fubPayload,
       person: {
