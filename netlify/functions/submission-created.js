@@ -23,6 +23,7 @@ const MAILER_TAGS = {
   "/prep-plan":   "16 Day Prep Mailer 02",
   "/gbp":         "GBP",
   "/campbell":    "CampbellPrepCTA",
+  "/listingprep":  "Case Study",
 };
 
 // ---------------------------------------------------------------------------
