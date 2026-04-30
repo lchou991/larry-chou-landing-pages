@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Full Case Study | How This Home Got Market Ready in 16 Days | Larry Chou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  color-scheme: light;
+  --bg:           #F6F2EA;
+  --ink:          #1A1A1A;
+  --ink-mid:      #4A4843;
+  --ink-soft:     #7A7670;
+  --rule:         #DDD8CE;
+  --btn:          #1A1A1A;
+  --btn-text:     #F6F2EA;
+  --field-bg:     #EFEAE0;
+  --field-border: #D4CEC3;
+}
+
+html { scroll-behavior: smooth; background-color: #F6F2EA !important; }
+body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; -webkit-font-smoothing: antialiased; background-color: #F6F2EA !important; color: #1A1A1A !important; }
+
+/* ── NAV ── */
+/* FORCE LIGHT MODE */
+@media (prefers-color-scheme: dark) {
+  html, body { background-color: #F6F2EA !important; color: #1A1A1A !important; }
+  input, textarea, select { background-color: #EFEAE0 !important; color: #1A1A1A !important; border-color: #D4CEC3 !important; }
+}
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(246,242,234,0.94); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+.nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.nav-right { display: flex; align-items: center; gap: 28px; }
+.nav-link { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+.nav-link:hover { color: var(--ink); }
+.nav-cta { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--btn-text); background: var(--btn); padding: 10px 22px; text-decoration: none; transition: opacity 0.2s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.nav-cta:hover { opacity: 0.7; }
+
+/* ── TYPE ── */
+h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px, 6vw, 80px); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 28px; color: var(--ink); }
+h1 em { font-style: normal; font-weight: 600; }
+h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.5vw, 50px); font-weight: 300; line-height: 1.15; margin-bottom: 52px; color: var(--ink); }
+h2 em { font-style: normal; font-weight: 600; }
+
+/* ── HERO ── */
+.hero { padding: 148px 60px 80px; max-width: 860px; margin: 0 auto; }
+.hero-kicker { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+.hero-kicker::before { content: ''; width: 28px; height: 1px; background: var(--ink-soft); }
+.hero-sub { font-size: 20px; line-height: 1.85; color: var(--ink-mid); max-width: 580px; margin-bottom: 40px; font-weight: 400; }
+.hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 48px; }
+.btn-primary { display: inline-block; background: var(--btn); color: var(--btn-text); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 36px; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s; }
+.btn-primary:hover { opacity: 0.72; }
+.btn-secondary { display: inline-block; background: transparent; color: var(--ink-mid); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 0; text-decoration: none; border-bottom: 1px solid var(--rule); transition: color 0.2s, border-color 0.2s; }
+.btn-secondary:hover { color: var(--ink); border-color: var(--ink-mid); }
+
+/* ── HERO STATS ── */
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); max-width: 580px; }
+.hero-stat { padding: 22px 18px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 5px; }
+.hero-stat-label { font-size: 12px; color: var(--ink-mid); line-height: 1.4; font-weight: 400; }
+
+.rule-line { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+/* ── WHY NORENO ── */
+.why-noreno { padding: 80px 60px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; border-bottom: 1px solid var(--rule); }
+.why-noreno h2 { margin-bottom: 0; font-size: clamp(24px, 2.8vw, 38px); }
+.why-noreno-body { font-size: 18px; line-height: 1.85; color: var(--ink-mid); }
+.why-noreno-body p + p { margin-top: 20px; }
+
+/* ── SCOPE NOTE ── */
+.scope-note { background: var(--ink); }
+.scope-note-inner { max-width: 1100px; margin: 0 auto; padding: 52px 60px; border-top: 1px solid rgba(246,242,234,0.08); border-bottom: 1px solid rgba(246,242,234,0.08); }
+.scope-note-text { font-size: 18px; font-weight: 300; color: rgba(246,242,234,0.82); line-height: 1.8; }
+.scope-note-label { font-weight: 500; color: rgba(246,242,234,0.96); letter-spacing: 0.02em; }
+
+/* ── GALLERY ── */
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3vw, 44px); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 48px; letter-spacing: -0.01em; }
+.gallery { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.more-gallery { padding: 0 60px 100px; max-width: 1100px; margin: 0 auto; }
+.more-gallery .section-title { padding-top: 64px; border-top: 1px solid var(--rule); }
+
+.pair-col-labels { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 3px; }
+.pair-col-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); padding-bottom: 8px; }
+.pair-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 3px; }
+.pair-cell { background: #EDEAE3; }
+.pair-cell img { width: 100%; height: 380px; object-fit: contain; display: block; }
+.pair-caption { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 32px; }
+.pair-caption span { font-size: 14px; color: var(--ink-mid); padding-top: 8px; line-height: 1.5; letter-spacing: 0.03em; font-weight: 400; }
+
+/* ── WHAT WE DID ── */
+.what-we-did { background: var(--ink); color: var(--bg); padding: 100px 60px; }
+.what-we-did-inner { max-width: 1100px; margin: 0 auto; }
+.what-we-did .section-title { color: rgba(246,242,234,0.9); }
+.phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(246,242,234,0.06); }
+.phase { background: var(--ink); padding: 52px 44px; }
+.phase-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: rgba(246,242,234,0.25); letter-spacing: 0.15em; margin-bottom: 24px; }
+.phase-title { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--bg); margin-bottom: 8px; line-height: 1.2; }
+.phase-days { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(246,242,234,0.3); margin-bottom: 28px; }
+.phase-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.phase-items li { font-size: 16px; color: rgba(246,242,234,0.82); padding-left: 16px; position: relative; line-height: 1.65; }
+.phase-items li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: rgba(246,242,234,0.25); }
+
+/* ── TWO COL ── */
+.two-col { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.two-col-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); }
+.col-block { background: var(--bg); padding: 52px 44px; }
+.col-block-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+.col-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.col-list li { font-size: 16px; color: #3F3D38; padding-left: 20px; position: relative; line-height: 1.65; }
+.col-list li::before { content: '✓'; position: absolute; left: 0; color: var(--ink-soft); font-size: 11px; top: 2px; }
+
+/* ── WHY WORKS ── */
+.why { padding: 0 60px 100px; max-width: 1100px; margin: 0 auto; }
+.why-inner { border-top: 1px solid var(--rule); padding-top: 80px; display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+.why h2 { margin-bottom: 0; }
+.why-body { font-size: 18px; line-height: 1.9; color: var(--ink-mid); }
+.why-body p + p { margin-top: 20px; }
+
+/* ── PULL QUOTES ── */
+.pull-quotes { background: var(--ink); color: var(--bg); padding: 80px 60px; }
+.pull-quotes-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(246,242,234,0.06); }
+.pull-quote-block { background: var(--ink); padding: 44px 40px; }
+.pull-quote-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; line-height: 1.65; color: rgba(246,242,234,0.92); }
+
+/* ── TESTIMONIAL ── */
+.testimonial { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+.testimonial-inner { border-top: 1px solid var(--rule); padding-top: 64px; display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+.testimonial-left h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 3vw, 44px); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+.testimonial-source { font-size: 12px; color: var(--ink-mid); letter-spacing: 0.06em; }
+.testimonial-body { font-family: 'DM Sans', sans-serif; font-size: 19px; font-weight: 400; line-height: 1.9; color: #3F3D38; }
+.testimonial-body p + p { margin-top: 20px; }
+
+/* ── CTA BAND ── */
+.cta-band { background: var(--ink); color: var(--bg); padding: 80px 60px; }
+.cta-band-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+.cta-band h2 { color: rgba(246,242,234,0.9); margin-bottom: 12px; }
+.cta-band p { font-size: 17px; color: rgba(246,242,234,0.72); max-width: 460px; line-height: 1.8; }
+.btn-light { display: inline-block; background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; padding: 15px 36px; white-space: nowrap; transition: opacity 0.2s; }
+.btn-light:hover { opacity: 0.78; }
+
+/* ── FORM ── */
+.form-section { padding: 100px 60px; max-width: 680px; margin: 0 auto; }
+.form-section-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 36px; display: flex; align-items: center; gap: 12px; }
+.form-section-label::before { content: ''; width: 28px; height: 1px; background: var(--ink-soft); }
+.form-box { border: 1px solid var(--rule); padding: 52px 48px; background: var(--bg); }
+.form-heading { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--ink); margin-bottom: 32px; line-height: 1.1; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 7px; }
+.form-group input, .form-group textarea { width: 100%; background: var(--field-bg); border: 1px solid var(--field-border); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 300; padding: 13px 16px; outline: none; transition: border-color 0.2s, background 0.2s; -webkit-appearance: none; appearance: none; border-radius: 0; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(26,26,26,0.22); }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--ink); background: #EDE8DE; }
+.form-group textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+.form-divider { height: 1px; background: var(--rule); margin: 24px 0; }
+.form-submit { width: 100%; background: var(--btn); color: var(--btn-text); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 20px; border: none; cursor: pointer; transition: opacity 0.2s; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.form-submit:hover { opacity: 0.72; }
+.form-note { font-size: 13px; color: var(--ink-mid); margin-top: 14px; text-align: center; line-height: 1.5; }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--rule); padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; }
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.footer-info { font-size: 13px; color: var(--ink-mid); text-align: right; line-height: 1.9; letter-spacing: 0.03em; }
+.footer-info a { color: var(--ink); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-link { display: none; }
+  .hero { padding: 110px 24px 60px; }
+  .hero-sub { font-size: 18px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; max-width: 100%; }
+  .hero-stat-num { font-size: 26px; }
+  .hero-actions { margin-top: 36px; }
+  .why-noreno { grid-template-columns: 1fr; gap: 24px; padding: 60px 24px; }
+  .scope-note-inner { padding: 40px 24px; }
+  .scope-note-text { font-size: 16px; }
+  .gallery { padding: 60px 24px; }
+  .more-gallery { padding: 0 24px 72px; }
+  .pair-row { grid-template-columns: 1fr; }
+  .pair-col-labels { display: none; }
+  .pair-caption { grid-template-columns: 1fr; }
+  .pair-cell img { height: 260px; }
+  .what-we-did { padding: 72px 24px; }
+  .phases { grid-template-columns: 1fr; }
+  .two-col { padding: 72px 24px; }
+  .two-col-grid { grid-template-columns: 1fr; }
+  .why { padding: 0 24px 72px; }
+  .why-inner { grid-template-columns: 1fr; gap: 32px; }
+  .pull-quotes { padding: 60px 24px; }
+  .pull-quotes-inner { grid-template-columns: 1fr; }
+  .testimonial { padding: 72px 24px; }
+  .testimonial-inner { grid-template-columns: 1fr; gap: 36px; }
+  .testimonial-body { font-size: 18px; line-height: 1.9; }
+  .cta-band { padding: 60px 24px; }
+  .cta-band-inner { flex-direction: column; align-items: flex-start; }
+  .form-section { padding: 72px 24px; max-width: 100%; }
+  .form-box { padding: 36px 24px; }
+  .form-group input, .form-group textarea { font-size: 16px; }
+  footer { flex-direction: column; gap: 14px; padding: 36px 24px; text-align: center; }
+  .footer-info { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">Larry Chou</a>
+  <div class="nav-right">
+    <a href="#form" class="nav-cta">Get My Prep Plan</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">Full Case Study | San Jose</div>
+  <h1>How this home got<br><em>market ready in 16 days</em></h1>
+  <p class="hero-sub">A deeper look at the decisions, scope, and results behind this 16 day prep strategy.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">16</div><div class="hero-stat-label">Days to market ready</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">~$18k</div><div class="hero-stat-label">Total prep budget</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">48 hrs</div><div class="hero-stat-label">Multiple offers received</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">7 days</div><div class="hero-stat-label">Under contract</div></div>
+  </div>
+  <div class="hero-actions">
+    <a href="#form" class="btn-primary">Get My Prep Plan</a>
+  </div>
+</section>
+
+<hr class="rule-line">
+
+<!-- WHY NO OVER-RENO -->
+<section class="why-noreno">
+  <h2>Why we did not<br><em>over-renovate</em></h2>
+  <div class="why-noreno-body">
+    <p>This home still had older major systems, including an aging roof, older HVAC, and a 100 amp panel. With those bigger items still in the picture, a full renovation would have been the wrong move.</p>
+    <p>The goal was not to overspend chasing a premium the house was unlikely to get credit for. The goal was to reposition it from needs work to clean, move-in ready, and showing well through focused, high-impact prep.</p>
+  </div>
+</section>
+
+<!-- SCOPE NOTE -->
+<div class="scope-note">
+  <div class="scope-note-inner">
+    <p class="scope-note-text"><span class="scope-note-label">Throughout the home:</span> we painted every surface — interior and exterior. Walls, doors, trim, ceilings, and the full exterior were done. Switches and outlets were replaced, select ceiling fixtures were updated, bulbs were matched for consistent light, and window screens were removed to maximize clarity and natural light.</p>
+  </div>
+</div>
+
+<!-- MAIN GALLERY: 4 pairs -->
+<section class="gallery">
+  <div class="section-title">Before &amp; After</div>
+  <div class="pair-col-labels"><div class="pair-col-label">Before</div><div class="pair-col-label">After</div></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-1.jpg" alt="Exterior before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-1.jpg" alt="Exterior after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption"><span>Exterior Before</span><span>Exterior After. Fresh paint, rotted wood repair, fence repair, pressure wash, and landscaping cleanup.</span></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-3.jpg" alt="Living room before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-3.jpg" alt="Living room after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption"><span>Living Room Before</span><span>Living Room After. Curtains removed to open the backyard view, mirrors placed to reflect greenery, screens removed for more light, plus patching and paint.</span></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-7.JPG" alt="Primary bedroom before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-7.jpg" alt="Primary bedroom after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption"><span>Primary Bedroom Before</span><span>Primary Bedroom After. Broken recessed lights repaired, walls patched and painted, dated closet liners removed, curtains removed, and natural light opened up.</span></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-10.JPG" alt="Primary bath before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-10.JPG" alt="Primary bath after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption" style="margin-bottom:0;"><span>Primary Bath Before</span><span>Primary Bath After. Deep chemical and steam cleaning, tub reglazing, and broken glass shower door replaced.</span></div>
+</section>
+
+<!-- MORE GALLERY: additional pairs -->
+<section class="more-gallery">
+  <div class="section-title">More of What Was Done</div>
+  <div class="pair-col-labels"><div class="pair-col-label">Before</div><div class="pair-col-label">After</div></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-5.JPG" alt="Family room before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-5.jpg" alt="Family room after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption"><span>Family Room Before</span><span>Family Room After. Dated gold fireplace doors removed, firebox painted black, brick painted to blend with the walls, and curtains removed for more light.</span></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-6.JPG" alt="Dining room before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-6.jpg" alt="Dining room after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption"><span>Dining Room Before</span><span>Dining Room After. Flush mount ceiling light replaced, screens removed for more light and clarity, plus patching and paint.</span></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-8.JPG" alt="Bedroom before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-8.JPG" alt="Bedroom after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption"><span>Bedroom Before</span><span>Bedroom After. Repainted, cleaned up, and staged.</span></div>
+
+  <div class="pair-row">
+    <div class="pair-cell"><img src="before-9.jpg" alt="2nd bath before" loading="lazy"></div>
+    <div class="pair-cell"><img src="after-9.jpg" alt="2nd bath after" loading="lazy"></div>
+  </div>
+  <div class="pair-caption" style="margin-bottom:0;"><span>2nd Bath Before</span><span>2nd Bath After. Deep chemical and steam cleaning, tub reglazed to refresh at a cost-effective price point.</span></div>
+</section>
+
+<!-- WHAT WE DID -->
+<section class="what-we-did">
+  <div class="what-we-did-inner">
+    <div class="section-title">What We Did</div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-num">01</div>
+        <div class="phase-title">Prep Plan</div>
+        <div class="phase-days">Days 1–3</div>
+        <ul class="phase-items">
+          <li>Walkthrough to assess what actually matters to buyers</li>
+          <li>Decided what to address and what to skip</li>
+          <li>Scheduling locked in before any work begins</li>
+          <li>Budget set against realistic return</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-num">02</div>
+        <div class="phase-title">Repair, Paint &amp; Stage</div>
+        <div class="phase-days">Days 4–12</div>
+        <ul class="phase-items">
+          <li>Targeted repairs, nothing buyers won't notice</li>
+          <li>Full interior repaint, exterior touch-up</li>
+          <li>Landscaping cleanup and curb detail</li>
+          <li>Professional staging scheduled and installed</li>
+          <li>Deep clean throughout</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-num">03</div>
+        <div class="phase-title">Photos &amp; Launch</div>
+        <div class="phase-days">Days 13–16</div>
+        <ul class="phase-items">
+          <li>Professional photography and video</li>
+          <li>Pre-listing inspection completed and disclosed</li>
+          <li>MLS listing live with full marketing package</li>
+          <li>Direct outreach to active buyer agents</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I HANDLE / AVOID -->
+<section class="two-col">
+  <h2>What I handle.<br><em>What you avoid.</em></h2>
+  <div class="two-col-grid">
+    <div class="col-block">
+      <div class="col-block-label">What I Handle</div>
+      <ul class="col-list">
+        <li>Prep strategy: what to do and what to skip</li>
+        <li>Keeping every trade on schedule</li>
+        <li>Repairs and finish work</li>
+        <li>Interior and exterior paint</li>
+        <li>Landscaping and curb appeal</li>
+        <li>Staging and photography</li>
+        <li>Inspection scheduling and disclosure prep</li>
+        <li>MLS launch and buyer agent outreach</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-block-label">What Sellers Avoid</div>
+      <ul class="col-list">
+        <li>Over-renovating and spending money buyers won't pay back</li>
+        <li>Chasing down contractors on their own schedule</li>
+        <li>Not knowing what actually moves buyers</li>
+        <li>Weeks of delay before the home is ready</li>
+        <li>A weak first impression that costs you offers</li>
+        <li>Leaving straightforward money on the table</li>
+        <li>The stress of managing every detail themselves</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS WORKS -->
+<section class="why">
+  <div class="why-inner">
+    <h2>Why this<br><em>works</em></h2>
+    <div class="why-body">
+      <p>Buyers decide fast. Most form a strong impression before they have walked the whole house. A home that feels clean, finished, and intentional gets more showings, more offers, and a faster close — not because it was renovated, but because it was prepared well.</p>
+      <p>The difference between a home that sits and one that goes pending in a week is usually not the price. It is the presentation. Most sellers either do too little or spend money on things buyers do not value. Knowing the difference is the work. The 16-Day Launch is built around that distinction: clear scope, fast execution, nothing wasted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTES -->
+<section class="pull-quotes">
+  <div class="pull-quotes-inner">
+    <div class="pull-quote-block">
+      <p class="pull-quote-text">"He helped us focus on the right work before going on the market, without turning it into a full renovation."</p>
+    </div>
+    <div class="pull-quote-block">
+      <p class="pull-quote-text">"When we finally saw the house after everything was finished, we were honestly amazed. We did not think it had that much potential."</p>
+    </div>
+    <div class="pull-quote-block">
+      <p class="pull-quote-text">"Multiple offers within 48 hours and pending in 7 days. Much easier than we expected."</p>
+    </div>
+  </div>
+</section>
+
+<!-- FULL TESTIMONIAL -->
+<section class="testimonial">
+  <div class="testimonial-inner">
+    <div class="testimonial-left">
+      <h3>What the sellers said</h3>
+      <p class="testimonial-source">Seller | 1458 Portobello Dr</p>
+    </div>
+    <div class="testimonial-body">
+      <p>"I didn't know where to start. Larry made the process fast, organized, and low stress. What stood out most was how much he took off our plate. He kept the process moving, stayed on top of the details, and helped us get the house market-ready without it turning into a drawn-out project.</p>
+      <p>He helped us focus on the right work before going on the market, without turning it into a full renovation or pushing us to spend where we didn't need to. When we finally saw the house after everything was finished, we were honestly amazed. We did not think it had that much potential.</p>
+      <p>The whole experience felt clear, well managed, and much easier than we expected. Once the home launched, we had multiple offers within 48 hours and were pending in 7 days. If you're selling your home, I'd absolutely recommend Larry to anyone who wants smart preparation, strong execution, and a more efficient path to market."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <div>
+      <h2>Thinking of selling?</h2>
+      <p style="margin-top:16px;">Before you spend on prep, get a clear plan.</p>
+    </div>
+    <a href="#form" class="btn-light">Get My Prep Plan</a>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="form">
+  <div class="form-section-label">Get My Prep Plan</div>
+  <div class="form-box">
+    <div id="form-content">
+      <div class="form-heading">Get My Prep Plan</div>
+      <p style="font-size:15px;color:var(--ink-mid);line-height:1.65;margin-bottom:28px;font-weight:400;">Send your address and I'll tell you what I'd do before you spend on prep.</p>
+      <form name="consult" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="consult">
+        <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
+
+        <div class="form-group"><label for="f-name">Name</label><input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required></div>
+        <div class="form-group"><label for="f-email">Email</label><input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required></div>
+        <div class="form-group"><label for="f-phone">Phone</label><input type="tel" id="f-phone" name="phone" placeholder="(408) 555-0100" autocomplete="tel" inputmode="tel" required></div>
+        <div class="form-group"><label for="f-address">Property Address</label><input type="text" id="f-address" name="address" placeholder="123 Main St, San Jose, CA" autocomplete="street-address" required></div>
+
+        <div class="form-divider"></div>
+        <button type="submit" class="form-submit">Get My Prep Plan</button>
+        <p class="form-note">I'll reach out with next steps.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Larry Chou</div>
+  <div class="footer-info">
+    DRE #02247191 &nbsp;·&nbsp; Keller Williams Silicon Valley<br>
+    <a href="mailto:hey@larrychou.com">hey@larrychou.com</a> &nbsp;·&nbsp; <a href="tel:4087591201">408.759.1201</a>
+  </div>
+</footer>
+
+</body>
+</html>
