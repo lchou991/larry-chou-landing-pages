@@ -21,6 +21,7 @@ const UNIVERSAL_TAGS = [
 // Add new mailers here as you create them — one line per mailer
 const MAILER_TAGS = {
   "/prep-plan":   "16 Day Prep Mailer 02",
+   "/gbp":         "GBP",
 };
 
 // ---------------------------------------------------------------------------
