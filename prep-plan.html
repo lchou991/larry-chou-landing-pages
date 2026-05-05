@@ -45,7 +45,7 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 18px 32px;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: center; align-items: center;
   background: rgba(242,239,233,0.95);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -53,7 +53,7 @@ nav {
 }
 .nav-brand {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 15px; font-weight: 400;
+  font-size: 15px; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--ink); text-decoration: none;
   -webkit-tap-highlight-color: transparent;
@@ -206,7 +206,7 @@ h1 em { font-style: italic; font-weight: 300; }
   color: var(--ink-soft);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 10px 0 32px;
+  padding: 8px 0 16px;
   font-weight: 500;
 }
 
@@ -214,16 +214,16 @@ h1 em { font-style: italic; font-weight: 300; }
 .cta-section {
   max-width: 680px;
   margin: 0 auto;
-  padding: 0 24px 60px;
+  padding: 0 24px 40px;
 }
 .cta-action-zone {
-  padding-top: 48px;
-  padding-bottom: 64px;
+  padding-top: 24px;
+  padding-bottom: 40px;
 }
 .cta-action-zone .form-box {
   background: #FFFFFF;
   border: 1px solid var(--rule);
-  padding: 48px 36px;
+  padding: 36px 28px;
   box-shadow: 0 1px 3px rgba(31,31,29,0.06);
 }
 
@@ -513,12 +513,65 @@ footer {
   nav { padding: 18px 48px; }
 }
 </style>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5RX0R77WHE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5RX0R77WHE');
+</script>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,
+document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1533514048115355');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
+/></noscript>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "wmjl25izee");
+</script>
+
+<!-- form_start: fires once on first field interaction -->
+<script>
+(function(){
+  var fired = false;
+  function onFormStart(){
+    if(fired) return;
+    fired = true;
+    gtag('event', 'form_start', { event_category: 'form', event_label: 'prep_plan' });
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var fields = document.querySelectorAll('form input, form textarea, form select');
+    fields.forEach(function(field){
+      field.addEventListener('focus', onFormStart, { once: false });
+    });
+  });
+})();
+</script>
+
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-brand">Larry Chou</a>
-  <a href="#form" class="nav-cta">Get Your Prep Plan</a>
+  <a href="/" class="nav-brand">Pretty ≠ Profitable</a>
 </nav>
 
 <div class="continuity-bar"><span class="bar-line1">The Pretty Listing Trap</span><span class="bar-line2">Your Agent Gets the Photos. You Get the Bill.</span></div>
@@ -527,7 +580,6 @@ footer {
   <h1>Get Your Prep Plan<br><em>Before You Spend</em></h1>
 
   <div class="proof-row">
-    <div class="proof-context-label">"Needs work" to market-ready in 16 days.</div>
     <div class="proof-badges">
     <div class="proof-badge">
       <div class="proof-num">16</div>
@@ -635,7 +687,7 @@ footer {
   </ul>
   <p class="story-cost">Prep work cost: $18k. <span class="story-cost-note">Staging handled separately.</span></p>
 
-  <p class="story-subhead">What we didn't do:</p>
+  <p class="story-subhead">What We Skipped: These wouldn't have paid off here.</p>
   <ul class="story-list story-list--didnt">
     <li>No kitchen remodel.</li>
     <li>No bathroom remodel.</li>
