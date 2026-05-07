@@ -20,10 +20,11 @@ const UNIVERSAL_TAGS = [
 
 // Add new mailers here as you create them — one line per mailer
 const MAILER_TAGS = {
-  "/prep-plan":   "16 Day Prep Mailer 02",
-  "/gbp":         "GBP",
-  "/campbell":    "CampbellPrepCTA",
-  "/listingprep":  "Case Study",
+  "/prep-plan":      "16 Day Prep Mailer 02",
+  "/gbp":            "GBP",
+  "/campbell":       "CampbellPrepCTA",
+  "/listingprep":    "Case Study",
+  "/prettylistings": ["Pretty Listings", "Meta Ad"],
 };
 
 // ---------------------------------------------------------------------------
@@ -47,10 +48,11 @@ function normalizePhone(phone = "") {
 
 function getMailerTag(pageUrl) {
   const match = Object.entries(MAILER_TAGS).find(([path]) => pageUrl.includes(path));
-  return match ? match[1] : "";
+  if (!match) return [];
+  return Array.isArray(match[1]) ? match[1] : [match[1]];
 }
 
-function buildFubPayload(formData, mailerTag) {
+function buildFubPayload(formData, mailerTags) {
   const { name = "", email = "", phone = "", address = "" } = formData;
   const { firstName, lastName } = splitName(name);
 
@@ -58,10 +60,7 @@ function buildFubPayload(formData, mailerTag) {
     ? `Seller form submitted from website. Property address: ${address}`
     : "Seller form submitted from website.";
 
-  const tags = [...UNIVERSAL_TAGS];
-  if (mailerTag) {
-    tags.push(mailerTag);
-  }
+  const tags = [...UNIVERSAL_TAGS, ...mailerTags];
 
   const person = { firstName, lastName, tags };
 
@@ -147,15 +146,15 @@ export const handler = async (event) => {
   const { name, email, phone, address } = formData;
 
   // ── 4. Detect which page the submission came from ────────────────────────
-  const pageUrl   = netlifyPayload?.payload?.data?.referrer || netlifyPayload?.data?.referrer || "";
-  const mailerTag = getMailerTag(pageUrl);
+  const pageUrl    = netlifyPayload?.payload?.data?.referrer || netlifyPayload?.data?.referrer || "";
+  const mailerTags = getMailerTag(pageUrl);
 
   console.log(`[${timestamp}] Submission received:`, {
     name:    name    || "(missing)",
     email:   email   || "(missing)",
     phone:   phone   ? `****${normalizePhone(phone).slice(-4)}` : "(missing)",
     address: address || "(missing)",
-    mailer:  mailerTag || "(none — root page)",
+    mailer:  mailerTags.length ? mailerTags.join(", ") : "(none — root page)",
   });
 
   // ── 5. Basic validation ──────────────────────────────────────────────────
@@ -167,7 +166,7 @@ export const handler = async (event) => {
   // ── 6. Build and send FUB payload ───────────────────────────────────────
   let fubPayload;
   try {
-    fubPayload = buildFubPayload(formData, mailerTag);
+    fubPayload = buildFubPayload(formData, mailerTags);
     console.log(`[${timestamp}] Sending to Follow Up Boss:`, {
       ...fubPayload,
       person: {
