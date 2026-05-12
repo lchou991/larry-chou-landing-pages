@@ -24,7 +24,8 @@ const MAILER_TAGS = {
   "/gbp":            "GBP",
   "/campbell":       "CampbellPrepCTA",
   "/listingprep":    "Case Study",
-  "/prettylistings": ["Pretty Listings", "Meta Ad"],
+  "/prettylistings-b": ["Pretty Listings B", "Meta Ad"],
+  "/prettylistings":   ["Pretty Listings", "Meta Ad"],
 };
 
 // ---------------------------------------------------------------------------
