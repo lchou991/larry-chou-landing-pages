@@ -1416,5 +1416,23 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <div class="sticky-cta-num">408-759-1201</div>
 </a>
 
+
+<script>
+  document.querySelector('form[name="consult"]').addEventListener('submit', function() {
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {
+        content_name: 'Consult Form',
+        content_category: 'Seller Inquiry'
+      });
+    }
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        event_category: 'form',
+        event_label: 'consult'
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
