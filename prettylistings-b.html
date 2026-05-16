@@ -1461,23 +1461,6 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 </a>
 
 
-<script>
-  document.querySelector('form[name="consult"]').addEventListener('submit', function() {
-    var eventId = 'lead_' + Date.now();
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', {
-        content_name: 'Consult Form',
-        content_category: 'Seller Inquiry'
-      }, { eventID: eventId });
-    }
-    if (typeof gtag === 'function') {
-      gtag('event', 'generate_lead', {
-        event_category: 'form',
-        event_label: 'consult'
-      });
-    }
-  }, { once: true });
-</script>
 
 </body>
 </html>
