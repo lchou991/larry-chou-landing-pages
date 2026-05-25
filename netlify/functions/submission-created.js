@@ -26,6 +26,7 @@ const MAILER_TAGS = {
   "/listingprep":    "Case Study",
   "/prettylistings-b": ["Pretty Listings B", "Meta Ad"],
   "/prettylistings":   ["Pretty Listings", "Meta Ad"],
+  "/all-done":         ["16 Day Prep System", "Relief", "All-Done", "Meta Ad"],
 };
 
 // ---------------------------------------------------------------------------
@@ -137,7 +138,8 @@ export const handler = async (event) => {
 
   console.log(`[${timestamp}] Form name: "${formName}"`);
 
-  if (formName !== "consult") {
+  const CONSULT_FORMS = ["consult", "consult-relief"];
+  if (!CONSULT_FORMS.includes(formName)) {
     console.log(`[${timestamp}] Ignoring submission from unrelated form: "${formName}"`);
     return { statusCode: 200, body: "Ignored — not the consult form" };
   }
