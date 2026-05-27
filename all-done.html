@@ -36,8 +36,8 @@
   --ink-soft: #5A5550;
   --accent:   #3A3835;
   --rule:     #DDD8CE;
-  --btn:      #1F1F1D;
-  --btn-text: #F2EFE9;
+  --btn:      #C05A18;
+  --btn-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -188,18 +188,21 @@ h1 {
   background: var(--btn);
   color: var(--btn-text);
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   padding: 22px 48px;
   text-decoration: none;
   margin-bottom: 52px;
-  transition: opacity 0.2s;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.22);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.hero-cta-btn:hover { opacity: 0.72; }
+.hero-cta-btn:hover { background: #F2EFE9; color: #C05A18; border-color: #C05A18; }
 @media (max-width: 640px) {
   .hero { padding-top: 13px; }
   .hero-cta-btn { display: block; text-align: center; padding: 22px 24px; flex: 1 1 100%; }
@@ -264,7 +267,7 @@ h1 {
 .section {
   max-width: 680px;
   margin: 0 auto;
-  padding: 56px 24px;
+  padding: 40px 24px;
 }
 .section-rule {
   border-top: 1px solid var(--rule);
@@ -364,7 +367,7 @@ h1 {
 .dark-inner {
   max-width: 680px;
   margin: 0 auto;
-  padding: 56px 24px;
+  padding: 40px 24px;
 }
 .dark-eyebrow {
   font-size: 13px;
@@ -487,7 +490,8 @@ h1 {
 .timeline-section {
   max-width: 680px;
   margin: 0 auto;
-  padding: 56px 24px;
+  padding: 40px 24px;
+  border-top: 1px solid var(--rule);
 }
 .timeline-eyebrow {
   font-size: 13px;
@@ -559,24 +563,27 @@ h1 {
 .mid-cta {
   max-width: 680px;
   margin: 0 auto;
-  padding: 56px 24px;
+  padding: 40px 24px;
 }
 .mid-cta-btn {
   display: inline-block;
   background: var(--btn);
   color: var(--btn-text);
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   padding: 22px 48px;
   text-decoration: none;
-  transition: opacity 0.2s;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.22);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.mid-cta-btn:hover { opacity: 0.72; }
+.mid-cta-btn:hover { background: #F2EFE9; color: #C05A18; border-color: #C05A18; }
 .mid-cta-note {
   font-size: 18px;
   color: var(--ink-mid);
@@ -650,7 +657,7 @@ h1 {
 /* ── TESTIMONIAL (dark) ───────────────────────────────── */
 .testi-section {
   background: var(--ink);
-  padding: 56px 24px;
+  padding: 40px 24px;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .testi-inner {
@@ -688,7 +695,7 @@ h1 {
 /* ── FORM (dark) ──────────────────────────────────────── */
 .form-outer {
   background: var(--ink);
-  padding: 8px 24px 64px;
+  padding: 8px 24px 40px;
 }
 .form-divider-line {
   max-width: 600px;
@@ -774,43 +781,43 @@ h1 {
 
 .form-next-btn {
   width: 100%;
-  background: rgba(255,255,255,0.1);
+  background: #C05A18;
   color: #ffffff;
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   padding: 20px;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 2px solid transparent;
   cursor: pointer;
-  transition: background 0.2s;
-  border-radius: 0;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  border-radius: 100px;
   margin-top: 8px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
 }
-.form-next-btn:hover { background: rgba(255,255,255,0.18); }
+.form-next-btn:hover { background: #F2EFE9; color: #C05A18; border-color: #C05A18; }
 
 .form-submit {
   width: 100%;
-  background: #C8862E;
+  background: #C05A18;
   color: #ffffff;
   font-family: 'DM Sans', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   padding: 24px;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  border-radius: 0;
+  border-radius: 100px;
   margin-top: 8px;
 }
-.form-submit:hover { background: #B3761F; }
+.form-submit:hover { background: #F2EFE9; color: #C05A18; border-color: #C05A18; }
 
 .form-note {
   font-size: 14px;
@@ -954,6 +961,11 @@ footer {
   .flowchart-plus {
     display: none !important;
   }
+  .flowchart-prep {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 4px);
+  }
 
   /* Time table: tighten fixed columns so task text has room */
   .time-duration {
@@ -1044,7 +1056,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <!-- TOP BAR -->
 <!-- HERO -->
 <div class="hero" id="top">
-  <p class="hero-eyebrow">Silicon Valley &nbsp;&middot;&nbsp; The 16-Day Prep System</p>
+  <p class="hero-eyebrow">Silicon Valley &nbsp;&middot;&nbsp; 16DayPrep&trade;</p>
   <h1>How a San Jose homeowner <span style="font-weight:800; color:#1F1F1D;">sold for $95,000 more</span>, in <span style="font-weight:800;">8 days</span>, and spent <span style="font-weight:800;">less than 5 hours</span> of his time doing it.</h1>
 
 
@@ -1052,7 +1064,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
 
   <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-top:22px; margin-bottom:28px;">
-    <a href="#comp-table" style="display:inline-block; flex-shrink:0; padding:18px 44px; background:var(--ink); color:#fff; font-size:19px; font-weight:700; letter-spacing:0.04em; text-decoration:none; border-radius:5px; box-shadow:0 2px 12px rgba(0,0,0,0.18); cursor:pointer;">See the Proof &rarr;</a>
+    <a href="#comp-table" style="display:inline-block; flex-shrink:0; padding:18px 44px; background:#1F1F1D; color:#fff; font-size:19px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid #1F1F1D; box-shadow:0 2px 12px rgba(0,0,0,0.18); cursor:pointer; transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='transparent';this.style.color='#1F1F1D';" onmouseout="this.style.background='#1F1F1D';this.style.color='#fff';">See the Proof &rarr;</a>
     <div style="flex:1; min-width:180px;">
       <p class="hero-trust-attr" style="margin:0 0 4px;"><span class="stars">&#11088;&#11088;&#11088;&#11088;&#11088;</span> — Wangda Tan, 1458 Portobelo, San Jose</p>
       <p class="hero-trust-quote" style="margin:0;">&ldquo;We did not think it had that much potential.&rdquo;</p>
@@ -1073,7 +1085,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; font-size:clamp(19px,3.2vw,28px); color:#ffffff;">
       <span style="font-weight:700; letter-spacing:-0.01em; white-space:nowrap;">[Same House]</span>
       <span style="font-weight:700;">+</span>
-      <span style="font-weight:700; letter-spacing:-0.01em; white-space:nowrap;">[16-Day Prep]</span>
+      <span style="font-weight:700; letter-spacing:-0.01em; white-space:nowrap;">[16DayPrep&trade;]</span>
       <span style="font-weight:800; letter-spacing:-0.02em; white-space:nowrap; color:#6FCF8A;">= +$95,000 in 8 Days</span>
     </div>
   </div>
@@ -1101,9 +1113,9 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <table style="width:100%; border-collapse:collapse; margin-bottom:32px; table-layout:fixed;">
     <thead>
       <tr>
-        <th style="text-align:left; padding:14px 16px 14px 0; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.65); border-bottom:2px solid rgba(255,255,255,0.6); width:32%;">Property &amp; Performance</th>
-        <th style="text-align:left; width:34%; padding:14px 16px; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.65); border-bottom:2px solid rgba(255,255,255,0.6);"><span style="display:block; font-size:13px; font-weight:700; letter-spacing:0.12em; color:rgba(242,239,233,0.65); margin-bottom:10px;">Traditional</span>5031 Las Cruces Ct</th>
-        <th style="text-align:left; background:rgba(242,239,233,0.06); width:34%; padding:14px 16px 14px 0; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ffffff; border-bottom:2px solid rgba(255,255,255,0.6);"><span style="display:block; font-size:13px; font-weight:800; letter-spacing:0.12em; color:#6FCF8A; margin-bottom:10px;">16-Day Prep</span>1458 Portobelo Dr</th>
+        <th style="text-align:left; padding:14px 16px 14px 0; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.65); border-bottom:2px solid rgba(255,255,255,0.6); width:32%;"></th>
+        <th style="text-align:left; width:34%; padding:14px 16px; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.65); border-bottom:2px solid rgba(255,255,255,0.6);"><span style="display:block; font-size:13px; font-weight:700; letter-spacing:0.12em; color:rgba(242,239,233,0.65); margin-bottom:10px;">Regular Sale</span>5031 Las Cruces Ct</th>
+        <th style="text-align:left; background:rgba(242,239,233,0.06); width:34%; padding:14px 16px 14px 0; font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ffffff; border-bottom:2px solid rgba(255,255,255,0.6);"><span style="display:block; font-size:13px; font-weight:800; letter-spacing:0.12em; color:#6FCF8A; margin-bottom:10px;">16DayPrep&trade;</span>1458 Portobelo Dr</th>
       </tr>
     </thead>
     <tbody>
@@ -1125,14 +1137,14 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <!-- OBJECTION KILLER -->
   <div style="margin-top:48px; padding-top:8px;">
     <p style="font-size:clamp(20px,3vw,26px); font-weight:700; color:#ffffff; line-height:1.3; margin-bottom:12px;">&ldquo;The other house must have been in worse condition.&rdquo;</p>
-    <p style="font-size:17px; font-weight:400; color:rgba(242,239,233,0.85); line-height:1.7; margin-bottom:32px;">The data shows the opposite: the 16-Day Prep home started at a disadvantage.</p>
+    <p style="font-size:17px; font-weight:400; color:rgba(242,239,233,0.85); line-height:1.7; margin-bottom:32px;">The data shows the opposite: the 16DayPrep&trade; home started at a disadvantage.</p>
 
     <table style="width:100%; border-collapse:collapse; table-layout:fixed;">
       <thead>
         <tr>
-          <th style="text-align:left; padding:12px 16px 12px 0; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.6); border-bottom:1px solid rgba(255,255,255,0.3); width:32%;">Baseline &amp; Deficits</th>
-          <th style="text-align:left; width:34%; padding:12px 16px; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.6); border-bottom:1px solid rgba(255,255,255,0.3);"><span style="display:block; font-size:13px; font-weight:700; letter-spacing:0.12em; color:rgba(242,239,233,0.65); margin-bottom:10px;">Traditional</span>5031 Las Cruces Ct</th>
-          <th style="text-align:left; background:rgba(242,239,233,0.06); width:34%; padding:12px 16px 12px 0; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ffffff; border-bottom:1px solid rgba(255,255,255,0.3);"><span style="display:block; font-size:13px; font-weight:800; letter-spacing:0.12em; color:#6FCF8A; margin-bottom:10px;">16-Day Prep</span>1458 Portobelo Dr</th>
+          <th style="text-align:left; padding:12px 16px 12px 0; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.6); border-bottom:1px solid rgba(255,255,255,0.3); width:32%;"></th>
+          <th style="text-align:left; width:34%; padding:12px 16px; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.6); border-bottom:1px solid rgba(255,255,255,0.3);"><span style="display:block; font-size:13px; font-weight:700; letter-spacing:0.12em; color:rgba(242,239,233,0.65); margin-bottom:10px;">Regular Sale</span>5031 Las Cruces Ct</th>
+          <th style="text-align:left; background:rgba(242,239,233,0.06); width:34%; padding:12px 16px 12px 0; font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#ffffff; border-bottom:1px solid rgba(255,255,255,0.3);"><span style="display:block; font-size:13px; font-weight:800; letter-spacing:0.12em; color:#6FCF8A; margin-bottom:10px;">16DayPrep&trade;</span>1458 Portobelo Dr</th>
         </tr>
       </thead>
       <tbody>
@@ -1168,38 +1180,74 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
         </tr>
       </tbody>
     </table>
-    <p style="font-size:13px; color:rgba(242,239,233,0.72); line-height:1.8; margin-top:20px;">These are actual results from a home sold with the 16-Day Prep System, compared against a highly matched, nearly identical home sold without it. Broker does not guarantee top-market premiums; results vary by home, condition, pricing, market timing, buyer demand, and prep strategy.</p>
+    <p style="font-size:13px; color:rgba(242,239,233,0.72); line-height:1.8; margin-top:20px;">These are actual results from a home sold with 16DayPrep&trade;, compared against a highly matched, nearly identical home sold without it. Broker does not guarantee top-market premiums; results vary by home, condition, pricing, market timing, buyer demand, and prep strategy.</p>
   </div>
 
 </div>
 </div>
 
-<!-- PAS: SOLVE (dark pivot) -->
+<!-- PAS: PROBLEM GAP -->
 <div style="background:var(--bg);">
   <div class="dark-inner">
-    <p style="font-size:clamp(18px,2.8vw,21px); font-weight:500; line-height:1.9; color:var(--ink);">Most Silicon Valley sellers choose from three options. Two cost them money. One is a trap.</p>
-    <ol style="font-size:clamp(18px,2.8vw,21px); font-weight:500; line-height:1.9; color:var(--ink); padding-left:24px; margin-top:16px; display:flex; flex-direction:column; gap:14px;">
-      <li><strong>Sell As-Is:</strong> Leave money on the table.</li>
-      <li><strong>Do It Yourself:</strong> Spend months managing contractors, sourcing estimates, and burning your weekends.</li>
-      <li><strong>Fake Concierge Agents:</strong> A bait-and-switch. They pose as concierge services but pass you off to third parties like Revive or Curbio. Everyone takes a cut. They promise no up-front costs until closing — but hide their profit in inflated prep invoices. The contractor makes more money the more work they do on your home. The incentives work against you.</li>
-      <li><strong>The 16 Day Prep System:</strong> We run the proven 16-Day Prep System designed to capture the highest price while you approve everything from your phone.</li>
-    </ol>
+
+    <h2 class="section-heading">The Seller&rsquo;s Dilemma.</h2>
+
+    <!-- Prep decisions -->
+    <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:32px;">
+      <div>
+        <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px;">Over-prep</p>
+        <p style="font-size:15px; color:rgba(31,31,29,0.65); line-height:1.6;">A dollar spent to make back fifty cents.</p>
+      </div>
+      <div>
+        <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px;">Under-prep</p>
+        <p style="font-size:15px; color:rgba(31,31,29,0.65); line-height:1.6;">Maximum leverage handed to the buyer.</p>
+      </div>
+      <div>
+        <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px;">Mis-prep</p>
+        <p style="font-size:15px; color:rgba(31,31,29,0.65); line-height:1.6;">Money spent that doesn&rsquo;t move the price.</p>
+      </div>
+    </div>
+
+    <!-- Execution options -->
+    <div style="display:flex; flex-direction:column; gap:20px; margin-bottom:40px; border-top:1px solid rgba(31,31,29,0.1); padding-top:32px;">
+      <div>
+        <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px;">Sell As-Is</p>
+        <p style="font-size:15px; color:rgba(31,31,29,0.65); line-height:1.6;">Leave money on the table.</p>
+      </div>
+      <div>
+        <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px;">Do It Yourself</p>
+        <p style="font-size:15px; color:rgba(31,31,29,0.65); line-height:1.6;">Months managing contractors and burning weekends.</p>
+      </div>
+      <div>
+        <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px;">Fake Concierge</p>
+        <p style="font-size:15px; color:rgba(31,31,29,0.65); line-height:1.6;">Hidden fees. Inflated invoices. Incentives work against you.</p>
+      </div>
+      <div>
+        <p style="font-size:16px; font-weight:700; color:var(--ink); margin-bottom:4px;">Commodity Realtor</p>
+        <p style="font-size:15px; color:rgba(31,31,29,0.65); line-height:1.6;">Volume churners, discounters, or part-time friends &mdash; anyone can list, but your net outcome suffers.</p>
+      </div>
+    </div>
+
+    <!-- 16DayPrep™ resolution -->
+    <div style="border-top:1px solid rgba(31,31,29,0.12); padding-top:32px;">
+      <p style="font-size:18px; font-weight:500; color:var(--ink); line-height:1.8;">We built the 16DayPrep&trade; system to remove the guesswork from all 3 prep decisions and all 4 broken execution options with 1 framework for a predictable outcome. You&rsquo;ve seen the proof &mdash; here&rsquo;s how we do it.</p>
+    </div>
+
   </div>
 </div>
 
 <!-- HOW DID WE DO IT -->
 <div class="section section-rule">
-  <h2 class="section-heading">1 System. 2 Goals.<br>More Profit &nbsp;&middot;&nbsp; 5 Hours of your time.</h2>
+  <h2 class="section-heading">The Formula behind 16DayPrep&trade;.</h2>
 
-  <p class="body-text">All of this runs on a scale. Interest rates, local economic conditions, buyer confidence — these don't block the formula, they calibrate it. When the market is strong and buyers are competing, you prep more aggressively, price more boldly, and push harder in negotiation. When the market is slow, you dial back — buyers won't pay a premium for prep they don't need.</p>
-  <p class="body-text">Three mistakes cost sellers every time: over-prep and you spend money the buyer won't pay you back for; under-prep and you hand them a discount; wrong prep and you spend money that doesn't move the price at all, because you fixed things the buyer doesn't care about. Same framework, different settings.</p>
+  <p class="body-text">Markets are volatile, but our execution is predictable. We run the same 16DayPrep&trade; framework on every property. Market conditions don&rsquo;t change our process, they calibrate the settings.</p>
 
   <!-- Flowchart -->
   <div style="margin-top:48px;">
 
     <!-- Market Conditions Slider -->
     <div style="margin-bottom:40px;">
-      <p style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(31,31,29,0.55); margin-bottom:10px;">Market conditions</p>
+      <p style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(31,31,29,0.75); margin-bottom:10px;">Macro (Rates &middot; Markets &middot; Politics)</p>
       <div style="height:9px; border-radius:5px; background:linear-gradient(to right, #7EC8E3 0%, #C4C4C0 48%, #6FCF8A 100%);"></div>
       <div style="display:flex; justify-content:space-between; margin-top:8px;">
         <span style="font-size:13px; color:rgba(31,31,29,0.6);">Uncertain — dial back</span>
@@ -1219,16 +1267,14 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
       </div>
       <span class="flowchart-plus" style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
       <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Micro</p>
-        <p style="font-size:12px; color:rgba(242,239,233,0.9); margin-top:2px;">neighborhood</p>
+        <p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Local Market</p>
       </div>
       <span class="flowchart-plus" style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
       <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-        <p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Macro</p>
-        <p style="font-size:12px; color:rgba(242,239,233,0.9); margin-top:2px;">area</p>
+        <p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Surrounding Markets</p>
       </div>
       <span class="flowchart-plus" style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
-      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+      <div class="flowchart-prep" style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;">
         <p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Prep</p>
       </div>
     </div>
@@ -1290,8 +1336,8 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
 <!-- TWO-CTA CHECKPOINT -->
 <div style="background:var(--bg); padding:40px 24px; max-width:680px; margin:0 auto; display:flex; flex-direction:column; gap:14px;">
-  <a href="#form" style="display:block; text-align:center; padding:18px 32px; background:var(--ink); color:#fff; font-size:18px; font-weight:700; letter-spacing:0.04em; text-decoration:none; border-radius:5px; box-shadow:0 2px 12px rgba(0,0,0,0.18);">Get My Blueprint &rarr;</a>
-  <a href="#case-study" style="display:block; text-align:center; padding:18px 32px; background:transparent; color:var(--ink); font-size:18px; font-weight:600; letter-spacing:0.02em; text-decoration:none; border-radius:5px; border:2px solid rgba(31,31,29,0.2);">See How We Did It &darr;</a>
+  <a href="#case-study" style="display:block; text-align:center; padding:18px 32px; background:#1F1F1D; color:#fff; font-size:18px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid #1F1F1D; transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='transparent';this.style.color='#1F1F1D';" onmouseout="this.style.background='#1F1F1D';this.style.color='#fff';">See How We Did It &darr;</a>
+  <a href="#form" style="display:block; text-align:center; padding:18px 32px; background:#C05A18; color:#fff; font-size:18px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">Get My Blueprint &rarr;</a>
 </div>
 
 <!-- CASE STUDY: ENGINEERED SALE -->
@@ -1302,13 +1348,13 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
   <!-- Macro -->
   <div style="margin-bottom:24px;">
-    <p style="display:inline-block; background:#3A3A36; color:rgba(242,239,233,0.92); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 13px; border-radius:4px; margin-bottom:14px;">Macro — Area</p>
+    <p style="display:inline-block; background:#3A3A36; color:rgba(242,239,233,0.92); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 13px; border-radius:4px; margin-bottom:14px;">Surrounding Markets</p>
     <p style="font-size:18px; color:var(--ink); line-height:1.75;">95118 prices below neighboring 95124 and 95125. Running comps puts this home at $1.78M–$1.82M. That number is real — but it&rsquo;s a floor, not a ceiling, if you read the micro correctly.</p>
   </div>
 
   <!-- Micro -->
   <div style="margin-bottom:24px;">
-    <p style="display:inline-block; background:#3A3A36; color:rgba(242,239,233,0.92); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 13px; border-radius:4px; margin-bottom:14px;">Micro — Neighborhood</p>
+    <p style="display:inline-block; background:#3A3A36; color:rgba(242,239,233,0.92); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 13px; border-radius:4px; margin-bottom:14px;">Local Market</p>
     <p style="font-size:18px; color:var(--ink); line-height:1.75;">This specific pocket of 95118 feeds into Branham High School, not Pioneer. That distinction matters to a specific buyer who will pay for it. Comps don&rsquo;t capture it because most buyers hunting for Branham aren&rsquo;t searching in this zip code. They don&rsquo;t know it qualifies.</p>
   </div>
 
@@ -1338,25 +1384,73 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
     <div style="display:flex; flex-direction:column; gap:8px; margin-top:24px;">
       <div style="border:1.5px solid rgba(31,31,29,0.1); border-radius:10px; padding:16px 18px;">
-        <p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:12px;">Cohesive palette</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7; margin-bottom:12px;">The palette decision starts with what can&rsquo;t be changed.</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7; margin-bottom:12px;">Two fixed items: the roof and the flooring. Neither would be replaced. The roof had an orangey-brown hue — the exterior paint couldn&rsquo;t clash with it. The flooring was a slightly worn brown — the interior paint couldn&rsquo;t go too cool or it would fight the floors and destroy any sense of cohesion.</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7; margin-bottom:12px;">The palette had to work with both fixed elements. Not just look nice.</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7; margin-bottom:12px;"><strong>Exterior:</strong> Edgecomb Gray, White Dove trim. <strong>Interior:</strong> White Dove on everything — trim, baseboards, doors, walls, and ceilings. Every surface. The same color.</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7; margin-bottom:12px;">This house had 8-foot ceilings. The standard advice is to paint ceilings white. That&rsquo;s wrong here — white ceilings draw the eye up and reinforce how low they are. Painting every surface the same color eliminates the contrast. The ceiling reads as part of the room, not a cap on it.</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7; margin-bottom:12px;">Finish: flat. Never put sheen on walls in a home you&rsquo;re presenting as luxury. We used Benjamin Moore Aura flat — the only flat paint specced for wet areas, so it holds in bathrooms too.</p>
+        <p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:16px;">Prep cost breakdown</p>
+        <table style="width:100%; border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th style="text-align:left; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(31,31,29,0.45); padding:0 8px 10px 0; border-bottom:1px solid rgba(31,31,29,0.12);">Item</th>
+              <th style="text-align:right; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(31,31,29,0.45); padding:0 8px 10px; border-bottom:1px solid rgba(31,31,29,0.12); white-space:nowrap;">Projected</th>
+              <th style="text-align:right; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(31,31,29,0.45); padding:0 0 10px; border-bottom:1px solid rgba(31,31,29,0.12); white-space:nowrap;">Actual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Trash out</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$800</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$1,250</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">New interior flush mount lights / repair broken recessed / replace all light switches &amp; outlets</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$1,500</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$1,350</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Replacement glass shower door</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$1,000</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$975</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Reglaze hall bath tub</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$750</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$635</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Restore shower and bath tiles</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$500</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$950</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Patching / repair / painting every surface interior &amp; exterior / powerwash exterior</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$13,000</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$11,800</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Yard mulch / cleanup / landscaping</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$350</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$1,200</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Misc bulbs, light switch &amp; outlet covers, attic cover</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$250</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$194</td>
+            </tr>
+            <tr>
+              <td style="font-size:14px; color:var(--ink); padding:9px 8px 9px 0; border-bottom:1px solid rgba(31,31,29,0.06); line-height:1.4;">Smoke / CO detectors</td>
+              <td style="font-size:14px; color:rgba(31,31,29,0.55); text-align:right; padding:9px 8px; border-bottom:1px solid rgba(31,31,29,0.06);">$150</td>
+              <td style="font-size:14px; color:var(--ink); text-align:right; padding:9px 0; border-bottom:1px solid rgba(31,31,29,0.06);">$100</td>
+            </tr>
+            <tr>
+              <td style="font-size:15px; font-weight:700; color:var(--ink); padding:12px 8px 4px 0;">Subtotal</td>
+              <td style="font-size:15px; font-weight:700; color:rgba(31,31,29,0.55); text-align:right; padding:12px 8px 4px;">$18,350</td>
+              <td style="font-size:15px; font-weight:700; color:var(--ink); text-align:right; padding:12px 0 4px;">$18,454</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px; color:rgba(31,31,29,0.45); margin-top:12px;">Licensed trades: C-10 Electrician &nbsp;&middot;&nbsp; C-33 Painter</p>
       </div>
       <div style="border:1.5px solid rgba(31,31,29,0.1); border-radius:10px; padding:16px 18px;">
-        <p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:4px;">Wall art</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7;">Most agents skip large-format art to avoid patching drywall. We don&rsquo;t. Heavy art makes rooms feel curated, not staged.</p>
-      </div>
-      <div style="border:1.5px solid rgba(31,31,29,0.1); border-radius:10px; padding:16px 18px;">
-        <p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:4px;">Light</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7;">Every window screen removed. All window treatments removed.</p>
-      </div>
-      <div style="border:1.5px solid rgba(31,31,29,0.1); border-radius:10px; padding:16px 18px;">
-        <p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:4px;">Premium staging package</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.7;">Double the price of a standard package. The right design aesthetic sells a lifestyle and makes the space feel premium and luxurious. The furniture should belong in the lobby of the Four Seasons — not a Best Western.</p>
+        <p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:10px;">Staging &amp; presentation</p>
+        <p style="font-size:17px; color:var(--ink); line-height:1.75;">Exterior: Edgecomb Gray, White Dove trim. Interior: White Dove on every surface &mdash; walls, ceilings, trim, baseboards, and doors. Flat finish throughout. Every window screen and window treatment removed. Large-format wall art installed. Premium staging package at double the standard rate.</p>
       </div>
     </div>
   </div>
@@ -1372,7 +1466,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
   <!-- Selected Positioning + Pricing -->
   <div style="margin-bottom:28px;">
-    <p style="display:inline-block; background:#3A3A36; color:rgba(242,239,233,0.92); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 13px; border-radius:4px; margin-bottom:16px;">Selected Positioning &amp; Pricing</p>
+    <p style="display:inline-block; background:#3A3A36; color:rgba(242,239,233,0.92); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 13px; border-radius:4px; margin-bottom:16px;">Selected Positioning (Pricing)</p>
 
     <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
       <div style="border:1.5px solid rgba(31,31,29,0.1); border-radius:10px; padding:16px 18px;">
@@ -1391,7 +1485,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
     <div style="background:var(--ink); border-radius:10px; padding:22px 20px;">
       <p style="font-size:clamp(20px,5vw,28px); font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:10px;">$1.8M exactly.</p>
-      <p style="font-size:16px; color:rgba(242,239,233,0.8); line-height:1.7;">Separated the home from lower 95118 inventory. Signaled value to school district buyers. Made them willing to stretch without pricing into a harder competitive set.</p>
+      <p style="font-size:16px; color:rgba(242,239,233,0.8); line-height:1.7;">Separated the home from lower priced 95118 inventory. Signaled value to more desirable adjacent area school district buyers.</p>
     </div>
   </div>
 
@@ -1403,11 +1497,11 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px;">
       <div style="background:rgba(31,31,29,0.05); border-radius:10px; padding:16px;">
         <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(31,31,29,0.45); margin-bottom:8px;">Logical buyer</p>
-        <p style="font-size:17px; color:var(--ink); line-height:1.65;">Uses comps.<br>Anchors to data.<br>Tries to discount.</p>
+        <p style="font-size:17px; color:var(--ink); line-height:1.65;">Uses comps.<br>Anchors to data.<br>Wants fair value or discount.</p>
       </div>
       <div style="background:#3A3A36; border-radius:10px; padding:16px;">
         <p style="font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(111,207,138,0.8); margin-bottom:8px;">Emotional buyer</p>
-        <p style="font-size:16px; color:rgba(242,239,233,0.9); line-height:1.65;">Uses FOMO.<br>Anchors to desire.<br>Overpays to win.</p>
+        <p style="font-size:16px; color:rgba(242,239,233,0.9); line-height:1.65;">Uses FOMO.<br>Anchors to desire.<br>Willing to stretch to win.</p>
       </div>
     </div>
     <p style="font-size:18px; color:var(--ink); line-height:1.75; margin-bottom:32px;">The prep and presentation are designed to move buyers from the left column to the right.</p>
@@ -1415,7 +1509,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <!-- Pre-Launch Phase -->
 
     <!-- Match the House to the Money (current) -->
-    <div style="border-left:3px solid var(--ink); padding-left:18px; margin-bottom:24px;">
+    <div style="border-left:3px solid rgba(31,31,29,0.2); padding-left:18px; margin-bottom:24px;">
       <p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:10px;">Match the House to the Money.</p>
       <p style="font-size:18px; color:var(--ink); line-height:1.75; margin-bottom:12px;">Look at the data. Find out who has the most cash in that neighborhood. Figure out what hurts them the most. Then fix the house to solve that exact pain so they hand you a giant check.</p>
       <p style="font-size:18px; color:var(--ink); line-height:1.75;">If the biggest pockets in the zip code are remote tech workers running 14-hour days, don't build a generic guest room. Build a secluded high-performance workspace that makes them feel less stressed the second they walk in.</p>
@@ -1424,7 +1518,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <!-- Blind Asset Test (future) -->
     <div style="border-left:3px solid rgba(31,31,29,0.2); padding-left:18px; margin-bottom:32px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-        <p style="font-size:17px; font-weight:700; color:var(--ink); margin:0;">The &ldquo;Blind&rdquo; Asset Test.</p>
+        <p style="font-size:17px; font-weight:700; color:var(--ink); margin:0;">Pre-Launch Agent Outreach.</p>
         <span style="font-size:11px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; background:rgba(31,31,29,0.08); color:rgba(31,31,29,0.5); padding:3px 9px; border-radius:3px; white-space:nowrap;">New Service</span>
       </div>
       <p style="font-size:18px; color:var(--ink); line-height:1.75;">Pull email lists and market directly to active buyer agents in that exact zip code over the last 6 months — before it hits the MLS. Collect feedback on pricing objections before the market records the listing days.</p>
@@ -1435,7 +1529,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <!-- Geo-Fencing (future) -->
     <div style="border-left:3px solid rgba(31,31,29,0.2); padding-left:18px; margin-bottom:24px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-        <p style="font-size:17px; font-weight:700; color:var(--ink); margin:0;">Digital Asset Geo-Fencing.</p>
+        <p style="font-size:17px; font-weight:700; color:var(--ink); margin:0;">Targeted Out-of-Area Buyer Ads.</p>
         <span style="font-size:11px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; background:rgba(31,31,29,0.08); color:rgba(31,31,29,0.5); padding:3px 9px; border-radius:3px; white-space:nowrap;">New Service</span>
       </div>
       <p style="font-size:18px; color:var(--ink); line-height:1.75; margin-bottom:14px;">Run targeted Facebook and Instagram ads in high-purchasing-power cities, driving them to a landing page for early access.</p>
@@ -1462,10 +1556,10 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <!-- Retargeting Loop (future) -->
     <div style="border-left:3px solid rgba(31,31,29,0.2); padding-left:18px; margin-bottom:8px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-        <p style="font-size:17px; font-weight:700; color:var(--ink); margin:0;">The Retargeting Loop &amp; Frictionless Buyer Dossier.</p>
+        <p style="font-size:17px; font-weight:700; color:var(--ink); margin:0;">Direct Buyer Offer Package.</p>
         <span style="font-size:11px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; background:rgba(31,31,29,0.08); color:rgba(31,31,29,0.5); padding:3px 9px; border-radius:3px; white-space:nowrap;">New Service</span>
       </div>
-      <p style="font-size:18px; color:var(--ink); line-height:1.75;">Provide a complete digital asset binder at the door — home highlight video, all inspections, all disclosures. Gives buyers everything they need to make an offer on the spot. Signing in for access hands us their contact info to send property updates and offer deadlines.</p>
+      <p style="font-size:18px; color:var(--ink); line-height:1.75;">A QR code at the door gives every visitor instant access to all inspections, disclosures, and the home highlight video &mdash; unlocked by text. Captures buyer contact info automatically. Designed for buyers without representation who need everything in one place to make an offer on the spot.</p>
     </div>
 
   </div>
@@ -1473,7 +1567,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <!-- Negotiation -->
   <div style="margin-bottom:28px;">
     <p style="display:inline-block; background:#3A3A36; color:rgba(242,239,233,0.92); font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 13px; border-radius:4px; margin-bottom:14px;">Negotiation</p>
-    <p style="font-size:18px; color:var(--ink); line-height:1.75;">Multiple offers within 48 hours. Held asking through the first open house weekend. Called for a second round. Final price came in at $1,920,000.</p>
+    <p style="font-size:18px; color:var(--ink); line-height:1.75;">Multiple offers within 48 hours. Multiple rounds completed. Specific negotiation details are kept confidential.</p>
   </div>
 
   <!-- Outcome -->
@@ -1492,8 +1586,8 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
 
 <!-- TIME TABLE -->
-<div class="section" id="time-table">
-  <h2 class="section-heading">You approve.<br>We execute.</h2>
+<div class="section section-rule" id="time-table">
+  <h2 class="section-heading">You approve. We execute.</h2>
   <p style="font-size:clamp(20px,3vw,26px); font-weight:700; color:var(--ink); line-height:1.3; margin-bottom:12px;">The Breakdown of Those 5 Hours.</p>
 
   <div class="time-table">
@@ -1554,13 +1648,9 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
 
 
-<!-- CTA BEFORE TIMELINE -->
-<div style="background:var(--bg); padding:40px 24px; max-width:680px; margin:0 auto;">
-  <a href="#form" style="display:block; text-align:center; padding:18px 32px; background:var(--ink); color:#fff; font-size:18px; font-weight:700; letter-spacing:0.04em; text-decoration:none; border-radius:5px; box-shadow:0 2px 12px rgba(0,0,0,0.18);">Get My Plan &rarr;</a>
-</div>
 
 <!-- TIMELINE TABLE -->
-<div class="timeline-section">
+<div class="timeline-section" style="padding-bottom:12px;">
   <p class="timeline-heading">Larger home? Here's how the timeline adjusts.</p>
   <div class="timeline-table">
     <div class="timeline-row header">
@@ -1587,7 +1677,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 </div>
 
 <!-- MID-PAGE CTA -->
-<div class="mid-cta">
+<div class="mid-cta" style="padding-top:0;">
   <a href="#form" class="mid-cta-btn">Get My Blueprint</a>
 </div>
 
@@ -1611,7 +1701,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <div class="form-section">
 
       <span class="form-scarcity">Limited to 3 active projects.</span>
-      <h2 class="form-heading">See if your home qualifies for the 16-Day Blueprint.</h2>
+      <h2 class="form-heading">See if your home qualifies for 16DayPrep&trade;.</h2>
 
       <form name="consult-relief" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="consult-relief">
@@ -1659,7 +1749,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
             <input type="tel" id="f-phone" name="phone" placeholder="(408) 555-0100" autocomplete="tel" inputmode="tel" required>
           </div>
           <div class="form-rule"></div>
-          <button type="submit" class="form-submit">Build My 16-Day Prep Plan</button>
+          <button type="submit" class="form-submit">Build My 16DayPrep&trade; Plan</button>
           <p class="form-note">Your info stays private.</p>
           <button type="button" class="form-back-btn" id="back-btn">&larr; Go back</button>
         </div>
@@ -1676,10 +1766,10 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
 
 <!-- ORIGIN SECTION -->
-<div style="max-width:680px; margin:0 auto; padding:72px 24px;">
+<div class="section section-rule">
 
 
-  <h2 class="section-heading" style="margin-bottom:32px;">I watched a seller waste $47,000 in prep.<br>That&rsquo;s what built this system.</h2>
+  <h2 class="section-heading" style="margin-bottom:32px;">I watched a seller waste $47,000 in prep.<br>That&rsquo;s why I built 16DayPrep&trade;.</h2>
 
   <h3 style="font-size:17px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); margin-bottom:12px;">The $47,000 Waste</h3>
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">I represented a Bay Area home buyer and the seller shared invoices for the prep work they did to get the house ready. They spent over $50,000. It was a waste.</p>
@@ -1687,25 +1777,20 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
   <h3 style="font-size:17px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); margin-top:40px; margin-bottom:12px;">A Better Choice</h3>
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">I told my client upfront that if I took total ownership of the preparation, he had to let me use the property as a case study and show other homeowners the difference in how a sale should be executed. He agreed.</p>
-  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">I took total ownership of the sale at 1458 Portobelo so my client only had to approve key decisions and pay invoices remotely. I developed the sale strategy, the prep checklist, the estimated costs, and the timeline. He approved, and the 16-Day Prep System was born.</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">I took total ownership of the sale at 1458 Portobelo so my client only had to approve key decisions and pay invoices remotely. I developed the sale strategy, the prep checklist, the estimated costs, and the timeline. He approved, and 16DayPrep&trade; was born.</p>
 
   <h3 style="font-size:17px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); margin-top:40px; margin-bottom:12px;">Why Exactly 16 Days?</h3>
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">For a Bay Area home under 2,500 sq ft, 16 days is the sweet spot with a small built-in buffer. It's just enough time to fix the things that kill buyer perception without taking on unnecessary risk.</p>
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">It also leaves enough time for cleaning, inspections, staging, photos/videos, and pre-launch marketing.</p>
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">Larger and more costly prep work starts to increase execution risk and hits diminishing returns. As a homeowner you don't want to step into the role of a flipper. <strong>The Bay Area has some of the worst margins for flippers in the nation</strong> — many only targeting a 7% profit. The risk-reward just isn't worth it.</p>
-  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">For larger homes, the prep system scales predictably: 19 days for 2,500+ sq ft, and 22 days above 3,000 sq ft.</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:8px;">For larger homes, 16DayPrep&trade; scales predictably: 19 days for 2,500+ sq ft, and 22 days above 3,000 sq ft.</p>
 
   <h3 style="font-size:17px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); margin-top:40px; margin-bottom:12px;">The Bottom Line</h3>
-  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:0;"><strong>1 System. 2 Goals.<br>More Profit &nbsp;&middot;&nbsp; 5 Hours of your time.</strong></p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:12px;">16DayPrep&trade; was built to solve a single efficiency problem: How do we sell for the most profit, while requiring less than 5 hours of your time?</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:12px;">All while maintaining full authority over key decisions with remote approvals from your phone.</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:32px;">Let&rsquo;s look at the data for your property.</p>
+  <a href="#form" style="display:inline-block; padding:20px 52px; background:#C05A18; color:#fff; font-size:19px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">Get My Blueprint &rarr;</a>
 
-</div>
-
-
-<!-- BOTTOM CTA -->
-<div style="background:var(--bg); padding:0 0 72px;">
-  <div style="max-width:680px; margin:0 auto; padding:0 24px;">
-    <a href="#form" style="display:inline-block; padding:20px 52px; background:var(--ink); color:#fff; font-size:19px; font-weight:700; letter-spacing:0.04em; text-decoration:none; border-radius:5px; box-shadow:0 2px 12px rgba(0,0,0,0.18);">Get My Blueprint &rarr;</a>
-  </div>
 </div>
 
 <!-- FOOTER -->
