@@ -1305,7 +1305,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <!-- TWO-CTA CHECKPOINT -->
 <div style="background:var(--bg); padding:40px 24px; max-width:680px; margin:0 auto; display:flex; flex-direction:column; gap:14px;">
   <a href="#case-study" style="display:block; text-align:center; padding:18px 32px; background:#1F1F1D; color:#fff; font-size:18px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid #1F1F1D; transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='transparent';this.style.color='#1F1F1D';" onmouseout="this.style.background='#1F1F1D';this.style.color='#fff';">See How We Did It &darr;</a>
-  <a href="#form" style="display:block; text-align:center; padding:18px 32px; background:#C05A18; color:#fff; font-size:18px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">See If 16DayPrep Is Right For Me &rarr;</a>
+  <a href="#form" style="display:block; text-align:center; padding:18px 32px; background:#C05A18; color:#fff; font-size:18px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">I want help &rarr;</a>
 </div>
 
 <!-- CASE STUDY: ENGINEERED SALE -->
@@ -1877,7 +1877,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
   <!-- MID-PAGE CTA — moved to end of FAQ, sits below the final disclosure (centered) -->
   <div class="mid-cta" style="padding-top:0; text-align:center;">
-    <a href="#form" class="mid-cta-btn">See If 16DayPrep Is Right For Me</a>
+    <a href="#form" class="mid-cta-btn">I want help</a>
   </div>
 
 </div>
@@ -1891,7 +1891,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <div class="form-section">
 
       <span class="form-scarcity">Limited to 3 active projects.</span>
-      <h2 class="form-heading">See if 16DayPrep&trade; is right for me.</h2>
+      <h2 class="form-heading">See if 16DayPrep&trade; can help me.</h2>
 
       <form name="consult-relief" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="consult-relief">
@@ -1899,8 +1899,9 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
         <input type="hidden" name="source" value="Meta Ad">
         <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
 
-        <!-- Step 1: Property, timeline, situation -->
+        <!-- Step 1: Property, timeline, condition -->
         <div class="form-step active" id="step-1">
+          <p style="font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(242,239,233,0.55); margin:0 0 18px;">Step 1 of 2</p>
           <div class="form-group">
             <label for="f-address">Property Address</label>
             <input type="text" id="f-address" name="address" placeholder="123 Main St, your city, CA" autocomplete="street-address" required>
@@ -1916,7 +1917,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
             </select>
           </div>
           <div class="form-group">
-            <label for="f-situation">Prep starting point</label>
+            <label for="f-situation">Home condition</label>
             <select id="f-situation" name="situation" required>
               <option value="" disabled selected>What's the condition?</option>
               <option value="Needs significant prep">Needs significant prep</option>
@@ -1928,38 +1929,23 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
           <button type="button" class="form-next-btn" id="next-btn">Continue &rarr;</button>
         </div>
 
-        <!-- Step 2: Name and phone -->
+        <!-- Step 2: Name, email, phone -->
         <div class="form-step" id="step-2">
+          <p style="font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(242,239,233,0.55); margin:0 0 18px;">Step 2 of 2</p>
           <div class="form-group">
             <label for="f-name">Your Name</label>
             <input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="you@example.com" autocomplete="email" required>
           </div>
           <div class="form-group">
             <label for="f-phone">Phone</label>
             <input type="tel" id="f-phone" name="phone" placeholder="(408) 555-0100" autocomplete="tel" inputmode="tel" required>
           </div>
           <div class="form-rule"></div>
-          <button type="submit" class="form-submit">See If 16DayPrep Is Right For Me</button>
-          <p class="form-note">Your address is the first input. Home, Buyer pool, Local Market, Surrounding Markets, and Prep are next.</p>
-
-          <!-- WHAT HAPPENS NEXT -->
-          <div style="margin-top:28px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.15);">
-            <p style="font-size:13px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(242,239,233,0.65); margin-bottom:16px;">What happens next</p>
-            <div style="display:flex; flex-direction:column; gap:14px;">
-              <div style="display:flex; gap:14px; align-items:flex-start;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:50%; background:rgba(242,239,233,0.12); color:#F2EFE9; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;">1</span>
-                <p style="font-size:15px; color:rgba(242,239,233,0.92); line-height:1.6; margin:0;">We model your <strong style="color:#F2EFE9;">Home</strong> against the <strong style="color:#F2EFE9;">Buyer pool</strong>, <strong style="color:#F2EFE9;">Local Market</strong>, and <strong style="color:#F2EFE9;">Surrounding Markets</strong>.</p>
-              </div>
-              <div style="display:flex; gap:14px; align-items:flex-start;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:50%; background:rgba(242,239,233,0.12); color:#F2EFE9; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;">2</span>
-                <p style="font-size:15px; color:rgba(242,239,233,0.92); line-height:1.6; margin:0;">We map the <strong style="color:#F2EFE9;">Possible Positioning</strong> range and identify the <strong style="color:#F2EFE9;">Selected Positioning</strong> with the highest net.</p>
-              </div>
-              <div style="display:flex; gap:14px; align-items:flex-start;">
-                <span style="flex-shrink:0; width:24px; height:24px; border-radius:50%; background:rgba(242,239,233,0.12); color:#F2EFE9; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;">3</span>
-                <p style="font-size:15px; color:rgba(242,239,233,0.92); line-height:1.6; margin:0;">We walk you through the <strong style="color:#F2EFE9;">Prep</strong> scope, <strong style="color:#F2EFE9;">Pricing</strong>, and projected sale range on a call.</p>
-              </div>
-            </div>
-          </div>
+          <button type="submit" class="form-submit">I want help</button>
 
           <button type="button" class="form-back-btn" id="back-btn" style="margin-top:24px;">&larr; Go back</button>
         </div>
@@ -2015,7 +2001,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:12px;">16DayPrep&trade; was built to solve a single efficiency problem: How do we sell for the most profit, while requiring minimal effort from the homeowner who still maintains authority over all key decisions?</p>
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:32px;">Let&rsquo;s see if the 16DayPrep&trade; System is a good fit for you.</p>
 
-  <a href="#form" style="display:inline-block; padding:20px 52px; background:#C05A18; color:#fff; font-size:19px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">See If 16DayPrep Is Right For Me &rarr;</a>
+  <a href="#form" style="display:inline-block; padding:20px 52px; background:#C05A18; color:#fff; font-size:19px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">I want help &rarr;</a>
 
 </div>
 
@@ -2035,7 +2021,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
   <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:32px;">My clients get both sides. Investor judgment on what to fix, what to skip, where the risk is. Operator discipline on running it: scope, vendors, timeline, budget.</p>
 
-  <a href="#form" style="display:inline-block; padding:20px 52px; background:#C05A18; color:#fff; font-size:19px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">See If 16DayPrep Is Right For Me &rarr;</a>
+  <a href="#form" style="display:inline-block; padding:20px 52px; background:#C05A18; color:#fff; font-size:19px; font-weight:700; letter-spacing:0; text-transform:none; text-decoration:none; border-radius:100px; border:2px solid transparent; box-shadow:0 2px 14px rgba(0,0,0,0.22); transition:background 0.2s,color 0.2s,border-color 0.2s;" onmouseover="this.style.background='#F2EFE9';this.style.color='#C05A18';this.style.borderColor='#C05A18';" onmouseout="this.style.background='#C05A18';this.style.color='#fff';this.style.borderColor='transparent';">I want help &rarr;</a>
 
 </div>
 
