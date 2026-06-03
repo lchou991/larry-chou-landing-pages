@@ -491,24 +491,27 @@ h1 {
 }
 .todo-total {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: baseline;
   justify-content: center;
-  gap: 4px;
-  padding: 20px 0 8px;
+  gap: 10px;
+  padding: 22px 0;
 }
 .todo-total-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.todo-total-mins {
-  font-size: clamp(28px, 6vw, 36px);
+  font-size: clamp(16px, 4.2vw, 20px);
   font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--ink);
   white-space: nowrap;
+}
+.todo-total-mins {
+  font-size: clamp(22px, 5.5vw, 30px);
+  font-weight: 900;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  text-decoration: underline;
 }
 .time-duration {
   font-size: clamp(16px, 2.2vw, 18px);
@@ -1159,11 +1162,6 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
       </div>
       <div class="todo-item">
         <div class="todo-check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="todo-label">Go on vacation</div>
-        <div class="todo-mins">14 day</div>
-      </div>
-      <div class="todo-item">
-        <div class="todo-check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="todo-label">Approve budget</div>
         <div class="todo-mins">15 min</div>
       </div>
@@ -1179,11 +1177,6 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
       </div>
       <div class="todo-item">
         <div class="todo-check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="todo-label">Tour finished home</div>
-        <div class="todo-mins">30 min</div>
-      </div>
-      <div class="todo-item">
-        <div class="todo-check"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="todo-label">Approve list price</div>
         <div class="todo-mins">15 min</div>
       </div>
@@ -1191,8 +1184,8 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
         <div class="todo-milestone-label">Listed on-market &ndash; Day 17</div>
       </div>
       <div class="todo-total">
-        <div class="todo-total-label">Total Seller Time</div>
-        <div class="todo-total-mins">2 hrs 15 min</div>
+        <div class="todo-total-label">Total Seller Time:</div>
+        <div class="todo-total-mins">1 hr 45 min</div>
       </div>
     </div>
   </div>
