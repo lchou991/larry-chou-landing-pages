@@ -1,7 +1,8 @@
 /**
  * submission-created.js
  * Netlify event-triggered function — fires on every verified form submission.
- * Forwards "consult" form leads to Follow Up Boss via /v1/events.
+ * Forwards tracked form leads (consult, consult-relief, home-valuation) to
+ * Follow Up Boss via /v1/events. Tag set is determined by form name.
  *
  * Required env vars (set in Netlify UI → Site → Environment variables):
  *   FUB_API_KEY      — your Follow Up Boss API key
@@ -11,12 +12,23 @@
 
 const FUB_EVENTS_URL = "https://api.followupboss.com/v1/events";
 
-// Tags applied to every consult submission regardless of source
+// Base tags per form. Forms not listed here are ignored by this handler.
+// Consult forms get UNIVERSAL_TAGS + MAILER_TAGS based on referrer URL.
+// Valuation forms get a fixed tag set (no mailer overlay).
 const UNIVERSAL_TAGS = [
   "Seller",
   "Seller Inquiry",
   "16 Day Prep Campaign",
 ];
+
+const FORM_TAGS = {
+  "consult":         UNIVERSAL_TAGS,
+  "consult-relief":  UNIVERSAL_TAGS,
+  "home-valuation":  [...UNIVERSAL_TAGS, "all-done", "valuation", "no_outreach"],
+};
+
+// Forms that should additionally apply MAILER_TAGS based on referrer URL.
+const FORMS_WITH_MAILER_TAGS = new Set(["consult", "consult-relief"]);
 
 // Add new mailers here as you create them — one line per mailer
 const MAILER_TAGS = {
@@ -54,15 +66,25 @@ function getMailerTag(pageUrl) {
   return Array.isArray(match[1]) ? match[1] : [match[1]];
 }
 
-function buildFubPayload(formData, mailerTags) {
-  const { name = "", email = "", phone = "", address = "" } = formData;
+function buildFubPayload(formData, formName, tags) {
+  const { name = "", email = "", phone = "", address = "", preferred_date = "", timeline = "", situation = "", notes = "" } = formData;
   const { firstName, lastName } = splitName(name);
 
-  const message = address
-    ? `Seller form submitted from website. Property address: ${address}`
-    : "Seller form submitted from website.";
-
-  const tags = [...UNIVERSAL_TAGS, ...mailerTags];
+  let message;
+  if (formName === "home-valuation") {
+    const parts = ["Home valuation walkthrough requested from website."];
+    if (address)        parts.push(`Property address: ${address}.`);
+    if (preferred_date) parts.push(`Preferred date: ${preferred_date}.`);
+    if (notes)          parts.push(`Notes: ${notes}`);
+    message = parts.join(" ");
+  } else {
+    const parts = ["Seller form submitted from website."];
+    if (address)   parts.push(`Property address: ${address}.`);
+    if (timeline)  parts.push(`Timeline: ${timeline}.`);
+    if (situation) parts.push(`Home condition: ${situation}.`);
+    if (notes)     parts.push(`Notes: ${notes}`);
+    message = parts.join(" ");
+  }
 
   const person = { firstName, lastName, tags };
 
@@ -138,26 +160,29 @@ export const handler = async (event) => {
 
   console.log(`[${timestamp}] Form name: "${formName}"`);
 
-  const CONSULT_FORMS = ["consult", "consult-relief"];
-  if (!CONSULT_FORMS.includes(formName)) {
+  if (!Object.prototype.hasOwnProperty.call(FORM_TAGS, formName)) {
     console.log(`[${timestamp}] Ignoring submission from unrelated form: "${formName}"`);
-    return { statusCode: 200, body: "Ignored — not the consult form" };
+    return { statusCode: 200, body: "Ignored — not a tracked form" };
   }
 
   // ── 3. Extract form fields ───────────────────────────────────────────────
   const formData = netlifyPayload?.payload?.data ?? netlifyPayload?.data ?? {};
   const { name, email, phone, address } = formData;
 
-  // ── 4. Detect which page the submission came from ────────────────────────
+  // ── 4. Build tag list: base tags per form + mailer tags + behavior flags ─
   const pageUrl    = netlifyPayload?.payload?.data?.referrer || netlifyPayload?.data?.referrer || "";
-  const mailerTags = getMailerTag(pageUrl);
+  const mailerTags = FORMS_WITH_MAILER_TAGS.has(formName) ? getMailerTag(pageUrl) : [];
+  const behaviorTags = [];
+  if (formData.custom_timeline === "yes") behaviorTags.push("custom_timeline");
+  const tags = [...FORM_TAGS[formName], ...mailerTags, ...behaviorTags];
 
   console.log(`[${timestamp}] Submission received:`, {
+    form:    formName,
     name:    name    || "(missing)",
     email:   email   || "(missing)",
     phone:   phone   ? `****${normalizePhone(phone).slice(-4)}` : "(missing)",
     address: address || "(missing)",
-    mailer:  mailerTags.length ? mailerTags.join(", ") : "(none — root page)",
+    tags:    tags.join(", "),
   });
 
   // ── 5. Basic validation ──────────────────────────────────────────────────
@@ -169,7 +194,7 @@ export const handler = async (event) => {
   // ── 6. Build and send FUB payload ───────────────────────────────────────
   let fubPayload;
   try {
-    fubPayload = buildFubPayload(formData, mailerTags);
+    fubPayload = buildFubPayload(formData, formName, tags);
     console.log(`[${timestamp}] Sending to Follow Up Boss:`, {
       ...fubPayload,
       person: {
