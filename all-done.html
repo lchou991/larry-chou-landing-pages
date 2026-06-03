@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="zillow-comp.jpg" fetchpriority="high">
 <link rel="preload" as="image" href="zillow-portobelo.jpg" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -498,20 +498,24 @@ h1 {
   padding: 22px 0;
 }
 .todo-total-label {
+  font-family: 'Montserrat', sans-serif;
   font-size: clamp(16px, 4.2vw, 20px);
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 900;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--ink);
   white-space: nowrap;
 }
 .todo-total-mins {
+  font-family: 'Montserrat', sans-serif;
   font-size: clamp(22px, 5.5vw, 30px);
   font-weight: 900;
   color: var(--ink);
   white-space: nowrap;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
 }
 .time-duration {
   font-size: clamp(16px, 2.2vw, 18px);
@@ -1145,7 +1149,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <!-- TOP BAR -->
 <!-- HERO -->
 <div class="hero" id="top">
-  <h1 style="margin-bottom:12px; text-transform:uppercase; text-align:center;">Is getting <br class="br-mobile">ready to sell<br>feeling like a <br class="br-mobile">second job?</h1>
+  <h1 style="margin-bottom:12px; text-transform:uppercase; text-align:center;">Does getting <br class="br-mobile">ready to sell<br>feel like a <br class="br-mobile">second job?</h1>
   <p style="font-size:clamp(18px,3vw,22px); font-weight:700; color:var(--ink); line-height:1.3; margin-bottom:24px; text-align:center;">Avoid the &ldquo;As-Is&rdquo; Discount.<br class="br-mobile-only"> Use 16DayPrep&trade; to <br class="br-desktop-only">Sell <br class="br-mobile-only">Your Silicon Valley Home.</p>
   <!-- TO-DO LIST CARD — hero lead visual -->
   <div class="todo-card" style="background:#fff; border-radius:14px; box-shadow:0 2px 16px rgba(0,0,0,0.10); overflow:hidden; margin:0 auto 28px;">
