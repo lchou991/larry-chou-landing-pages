@@ -31,13 +31,17 @@ const FORM_TAGS = {
 const FORMS_WITH_MAILER_TAGS = new Set(["consult", "consult-relief"]);
 
 // Add new mailers here as you create them — one line per mailer
+// IMPORTANT: More-specific paths must be listed BEFORE less-specific ones
+// because getMailerTag() does first-substring-match. e.g. "/all-done2" must
+// come before "/all-done" or "/all-done2" submissions would match "/all-done".
 const MAILER_TAGS = {
-  "/prep-plan":      "16 Day Prep Mailer 02",
-  "/gbp":            "GBP",
-  "/campbell":       "CampbellPrepCTA",
-  "/listingprep":    "Case Study",
+  "/prep-plan":        "16 Day Prep Mailer 02",
+  "/gbp":              "GBP",
+  "/campbell":         "CampbellPrepCTA",
+  "/listingprep":      "Case Study",
   "/prettylistings-b": ["Pretty Listings B", "Meta Ad"],
   "/prettylistings":   ["Pretty Listings", "Meta Ad"],
+  "/all-done2":        ["16 Day Prep System", "Relief", "All-Done v2", "Meta Ad"],
   "/all-done":         ["16 Day Prep System", "Relief", "All-Done", "Meta Ad"],
 };
 
