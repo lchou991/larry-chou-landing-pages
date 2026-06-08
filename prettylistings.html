@@ -581,7 +581,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 })(window, document, "clarity", "script", "wmjl25izee");
 </script>
 
-<!-- form_start event -->
+<!-- form_start event + lead_eid setter for Pixel deduplication -->
 <script>
 (function(){
   var fired = false;
@@ -595,6 +595,12 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     fields.forEach(function(field){
       field.addEventListener('focus', onFormStart, { once: false });
     });
+    var form = document.querySelector('form[name="consult"]');
+    if (form) {
+      form.addEventListener('submit', function(){
+        sessionStorage.setItem('lead_eid', 'lead_' + Date.now());
+      }, { once: true });
+    }
   });
 })();
 </script>
