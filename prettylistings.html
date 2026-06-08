@@ -96,6 +96,13 @@ h1 {
   margin-bottom: 18px;
 }
 h1 em { font-style: normal; font-weight: 600; font-size: 75%; }
+h1 em span { display: inline-block; position: relative; padding: 0 14px 4px 2px; isolation: isolate; }
+h1 em span::before {
+  content: ''; position: absolute; left: -2px; right: -4px; bottom: 0; height: 42%; z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 40' preserveAspectRatio='none'><path d='M6 18 C 24 9, 70 13, 120 11 C 175 8, 230 14, 285 12 C 305 12, 316 16, 315 20 C 314 26, 295 30, 268 29 C 200 27, 130 31, 70 29 C 38 28, 12 27, 8 24 C 4 22, 4 20, 6 18 Z' fill='%23E5A100' opacity='0.55'/></svg>");
+  background-size: 100% 100%; background-repeat: no-repeat;
+  transform: rotate(-0.4deg);
+}
 .hero-sub {
   font-size: 20px; line-height: 1.75;
   color: var(--ink-mid);
@@ -611,7 +618,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <div class="continuity-bar"><span class="bar-line2">Your agent&rsquo;s pretty photos are costing you</span></div>
 
 <div class="hero" id="top">
-  <h1>Our 16-Day Listing Package<br><em>Prep for your bottom line,<br>not an agent's portfolio.</em></h1>
+  <h1>Our 16-Day Listing Package<br><em>Prep for your <span>bottom line,</span><br>not an agent's portfolio.</em></h1>
 
   <div class="proof-row">
     <div class="proof-badges">
