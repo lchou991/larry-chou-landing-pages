@@ -71,7 +71,7 @@ function getMailerTag(pageUrl) {
 }
 
 function buildFubPayload(formData, formName, tags) {
-  const { name = "", email = "", phone = "", address = "", preferred_date = "", timeline = "", situation = "", notes = "" } = formData;
+  const { name = "", email = "", phone = "", address = "", preferred_date = "", timeline = "", situation = "", notes = "", contact_method = "" } = formData;
   const { firstName, lastName } = splitName(name);
 
   let message;
@@ -83,26 +83,34 @@ function buildFubPayload(formData, formName, tags) {
     message = parts.join(" ");
   } else {
     const parts = ["Seller form submitted from website."];
-    if (address)   parts.push(`Property address: ${address}.`);
-    if (timeline)  parts.push(`Timeline: ${timeline}.`);
-    if (situation) parts.push(`Home condition: ${situation}.`);
-    if (notes)     parts.push(`Notes: ${notes}`);
+    if (address)        parts.push(`Property address: ${address}.`);
+    if (contact_method) parts.push(`Preferred contact: ${contact_method}.`);
+    if (timeline)       parts.push(`Timeline: ${timeline}.`);
+    if (situation)      parts.push(`Home condition: ${situation}.`);
+    if (notes)          parts.push(`Notes: ${notes}`);
     message = parts.join(" ");
   }
 
   const person = { firstName, lastName, tags };
 
-  if (email)   person.emails         = [{ value: email }];
-  if (phone)   person.phones         = [{ value: phone }];
-  if (address) person.propertyStreet = address;
+  if (email)   person.emails    = [{ value: email }];
+  if (phone)   person.phones    = [{ value: phone }];
+  // Contact-level address (shows in the person's Addresses field).
+  if (address) person.addresses = [{ type: "home", street: address }];
 
-  return {
+  const payload = {
     source:  "LarryChou.com",
     system:  "Netlify",
     type:    "Seller Inquiry",
     message,
     person,
   };
+
+  // Inquiry property (the home this seller lead is about). Populates the
+  // structured property fields in FUB instead of leaving the address in the note.
+  if (address) payload.property = { street: address };
+
+  return payload;
 }
 
 async function sendToFub(payload) {
