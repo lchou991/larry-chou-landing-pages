@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>Our 16-Day Listing Package | Larry Chou</title>
+<title>Our 16-Day Home Sale Package | Larry Chou</title>
 <meta name="description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://16day.larrychou.com/all-done2">
@@ -271,6 +271,35 @@ h1 em span::before {
   font-size: 15px; color: var(--ink-mid);
   margin-top: 14px; text-align: center;
   line-height: 1.5; font-weight: 500;
+}
+.form-guarantee {
+  margin: 24px 0; padding: 18px 20px;
+  background: var(--bg); border: 1px solid var(--rule);
+  border-left: 3px solid #2A5216;
+}
+.guarantee-label {
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #2A5216; margin: 0 0 8px;
+}
+.guarantee-text {
+  font-size: 18px; font-weight: 500;
+  color: var(--ink); line-height: 1.6; margin: 0;
+}
+.form-nextstep {
+  font-size: 18px; font-weight: 700;
+  color: var(--ink); margin-top: 18px;
+  text-align: center; line-height: 1.5;
+}
+.pref-radios { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+.pref-radios .pref-radio {
+  display: flex; align-items: center; gap: 11px;
+  font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 500;
+  color: var(--ink); cursor: pointer; text-transform: none; letter-spacing: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.pref-radio input {
+  width: 20px; height: 20px; accent-color: #2A5216; cursor: pointer; margin: 0; flex-shrink: 0;
 }
 
 /* BA SECTION LABEL */
@@ -627,7 +656,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <div class="continuity-bar"><span class="bar-line2">16DayPrep &nbsp;·&nbsp; Silicon Valley | San Jose</span></div>
 
 <div class="hero" id="top">
-  <h1>Our 16-Day Listing Package<br><em><span>Without a to-do list.</span></em></h1>
+  <h1>Our 16-Day Home Sale Package<br><em><span>Without a to-do list.</span></em></h1>
 </div>
 
 <div style="max-width:680px; margin:0 auto; padding:0 24px 16px;">
@@ -702,7 +731,11 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <div class="cta-section cta-action-zone" id="form">
   <div class="form-box">
     <div class="form-heading">Get Your 16-Day Prep Plan</div>
-    <p class="form-offer">Find out what to fix, what to skip, and what it may cost before you spend.</p>
+    <p class="form-offer">I'll walk your home, then tell you what we'll fix, what we'll skip, and what it'll cost. Before you spend a dollar.</p>
+    <div class="form-guarantee">
+      <p class="guarantee-label">My Budget Guarantee</p>
+      <p class="guarantee-text">Your final contractor bills won't go more than 10% over the budget I give you. If they do, I write the check for the difference.</p>
+    </div>
     <form name="consult" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="consult">
       <input type="hidden" name="mailer" value="All Done v2">
@@ -723,6 +756,14 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
       <div class="form-group">
         <label for="f-email">Email</label>
         <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
+      </div>
+      <div class="form-group">
+        <label>I prefer contact by:</label>
+        <div class="pref-radios">
+          <label class="pref-radio"><input type="radio" name="contact_method" value="Text" checked> Text</label>
+          <label class="pref-radio"><input type="radio" name="contact_method" value="Call"> Call</label>
+          <label class="pref-radio"><input type="radio" name="contact_method" value="Email"> Email</label>
+        </div>
       </div>
       <div class="form-divider"></div>
       <button type="submit" class="form-submit">Get My Prep Plan</button>
@@ -852,5 +893,67 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeZillowL
 
 
 <a href="larry-chou.vcf" download="larry-chou" class="save-contact-pill" aria-label="Save Larry Chou to contacts">+ Save<br>Contact</a>
+
+<!-- Google Places (new) address autocomplete. Lead-safe: the address that gets
+     submitted lives in a hidden field that is filled both on suggestion-select
+     AND continuously as the user types (via the widget's public `value`), so a
+     never-selected address is never lost. If Google fails to load, the original
+     field stays a plain text box. -->
+<style>
+  gmp-place-autocomplete {
+    width: 100%; display: block; color-scheme: light;
+    background: #F2EFE9; border: 1px solid #DDD8CE; border-radius: 0;
+  }
+  gmp-place-autocomplete:focus-within { border-color: #1F1F1D; background: #EDE8DE; }
+  gmp-place-autocomplete::part(input) {
+    width: 100%; box-sizing: border-box;
+    background: transparent; border: none; box-shadow: none; outline: none;
+    color: #1F1F1D; font-family: 'DM Sans', sans-serif;
+    font-size: 16px; line-height: 1.4; padding: 13px 15px;
+  }
+</style>
+<script>
+function initAddressAutocomplete(){
+  var hidden = document.getElementById('f-address');
+  if(!hidden || !window.google || !google.maps || !google.maps.places) return;
+  var PAE = google.maps.places.PlaceAutocompleteElement;
+  if(!PAE) return;
+
+  var pae;
+  try { pae = new PAE({ includedRegionCodes: ['us'] }); }
+  catch(e){ return; } // graceful: original input stays usable
+  try { pae.placeholder = '123 Main St, San Jose, CA'; } catch(e){}
+  try { pae.noInputIcon = true; } catch(e){}
+
+  // Insert the Google widget, then demote the original input to a hidden mirror
+  // that Netlify submits as "address".
+  hidden.parentNode.insertBefore(pae, hidden);
+  hidden.type = 'hidden';
+  hidden.removeAttribute('required');
+
+  // Mirror the widget's public `value` (the typed text) into the hidden field,
+  // so a typed-but-not-selected address still submits. Lead-safe.
+  function mirror(){ try { if(typeof pae.value === 'string') hidden.value = pae.value; } catch(e){} }
+  pae.addEventListener('input', mirror);
+
+  // On suggestion select, write the clean formatted address.
+  pae.addEventListener('gmp-select', async function(e){
+    try {
+      var pred = e.placePrediction || (e.detail && e.detail.placePrediction);
+      if(!pred){ mirror(); return; }
+      var place = pred.toPlace();
+      await place.fetchFields({ fields: ['formattedAddress'] });
+      hidden.value = (place.formattedAddress || pae.value || '').replace(/,\s*USA$/, '');
+    } catch(err){ mirror(); }
+  });
+
+  // Final safety net: capture the latest typed text right before submit.
+  var form = hidden.closest('form');
+  if(form) form.addEventListener('submit', mirror, true);
+}
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeXonQgCFeyrkKyKCZotXZ6Kyi-rVWQkA&loading=async&libraries=places&v=weekly&callback=initAddressAutocomplete">
+</script>
 </body>
 </html>
