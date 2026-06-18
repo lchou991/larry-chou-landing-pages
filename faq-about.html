@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>FAQs &amp; About | 16DayPrep&trade;</title>
+<meta name="description" content="Frequently asked questions about 16DayPrep™ and about Larry Chou.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  color-scheme: light;
+  --bg:       #F2EFE9;
+  --ink:      #1F1F1D;
+  --ink-mid:  #4A4843;
+  --ink-soft: #5A5550;
+  --accent:   #3A3835;
+  --rule:     #DDD8CE;
+  --btn:      #C05A18;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.header-phone { font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; }
+
+.section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+.section-rule { border-top: 1px solid var(--rule); }
+.section-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.time-table { margin: 0 0 16px; border: 1px solid var(--rule); }
+.time-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--rule); background: #FBF8F2; }
+.time-row:last-child { border-bottom: none; }
+.time-duration { font-size: 15px; font-weight: 700; color: var(--ink); padding: 12px 14px; width: 110px; min-width: 100px; line-height: 1.4; border-right: 1px solid var(--rule); flex-shrink: 0; white-space: nowrap; display: flex; align-items: center; }
+.time-task { font-size: 16px; font-weight: 500; color: var(--ink); padding: 12px 14px; line-height: 1.4; display: flex; align-items: center; }
+.body-text { font-size: clamp(18px, 2.8vw, 21px); line-height: 1.9; font-weight: 500; color: var(--ink); }
+.body-text + .body-text { margin-top: 22px; }
+.faq-section { padding-top: 0; }
+.faq-disclosure { margin: 0 0 12px; border: 1px solid rgba(31,31,29,0.14); border-radius: 12px; background: rgba(31,31,29,0.02); overflow: hidden; }
+.faq-disclosure > summary { cursor: pointer; list-style: none; padding: 22px 28px; font-size: 18px; font-weight: 700; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 16px; user-select: none; }
+.faq-disclosure > summary::-webkit-details-marker { display: none; }
+.faq-disclosure > summary::after { content: "+"; font-size: 26px; color: var(--ink-soft); display: flex; align-items: center; justify-content: center; line-height: 1; font-weight: 400; width: 32px; height: 32px; border: 1px solid rgba(31,31,29,0.18); border-radius: 50%; transition: background 0.2s, color 0.2s, border-color 0.2s; flex-shrink: 0; }
+.faq-disclosure > summary:hover::after { background: var(--ink); color: #fff; border-color: var(--ink); }
+.faq-disclosure[open] > summary { border-bottom: 1px solid rgba(31,31,29,0.1); }
+.faq-disclosure[open] > summary::after { content: "−"; background: var(--ink); color: #fff; border-color: var(--ink); }
+.faq-disclosure-content > .section { padding-top: 8px; padding-bottom: 8px; border-top: none; }
+
+.timeline-table { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.timeline-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--rule); }
+.timeline-row:last-child { border-bottom: none; }
+.timeline-row.header { background: rgba(31,31,29,0.04); }
+.timeline-size, .timeline-days { padding: 12px 16px; font-size: 15px; }
+.timeline-row.header .timeline-size,
+.timeline-row.header .timeline-days { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(31,31,29,0.45); }
+.timeline-row.request .timeline-days { color: var(--btn); font-weight: 600; }
+
+footer {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer-brand { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.footer-info { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+.footer-info a { color: var(--ink-soft); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .faq-disclosure > summary { padding: 18px 20px; font-size: 16px; }
+}
+</style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1533514048115355');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel -->
+</head>
+<body>
+
+<header>
+  <a href="/all-done.html" class="header-brand">16DayPrep&trade;</a>
+  <a href="tel:4087591201" class="header-phone">408-759-1201</a>
+</header>
+
+<!-- THE REPEATABLE FORMULA -->
+<div class="section section-rule">
+  <h2 class="section-heading">The repeatable formula behind 16DayPrep&trade;.</h2>
+  <p class="body-text">This is the system we run on every home. Markets change, but how we work stays the same. The market just tunes the settings.</p>
+  <div style="margin-top:48px;">
+    <div style="margin-bottom:40px;">
+      <p style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(31,31,29,0.75); margin-bottom:10px;">Macro (Rates &middot; Markets &middot; Politics)</p>
+      <div style="height:9px; border-radius:5px; background:linear-gradient(to right, #7EC8E3 0%, #C4C4C0 48%, #6FCF8A 100%);"></div>
+      <div style="display:flex; justify-content:space-between; margin-top:8px;">
+        <span style="font-size:13px; color:rgba(31,31,29,0.6);">Uncertain: dial back</span>
+        <span style="font-size:13px; color:rgba(31,31,29,0.6);">Strong: be aggressive</span>
+      </div>
+    </div>
+    <div style="display:flex; align-items:stretch; gap:6px;">
+      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Home</p></div>
+      <span style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
+      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Buyer</p><p style="font-size:12px; color:rgba(242,239,233,0.9); margin-top:2px;">pool</p></div>
+      <span style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
+      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Local Market</p></div>
+      <span style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
+      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Surrounding Markets</p></div>
+      <span style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
+      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3.5vw,16px); font-weight:700; color:#fff; line-height:1.2;">Prep</p></div>
+    </div>
+    <div style="display:flex; justify-content:center; padding:16px 0 8px;">
+      <svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="9" y1="0" x2="9" y2="27" stroke="rgba(31,31,29,0.25)" stroke-width="1.5"/><path d="M3 22 L9 30 L15 22" stroke="rgba(31,31,29,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="display:flex; justify-content:center; margin-bottom:32px;">
+      <div style="background:#3A3A36; border-radius:10px; padding:20px 32px; text-align:center;">
+        <p style="font-size:18px; font-weight:800; color:#fff; letter-spacing:-0.01em;">Possible positioning</p>
+        <p style="font-size:13px; color:rgba(242,239,233,0.65); margin-top:5px;">range of options</p>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:center; padding:0 0 8px;">
+      <svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="9" y1="0" x2="9" y2="27" stroke="rgba(31,31,29,0.25)" stroke-width="1.5"/><path d="M3 22 L9 30 L15 22" stroke="rgba(31,31,29,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="display:flex; align-items:stretch; gap:6px;">
+      <div style="flex:1.2; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3vw,16px); font-weight:700; color:#fff; line-height:1.3;">Selected<br>positioning</p></div>
+      <span style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
+      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3vw,16px); font-weight:700; color:#fff; line-height:1.2;">Pricing</p></div>
+      <span style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
+      <div style="flex:1.2; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3vw,16px); font-weight:700; color:#fff; line-height:1.2;">Marketing</p></div>
+      <span style="font-size:15px; color:rgba(31,31,29,0.25); flex-shrink:0; font-weight:300; display:flex; align-items:center;">+</span>
+      <div style="flex:1; background:#3A3A36; border-radius:10px; padding:16px 6px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"><p style="font-size:clamp(14px,3vw,16px); font-weight:700; color:#fff; line-height:1.2;">Negotiation</p></div>
+    </div>
+    <div style="display:flex; justify-content:center; padding:16px 0 8px;">
+      <svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="9" y1="0" x2="9" y2="27" stroke="#6FCF8A" stroke-width="2"/><path d="M3 22 L9 30 L15 22" stroke="#6FCF8A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="background:#2A5216; border-radius:10px; padding:28px 24px; text-align:center;">
+      <p style="font-size:clamp(32px,8vw,48px); font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1;">+$95,000</p>
+      <p style="font-size:15px; color:rgba(255,255,255,0.7); margin-top:10px; font-weight:500;">Sold 29 days faster</p>
+    </div>
+  </div>
+  <p style="margin-top:24px; font-size:17px; font-weight:600; color:var(--ink); text-align:center; border-top:1px solid rgba(31,31,29,0.12); padding-top:24px;">Get any of these wrong, and you lose money.</p>
+</div>
+
+<!-- COMMON QUESTIONS -->
+<div class="section section-rule faq-section">
+  <h2 class="section-heading">FAQs.</h2>
+
+  <details class="faq-disclosure" id="faq-what-it-does">
+    <summary><span>What actually happens when I sell with 16DayPrep&trade;?</span></summary>
+    <div class="faq-disclosure-content">
+<div class="section">
+  <p style="font-size:18px; color:var(--ink); line-height:1.75; margin-bottom:14px; font-weight:600;">16DayPrep is the all-in-one system for selling your home for the most money, without making it your second job.</p>
+  <p style="font-size:17px; color:var(--ink-mid); line-height:1.7; margin-bottom:40px;">We handle everything. You just approve key decisions.</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:32px 40px;">
+    <div>
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Strategy &amp; Pricing</p>
+      <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Property positioning</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Buyer pool (local + adjacent markets)</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Full pricing options analysis</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">List-price selection and launch timing</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Prep &amp; Build</p>
+      <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Custom 16-day prep checklist</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Vendor coordination: licensed C-10, C-33 trades</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Budget estimates with line-item transparency</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Daily on-site project management</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Premium staging package</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Professional photography &amp; video</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Marketing &amp; Distribution</p>
+      <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">MLS listing with premium presentation</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Pre-launch agent outreach campaign</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Out-of-area buyer ads (domestic + international)</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Direct buyer offer package with QR delivery</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Open house execution</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Negotiation &amp; Close</p>
+      <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Multiple-offer strategy and management</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Counter strategy and bid escalation</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Inspection and contingency negotiation</li>
+        <li style="font-size:16px; color:var(--ink); line-height:1.55;">Escrow coordination through close</li>
+      </ul>
+    </div>
+  </div>
+</div>
+    </div>
+  </details>
+
+  <details class="faq-disclosure">
+    <summary><span>What does the 16-day timeline actually look like?</span></summary>
+    <div class="faq-disclosure-content" style="padding:20px 28px;">
+      <div class="time-table">
+        <div style="background:rgba(31,31,29,0.06); padding:11px 14px; font-size:12px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--rule);">Prep &middot; Days 0&ndash;16</div>
+        <div class="time-row"><div class="time-duration">Day 0</div><div class="time-task">Sign agreement. Walk the home.</div></div>
+        <div class="time-row"><div class="time-duration">Day 1</div><div class="time-task">Build the scope of work and budget.</div></div>
+        <div class="time-row"><div class="time-duration">Day 2</div><div class="time-task">Seller approves. Contractors mobilize.</div></div>
+        <div class="time-row"><div class="time-duration">Days 3&ndash;11</div><div class="time-task">Paint, electrical, plumbing, repairs, cleaning, lighting. As the home needs.</div></div>
+        <div class="time-row"><div class="time-duration">Day 12</div><div class="time-task">Inspections.</div></div>
+        <div class="time-row"><div class="time-duration">Day 13</div><div class="time-task">Staging install.</div></div>
+        <div class="time-row"><div class="time-duration">Day 14</div><div class="time-task">Professional photography and video.</div></div>
+        <div class="time-row"><div class="time-duration">Days 15&ndash;16</div><div class="time-task">Pre-launch agent outreach. MLS prep. Marketing assets.</div></div>
+        <div style="background:rgba(31,31,29,0.06); padding:11px 14px; font-size:12px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);">Launch &middot; Day 17</div>
+        <div class="time-row"><div class="time-duration">Day 17</div><div class="time-task">Listing goes live.</div></div>
+      </div>
+      <p style="font-size:15px; color:var(--ink-mid); line-height:1.7; margin-top:14px;"><strong>This timeline assumes a vacant home.</strong> Selling while still living in the house? Select <strong>Custom Timeline</strong> when submitting the form or call/text me at <a href="tel:4087591201" style="color:var(--ink); text-decoration:underline; font-weight:600;">408-759-1201</a>.</p>
+    </div>
+  </details>
+
+  <details class="faq-disclosure">
+    <summary><span>Why exactly 16 days?</span></summary>
+    <div class="faq-disclosure-content" style="padding:20px 28px;">
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 8px 0;">For a Bay Area home under 2,500 sq ft, 16 days is the sweet spot. Just enough time to fix what turns buyers off, without taking on bigger problems.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 8px 0;">It also leaves enough time for cleaning, inspections, staging, photos/videos, and pre-launch marketing.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 8px 0;">Bigger prep jobs get riskier and return less per dollar. You don&rsquo;t want to become a flipper. <strong>The Bay Area has some of the worst margins for flippers in the country.</strong> Many only aim for 7% profit. Not worth the risk.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0;">For larger homes, the timeline grows: 19 days for 2,500+ sq ft, and 22 days above 3,000 sq ft.</p>
+    </div>
+  </details>
+
+  <details class="faq-disclosure">
+    <summary><span>How does the timeline scale for larger homes?</span></summary>
+    <div class="faq-disclosure-content" style="padding:20px 28px;">
+      <div class="timeline-table" style="margin-bottom:12px;">
+        <div class="timeline-row header"><div class="timeline-size">Home Size</div><div class="timeline-days">Timeline</div></div>
+        <div class="timeline-row"><div class="timeline-size">Up to 2,500 sq ft</div><div class="timeline-days">16 days</div></div>
+        <div class="timeline-row"><div class="timeline-size">2,500 – 3,000 sq ft</div><div class="timeline-days">19 days</div></div>
+        <div class="timeline-row"><div class="timeline-size">3,000 – 3,500 sq ft</div><div class="timeline-days">22 days</div></div>
+        <div class="timeline-row request"><div class="timeline-size">3,500+ sq ft</div><div class="timeline-days">Contact for timeline</div></div>
+      </div>
+      <p style="font-size:14px; color:rgba(31,31,29,0.65); line-height:1.6;">Built for Silicon Valley homes priced $1.5M and up.</p>
+    </div>
+  </details>
+
+  <details class="faq-disclosure">
+    <summary><span>Is 16DayPrep&trade; right for me?</span></summary>
+    <div class="faq-disclosure-content">
+<div class="section">
+  <div style="display:flex; flex-direction:column; gap:28px;">
+    <div>
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">The $1.5M+ Home</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.7; color:var(--ink); margin:0;">Your home is worth $1.5 million or more. Below that, functionality and affordability are the biggest factors for buyers, and a regular sale process or discount broker may be a better fit. Our premium scales with home value: the higher the price, the bigger the upside.</p>
+    </div>
+    <div>
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">The Delegator</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.7; color:var(--ink); margin:0 0 12px 0;">You want full market value, but you refuse to make selling your home a second job. You approve the scope of work and step back. We share daily progress in a shared app called Basecamp. You see everything without being in the middle of it.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.7; color:var(--ink); margin:0;">If you want to manage every detail yourself, this isn&rsquo;t a fit. The 16-day timeline only works when you allow us to run it and move fast.</p>
+    </div>
+    <div>
+      <p style="font-size:13px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;">The Capital-Ready Decision-Maker</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.7; color:var(--ink); margin:0;">You can fund $10&ndash;30k of prep up front in cash. Vendors get paid directly at their actual cost, with no brokerage markup. You see every quote and approve every dollar. Our services (staging, photography, marketing, project management) are included in the 3% commission.</p>
+    </div>
+  </div>
+  <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:32px 0 0 0;">We give you the recommendation on every decision that affects your bottom line. You approve, adjust, or veto. You decide everything.</p>
+</div>
+    </div>
+  </details>
+
+  <details class="faq-disclosure" id="faq-more-time">
+    <summary><span>What if I want more time to make decisions?</span></summary>
+    <div class="faq-disclosure-content" style="padding:20px 28px;">
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 16px 0;">Some owners prefer to talk through each decision and take their time before approving. That&rsquo;s a real preference, and the 16-day timeline isn&rsquo;t built for it.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 16px 0;">We can extend the timeline to fit how you want to work. Same system, same Basecamp visibility into every step, more room for conversation along the way.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0;">Submit the form and check the <strong>custom timeline</strong> option. We&rsquo;ll set the pace together on the call.</p>
+    </div>
+  </details>
+
+  <details class="faq-disclosure">
+    <summary><span>How much does 16DayPrep&trade; cost?</span></summary>
+    <div class="faq-disclosure-content" style="padding:20px 28px;">
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 16px 0;">3% commission. All-inclusive.</p>
+      <p style="font-size:17px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 16px 0;">That includes <strong>premium staging</strong>, <strong>professional photography and video</strong>, all <strong>marketing</strong>, and full <strong>prep project management</strong>: scope, vendor coordination, daily on-site oversight, and timeline. No separate invoices. No surprise line items.</p>
+      <p style="font-size:17px; font-weight:500; line-height:1.8; color:var(--ink); margin:0;">Prep costs are paid directly to the contractors who do the work. We are not general contractors and we don&rsquo;t mark up vendor invoices. You see every bid, approve the budget, and pay each vendor at their actual cost.</p>
+    </div>
+  </details>
+
+  <details class="faq-disclosure">
+    <summary><span>Why did you create 16DayPrep&trade;?</span></summary>
+    <div class="faq-disclosure-content" style="padding:20px 28px;">
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 8px 0;">I represented a Bay Area home buyer and the seller shared invoices for the prep work they did to get the house ready. They spent over $50,000. It was a waste.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 16px 0;">My client and I were already planning a full renovation right after purchase, so roughly $47,000 of the seller&rsquo;s prep work was wasted. I coordinated the contractors. We gutted the kitchen cabinets they repainted, replaced the windows where they painted the trim, and tore out the floors they refinished.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 12px 0;">I realized that when it&rsquo;s time to actually sell, most homeowners get pushed into one of four broken paths:</p>
+      <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:20px; padding-left:16px; border-left:2px solid rgba(31,31,29,0.12);">
+        <div><p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:2px;">Sell As-Is</p><p style="font-size:16px; color:rgba(31,31,29,0.7); line-height:1.6;">Leave money on the table.</p></div>
+        <div><p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:2px;">Do It Yourself</p><p style="font-size:16px; color:rgba(31,31,29,0.7); line-height:1.6;">Months managing contractors and burning weekends.</p></div>
+        <div><p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:2px;">Fake Concierge</p><p style="font-size:16px; color:rgba(31,31,29,0.7); line-height:1.6;">Hidden fees. Inflated invoices. Incentives work against you.</p></div>
+        <div><p style="font-size:17px; font-weight:700; color:var(--ink); margin-bottom:2px;">Commodity Realtor</p><p style="font-size:16px; color:rgba(31,31,29,0.7); line-height:1.6;">Volume churners, discounters, or part-time friends. Anyone can list, but your net outcome suffers.</p></div>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); margin-top:32px; margin-bottom:12px;">A Better Choice</h3>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0 0 8px 0;">I told my client upfront: if I ran the prep and sale start to finish, he had to let me use the property as a case study to show other homeowners how a sale should be done. He agreed.</p>
+      <p style="font-size:18px; font-weight:500; line-height:1.8; color:var(--ink); margin:0;">I ran the whole sale at 1458 Portobelo so my client only had to approve key decisions and pay invoices remotely. I built the strategy, the checklist, the budget, and the timeline. He approved, and 16DayPrep&trade; was born.</p>
+    </div>
+  </details>
+
+</div>
+
+<!-- ABOUT ME -->
+<div class="section section-rule">
+  <h2 class="section-heading" style="margin-bottom:32px;">About Me.</h2>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:16px;">I bought my first home at 23 and sold it 15 months later for a 30% profit. That was the moment I got hooked.</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:16px;">For 23 years since, I&rsquo;ve bought, sold, renovated, and operated dozens of homes: single family, small multifamily, condos, long-term rentals, and Airbnbs. You learn differently when your own money is on the line and you&rsquo;re staring at your own P&amp;Ls.</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:16px;">That experience reset how I look at a home. I focus on what buyers actually pay for, where the real risk is, and what the market will reward.</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:16px;">I co-founded and ran CBase Solutions, Inc, a government contracting firm with 26 employees. We worked across agencies including the National Library of Medicine, USPTO, DHS CBP, and the Library of Congress.</p>
+  <p style="font-size:18px; font-weight:500; line-height:1.9; color:var(--ink); margin-bottom:32px;">My clients get both sides. Investor judgment on what to fix, what to skip, where the risk is. Operator discipline on running it: scope, vendors, timeline, budget.</p>
+  <a href="/all-done.html#form" style="display:inline-block; padding:20px 52px; background:#C05A18; color:#fff; font-size:19px; font-weight:700; text-decoration:none; border-radius:100px; border:2px solid rgba(31,31,29,0.35); box-shadow:0 2px 14px rgba(0,0,0,0.22);">I want help &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-brand">Larry Chou</div>
+  <div class="footer-info">
+    Keller Williams Silicon Valley &nbsp;·&nbsp; DRE 02247191<br>
+    <a href="tel:4087591201">408-759-1201</a> &nbsp;·&nbsp; Silicon Valley sellers.
+  </div>
+</footer>
+
+</body>
+</html>
