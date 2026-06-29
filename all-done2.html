@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>Our 16-Day Home Sale Package | Larry Chou</title>
+<title>We prepare and sell your home | 16DayPrep</title>
 <meta name="description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://16day.larrychou.com/all-done2">
-<meta property="og:title" content="Prepped in 16 days. Sold for $95,000 more than his neighbor.">
+<meta property="og:title" content="We prepare and sell your home. Without the to-do list.">
 <meta property="og:description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:image" content="https://16day.larrychou.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Prepped in 16 days. Sold for $95,000 more than his neighbor.">
+<meta name="twitter:title" content="We prepare and sell your home. Without the to-do list.">
 <meta name="twitter:description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta name="twitter:image" content="https://16day.larrychou.com/og-image.jpg">
 
@@ -89,11 +89,12 @@ body {
 }
 h1 {
   font-family: 'Fraunces', 'Cormorant Garamond', serif;
-  font-size: clamp(34px, 8vw, 56px);
-  font-weight: 500; line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: clamp(26px, 6vw, 41px);
+  font-weight: 500; line-height: 1.14;
+  letter-spacing: -0.015em;
   color: var(--ink);
   margin-bottom: 18px;
+  text-wrap: balance;
 }
 h1 em { font-style: normal; font-weight: 700; font-size: 75%; display: block; text-align: center; margin-top: 22px; text-decoration: none; }
 h1 em span { display: inline-block; position: relative; padding: 0 14px 4px; isolation: isolate; }
@@ -273,19 +274,20 @@ h1 em span::before {
   line-height: 1.5; font-weight: 500;
 }
 .form-guarantee {
-  margin: 24px 0; padding: 18px 20px;
-  background: var(--bg); border: 1px solid var(--rule);
-  border-left: 3px solid #2A5216;
+  margin: 24px 0; padding: 20px 22px;
+  background: #EDF2E8; border: 1px solid #CADCBE;
+  border-left: 5px solid #2A5216;
 }
 .guarantee-label {
-  font-size: 14px; font-weight: 700;
+  font-size: 15px; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase;
-  color: #2A5216; margin: 0 0 8px;
+  color: #2A5216; margin: 0 0 9px;
 }
 .guarantee-text {
-  font-size: 18px; font-weight: 500;
+  font-size: 19px; font-weight: 500;
   color: var(--ink); line-height: 1.6; margin: 0;
 }
+.guarantee-text strong { font-weight: 700; }
 .form-nextstep {
   font-size: 18px; font-weight: 700;
   color: var(--ink); margin-top: 18px;
@@ -328,6 +330,15 @@ h1 em span::before {
   color: var(--ink); margin-bottom: 22px;
   line-height: 1.2;
   display: block;
+}
+
+/* reusable 16DayPrep product chip (ported from print/mailer pieces) */
+.chip {
+  display: inline-block; background: #2A5216; color: #fff;
+  font-family: 'DM Sans', sans-serif; font-weight: 700; line-height: 1.12;
+  border-radius: 4px; vertical-align: middle; text-transform: none; letter-spacing: 0;
+  padding: 0.08em 0.34em; font-size: 0.92em; white-space: nowrap;
+  font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1;
 }
 
 
@@ -640,7 +651,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     fields.forEach(function(field){
       field.addEventListener('focus', onFormStart, { once: false });
     });
-    var form = document.querySelector('form[name="consult"]');
+    var form = document.querySelector('form[name="consult-v2"]');
     if (form) {
       form.addEventListener('submit', function(){
         sessionStorage.setItem('lead_eid', 'lead_' + Date.now());
@@ -653,10 +664,10 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 </head>
 <body>
 
-<div class="continuity-bar"><span class="bar-line2">16DayPrep &nbsp;·&nbsp; Silicon Valley | San Jose</span></div>
+<div class="continuity-bar"><span class="bar-line2"><span class="chip">16DayPrep</span> &nbsp;·&nbsp; Silicon Valley | San Jose</span></div>
 
 <div class="hero" id="top">
-  <h1>Our 16-Day Home Sale Package<br><em><span>Without a to-do list.</span></em></h1>
+  <h1>Hand us the keys.<br>We prepare and sell your home.<br><em><span>Without the to-do list.</span></em></h1>
 </div>
 
 <div style="max-width:680px; margin:0 auto; padding:0 24px 16px;">
@@ -664,18 +675,19 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <div class="proof-badges">
       <div class="proof-badge">
         <div class="proof-num">16</div>
-        <div class="proof-label">Day Prep</div>
+        <div class="proof-label">Days of Prep</div>
       </div>
       <div class="proof-badge">
         <div class="proof-num">48 hrs</div>
         <div class="proof-label">Multiple Offers</div>
       </div>
       <div class="proof-badge">
-        <div class="proof-num">8 days</div>
+        <div class="proof-num">7 days</div>
         <div class="proof-label">Pending</div>
       </div>
     </div>
   </div>
+  <p style="text-align:center; font-size:12px; color:var(--ink-soft); letter-spacing:0.02em; margin:12px 0 0;">Results from a recent San Jose sale.</p>
 </div>
 
 <div class="before-after">
@@ -714,8 +726,26 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <p style="font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); margin:12px 0 0; text-align:left;">1458 Portobelo Dr &middot; San Jose</p>
 </div>
 
-<div style="max-width:680px; margin:0 auto; padding:4px 24px 8px; text-align:center;">
-  <p style="font-family:'Fraunces','Cormorant Garamond',serif; font-size:clamp(20px,3.4vw,26px); font-weight:500; color:var(--ink); line-height:1.4; letter-spacing:-0.005em; margin:0;">Most homes don&rsquo;t need a full renovation.<br>They need the right preparation.</p>
+<div style="max-width:680px; margin:0 auto; padding:4px 24px 8px; text-align:left;">
+  <h2 style="font-family:'Fraunces','Cormorant Garamond',serif; font-size:clamp(24px,3.6vw,30px); font-weight:600; color:var(--ink); letter-spacing:-0.01em; line-height:1.2; margin:0 0 16px;">How it works.</h2>
+  <p style="font-size:18px; color:var(--ink-mid); line-height:1.7; font-weight:500; margin:0 0 14px;">My team completes all of the prep in 16 days and has your home ready to hit the market on the 17th day. The prep is fully managed and the sale is executed together as one package.</p>
+
+  <p class="story-subhead">What I handle</p>
+  <ul class="story-list">
+    <li>We walk your home and figure out who&rsquo;s most likely to buy it, what it&rsquo;s worth now, and what it could be worth.</li>
+    <li>We build the work list and the budget.</li>
+    <li>We get bids from contractors and get them moving once you approve.</li>
+    <li>We coordinate the prep day to day. You never need to be there.</li>
+    <li>We run the sale: list price, marketing, negotiation.</li>
+  </ul>
+
+  <p class="story-subhead">What you handle</p>
+  <ul class="story-list">
+    <li>You approve every step from your phone.</li>
+    <li>You pay contractors directly. No markup, no middleman.</li>
+  </ul>
+
+  <p style="font-size:18px; color:var(--ink-mid); line-height:1.7; font-weight:500; margin:24px 0 0;">Our last seller handed over the keys and didn&rsquo;t see the home again until it was staged, photographed, and ready to launch 16 days later. He approved every step from his phone.</p>
 </div>
 
 
@@ -734,10 +764,10 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <p class="form-offer">I'll walk your home, then tell you what we'll fix, what we'll skip, and what it'll cost. Before you spend a dollar.</p>
     <div class="form-guarantee">
       <p class="guarantee-label">My Budget Guarantee</p>
-      <p class="guarantee-text">Your final contractor bills won't go more than 10% over the budget I give you. If they do, I write the check for the difference.</p>
+      <p class="guarantee-text">Your final contractor bills won't go more than 10% over the budget I give you. If they do, <strong>I write the check for the difference.</strong></p>
     </div>
-    <form name="consult" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="consult">
+    <form name="consult-v2" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="consult-v2">
       <input type="hidden" name="mailer" value="All Done v2">
       <input type="hidden" name="source" value="Meta Ad">
       <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
@@ -757,14 +787,6 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
         <label for="f-email">Email</label>
         <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
       </div>
-      <div class="form-group">
-        <label>I prefer contact by:</label>
-        <div class="pref-radios">
-          <label class="pref-radio"><input type="radio" name="contact_method" value="Text" checked> Text</label>
-          <label class="pref-radio"><input type="radio" name="contact_method" value="Call"> Call</label>
-          <label class="pref-radio"><input type="radio" name="contact_method" value="Email"> Email</label>
-        </div>
-      </div>
       <div class="form-divider"></div>
       <button type="submit" class="form-submit">Get My Prep Plan</button>
       <p class="form-note">Your info stays private.</p>
@@ -781,8 +803,9 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 </div>
 
 <div class="story-section">
-  <p class="story-label">The 16 Day Prep: What We Did</p>
-  <p class="story-text">The seller handed me the keys.<br><br>16 days later, this San Jose home went from "needs work" to clean, move-in ready, and market-ready.</p>
+  <p class="story-label">The <span class="chip">16DayPrep</span>: What We Did on a recent San Jose sale.</p>
+  <p class="story-text">The seller signed up and handed me the keys to 1458 Portobelo Dr in San Jose.<br><br>16 days later, this home went from "needs work" to clean, move-in ready, and market-ready. We put the house on the market on day 17. Our seller went under contract in 7 days.</p>
+  <p style="margin:18px 0 0; padding:18px 20px; background:rgba(42,82,22,0.07); border-left:5px solid #2A5216; border-radius:6px; font-size:clamp(20px,3.2vw,24px); font-weight:800; color:#2A5216; line-height:1.4; letter-spacing:-0.01em;">A total of <span style="font-size:1.18em;">24 days</span> from when he handed us the keys to accepting an offer with no contingencies.</p>
 
   <p class="story-subhead">What we did:</p>
   <ul class="story-list">
@@ -830,13 +853,13 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 
 <div style="max-width:680px; margin:0 auto; padding:56px 24px 8px;">
 
-  <h2 style="font-family:'Fraunces','Cormorant Garamond',serif; font-size:clamp(26px,4vw,34px); font-weight:600; color:var(--ink); letter-spacing:-0.01em; line-height:1.2; margin-bottom:24px;">Why I created 16DayPrep.</h2>
+  <h2 style="font-family:'Fraunces','Cormorant Garamond',serif; font-size:clamp(26px,4vw,34px); font-weight:600; color:var(--ink); letter-spacing:-0.01em; line-height:1.2; margin-bottom:24px;">Why I created <span class="chip">16DayPrep</span>.</h2>
 
   <p style="font-size:20px; font-weight:600; line-height:1.7; color:var(--ink); margin-bottom:14px;">I couldn&rsquo;t believe the invoices I was seeing. <strong style="font-weight:700;">The seller wasted $47k.</strong></p>
   <p style="font-size:20px; font-weight:600; line-height:1.7; color:var(--ink); margin-bottom:14px;">My clients bought that house. We tore out almost everything and did a <strong style="font-weight:700;">$250k renovation</strong>.</p>
   <p style="font-size:20px; font-weight:600; line-height:1.7; color:var(--ink); margin-bottom:18px;">We replaced the cabinets they&rsquo;d repainted, the windows where they&rsquo;d painted the trim, and ripped out the floors they&rsquo;d refinished.</p>
   <p style="font-size:20px; font-weight:600; line-height:1.75; color:var(--ink); margin-bottom:14px;">I told my next client that if I managed the full prep and sale, I wanted to use his property an example to show others a different way.</p>
-  <p style="font-size:20px; font-weight:600; line-height:1.75; color:var(--ink); margin-bottom:14px;">I took total ownership of the sale at 1458 Portobelo so my client only had to approve key decisions and pay invoices remotely. He approved, and 16DayPrep was born.</p>
+  <p style="font-size:20px; font-weight:600; line-height:1.75; color:var(--ink); margin-bottom:14px;">I took total ownership of the sale at 1458 Portobelo so my client only had to approve key decisions and pay invoices remotely. He approved, and <span class="chip">16DayPrep</span> was born.</p>
 
   <a href="#form" class="final-cta-btn">Get My Prep Plan</a>
 
@@ -848,7 +871,8 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <div class="footer-brand">Larry Chou</div>
   <div class="footer-info">
     Keller Williams Silicon Valley &nbsp;·&nbsp; DRE 02247191<br>
-    <a href="tel:4087591201">408-759-1201</a> &nbsp;·&nbsp; For San Jose and Silicon Valley sellers.
+    <a href="tel:4087591201">408-759-1201</a> &nbsp;·&nbsp; <a href="mailto:hey@larrychou.com">hey@larrychou.com</a><br>
+    For San Jose and Silicon Valley sellers.
   </div>
 </footer>
 
