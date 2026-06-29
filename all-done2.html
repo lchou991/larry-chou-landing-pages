@@ -105,12 +105,21 @@ h1 em span::before {
   transform: rotate(-0.4deg);
 }
 .hero-sub {
-  font-size: 20px; line-height: 1.75;
-  color: var(--ink-mid);
-  font-weight: 500;
+  font-size: clamp(22px, 4.4vw, 27px); line-height: 1.5;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-bottom: 36px;
-  max-width: 480px;
+  max-width: 520px;
   margin-left: auto; margin-right: auto;
+}
+/* reusable hand-drawn highlight (matches the headline accent) */
+.hl { display: inline-block; position: relative; isolation: isolate; padding: 0 4px; }
+.hl::before {
+  content: ""; position: absolute; left: -2px; right: -4px; bottom: 0; height: 42%; z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 40' preserveAspectRatio='none'><path d='M6 18 C 24 9, 70 13, 120 11 C 175 8, 230 14, 285 12 C 305 12, 316 16, 315 20 C 314 26, 295 30, 268 29 C 200 27, 130 31, 70 29 C 38 28, 12 27, 8 24 C 4 22, 4 20, 6 18 Z' fill='%23E5A100' opacity='0.55'/></svg>");
+  background-repeat: no-repeat; background-size: 100% 100%;
+  transform: rotate(-0.4deg);
 }
 
 /* PROOF BADGES */
@@ -667,7 +676,8 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <div class="continuity-bar"><span class="bar-line2"><span class="chip">16DayPrep</span> &nbsp;·&nbsp; Silicon Valley | San Jose</span></div>
 
 <div class="hero" id="top">
-  <h1>Hand us the keys.<br>We prepare and sell your home.<br><em><span>Without the to-do list.</span></em></h1>
+  <h1>Hand us the keys.</h1>
+  <p class="hero-sub">We prep your home in <span class="hl">16 days</span>.<br>Then we sell it.</p>
 </div>
 
 <div style="max-width:680px; margin:0 auto; padding:0 24px 16px;">
