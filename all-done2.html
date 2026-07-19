@@ -412,14 +412,17 @@ h1 em span::before {
 .story-list li {
   font-size: 19px; color: var(--ink-mid);
   line-height: 1.7; font-weight: 600;
-  padding: 10px 0;
+  padding: 10px 0 10px 24px;
   border-bottom: 1px solid var(--rule);
+  position: relative;
 }
 .story-list li::before {
   content: "✓";
   color: var(--accent);
-  margin-right: 10px;
   font-size: 14px;
+  position: absolute;
+  left: 0;
+  top: 12px;
 }
 .story-list--didnt li::before {
   content: "—";
@@ -703,6 +706,16 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <div class="before-after">
   <div class="ba-grid">
     <div class="ba-col">
+      <img src="before-5.jpg" alt="San Jose home — before prep" onclick="openZillowLightbox('before-5.jpg','San Jose home — before prep')" title="Click to enlarge" loading="eager">
+      <div class="ba-label">Before</div>
+    </div>
+    <div class="ba-col">
+      <img src="after-5.jpg" alt="San Jose home — after prep" onclick="openZillowLightbox('after-5.jpg','San Jose home — after prep')" title="Click to enlarge" loading="eager">
+      <div class="ba-label">After</div>
+    </div>
+  </div>
+  <div class="ba-grid" style="margin-top:3px">
+    <div class="ba-col">
       <img src="before-1.jpg" alt="San Jose home — before prep" onclick="openZillowLightbox('before-1.jpg','San Jose home — before prep')" title="Click to enlarge" loading="eager">
       <div class="ba-label">Before</div>
     </div>
@@ -740,13 +753,14 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
   <h2 style="font-family:'Fraunces','Cormorant Garamond',serif; font-size:clamp(24px,3.6vw,30px); font-weight:600; color:var(--ink); letter-spacing:-0.01em; line-height:1.2; margin:0 0 16px;">How it works.</h2>
   <p style="font-size:18px; color:var(--ink-mid); line-height:1.7; font-weight:500; margin:0 0 14px;">My team completes all of the prep in 16 days and has your home ready to hit the market on the 17th day. The prep is fully managed and the sale is executed together as one package.</p>
 
-  <p class="story-subhead">What I handle</p>
+  <p class="story-subhead">What we handle</p>
   <ul class="story-list">
-    <li>We walk your home and figure out who&rsquo;s most likely to buy it, what it&rsquo;s worth now, and what it could be worth.</li>
-    <li>We build the work list and the budget.</li>
-    <li>We get bids from contractors and get them moving once you approve.</li>
+    <li>We start with a home tour.</li>
+    <li>You get your home&rsquo;s value as-is and the after-prep value.</li>
+    <li>We give you the prep plan and budget <span style="font-size:0.8em;">(usually 1% or less of your home&rsquo;s value)</span></li>
+    <li>Once you approve, we get bids from contractors and start work.</li>
     <li>We coordinate the prep day to day. You never need to be there.</li>
-    <li>We run the sale: list price, marketing, negotiation.</li>
+    <li>We sell your home.</li>
   </ul>
 
   <p class="story-subhead">What you handle</p>
@@ -771,10 +785,10 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <div class="cta-section cta-action-zone" id="form">
   <div class="form-box">
     <div class="form-heading">Get Your 16-Day Prep Plan</div>
-    <p class="form-offer">I'll walk your home, then tell you what we'll fix, what we'll skip, and what it'll cost. Before you spend a dollar.</p>
+    <p class="form-offer">I'll walk your home, tell you what we'll fix, what we'll skip, and what it'll cost.</p>
     <div class="form-guarantee">
       <p class="guarantee-label">My Budget Guarantee</p>
-      <p class="guarantee-text">Your final contractor bills won't go more than 10% over the budget I give you. If they do, <strong>I write the check for the difference.</strong></p>
+      <p class="guarantee-text">Your prep bill won't exceed your approved budget by more than 10%. If it does, <strong>I pay for the overage.</strong></p>
     </div>
     <form name="consult-v2" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="consult-v2">
@@ -813,29 +827,36 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 </div>
 
 <div class="story-section">
-  <p class="story-label">The <span class="chip">16DayPrep</span>: What We Did on a recent San Jose sale.</p>
+  <p class="story-label">The <span class="chip">16DayPrep</span>: what we did on a recent San Jose sale.</p>
   <p class="story-text">The seller signed up and handed me the keys to 1458 Portobelo Dr in San Jose.<br><br>16 days later, this home went from "needs work" to clean, move-in ready, and market-ready. We put the house on the market on day 17. Our seller went under contract in 7 days.</p>
   <p style="margin:18px 0 0; padding:18px 20px; background:rgba(42,82,22,0.07); border-left:5px solid #2A5216; border-radius:6px; font-size:clamp(20px,3.2vw,24px); font-weight:800; color:#2A5216; line-height:1.4; letter-spacing:-0.01em;">A total of <span style="font-size:1.18em;">24 days</span> from when he handed us the keys to accepting an offer with no contingencies.</p>
 
   <p class="story-subhead">What we did:</p>
   <ul class="story-list">
+    <li>Repaired damaged walls and ceilings.</li>
     <li><strong>Interior paint:</strong> walls, ceilings, trim, doors, and closets.</li>
     <li><strong>Exterior paint:</strong> stucco, trim, eaves, doors, and garage door.</li>
-    <li><strong>Electrical:</strong> replaced ceiling lights, outlets, and switches. Repaired outlets and broken recessed lights.</li>
-    <li><strong>Fireplace:</strong> removed the gold cover and painted the interior black.</li>
-    <li><strong>Bathroom:</strong> added frameless shower glass and reglazed the tub.</li>
+    <li><strong>Electrical:</strong> replaced ceiling lights, outlets, and switches.</li>
+    <li><strong>Electrical repairs:</strong> fixed broken outlets and broken recessed lights.</li>
+    <li>Installed new smoke and carbon monoxide detectors.</li>
+    <li><strong>Fireplace:</strong> removed the gold cover, cleaned and painted the interior black.</li>
+    <li><strong>Master bath:</strong> added new shower glass door.</li>
+    <li><strong>Hall bath:</strong> reglazed bathtub.</li>
     <li><strong>Repairs:</strong> fixed fencing and rotted exterior wood.</li>
+    <li>Repaired 2 doors that did not open and close smoothly.</li>
     <li>Removed old window screens.</li>
     <li>Handled trash-out inside and out.</li>
     <li>Deep cleaned the home.</li>
     <li>Refreshed curb appeal with mulch, trimming, edging, and yard cleanup.</li>
+    <li>Cut back 2 trees and bushes in contact with the home.</li>
+    <li>Powerwashed the driveway, patios, and walkways.</li>
     <li>Completed inspections.</li>
     <li>Staged, photographed, and launched the listing.</li>
     <li><strong>Licensed trades:</strong> C-33 painter. C-10 electrician.</li>
   </ul>
   <p class="story-cost">Prep work cost: $18,454.</p>
 
-  <p class="story-subhead">What We Skipped: These wouldn't have paid off here.</p>
+  <p class="story-subhead">What we skipped: the return wasn't worth it.</p>
   <ul class="story-list story-list--didnt">
     <li>No kitchen remodel.</li>
     <li>No bathroom remodel.</li>
@@ -843,6 +864,7 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
     <li>No HVAC replacement.</li>
     <li>No roof replacement.</li>
     <li>No inspection repairs.</li>
+    <li>No termite fumigation.</li>
     <li>No full renovation.</li>
   </ul>
 
