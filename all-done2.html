@@ -587,30 +587,6 @@ footer {
   color: rgba(255,255,255,0.55); pointer-events: none;
 }
 
-/* FLOATING SAVE CONTACT */
-.save-contact-pill {
-  position: fixed;
-  bottom: 72px;
-  right: max(16px, calc((100vw - 680px) / 2));
-  z-index: 100;
-  background: #1F1F1D;
-  color: #ffffff;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.15;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px 14px;
-  border: 2px solid #1F1F1D;
-  border-radius: 22px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.28);
-  transition: background 0.2s, color 0.2s;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-block;
-}
-.save-contact-pill:hover { background: #ffffff; color: #1F1F1D; }
 </style>
 
 <!-- GA4 -->
@@ -796,6 +772,10 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
       <input type="hidden" name="source" value="Meta Ad">
       <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
       <div class="form-group">
+        <label for="f-address">Property Address</label>
+        <input type="text" id="f-address" name="address" placeholder="123 Main St, San Jose, CA" autocomplete="street-address" required>
+      </div>
+      <div class="form-group">
         <label for="f-name">Name</label>
         <input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
       </div>
@@ -804,16 +784,11 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
         <input type="tel" id="f-phone" name="phone" placeholder="(408) 555-0100" autocomplete="tel" inputmode="tel" required>
       </div>
       <div class="form-group">
-        <label for="f-address">Property Address</label>
-        <input type="text" id="f-address" name="address" placeholder="123 Main St, San Jose, CA" autocomplete="street-address" required>
-      </div>
-      <div class="form-group">
         <label for="f-email">Email</label>
         <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
       </div>
       <div class="form-divider"></div>
       <button type="submit" class="form-submit">Get My Prep Plan</button>
-      <p class="form-note">Your info stays private.</p>
     </form>
     <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--rule); display:flex; align-items:center; gap:16px;">
       <img src="larry-headshot.jpg" alt="Larry Chou" style="width:72px; height:72px; border-radius:50%; object-fit:cover; flex-shrink:0;">
@@ -829,14 +804,14 @@ src="https://www.facebook.com/tr?id=1533514048115355&ev=PageView&noscript=1"
 <div class="story-section">
   <p class="story-label">The <span class="chip">16DayPrep</span>: what we did on a recent San Jose sale.</p>
   <p class="story-text">The seller signed up and handed me the keys to 1458 Portobelo Dr in San Jose.<br><br>16 days later, this home went from "needs work" to clean, move-in ready, and market-ready. We put the house on the market on day 17. Our seller went under contract in 7 days.</p>
-  <p style="margin:18px 0 0; padding:18px 20px; background:rgba(42,82,22,0.07); border-left:5px solid #2A5216; border-radius:6px; font-size:clamp(20px,3.2vw,24px); font-weight:800; color:#2A5216; line-height:1.4; letter-spacing:-0.01em;">A total of <span style="font-size:1.18em;">24 days</span> from when he handed us the keys to accepting an offer with no contingencies.</p>
+  <p style="margin:18px 0 0; padding:18px 20px; background:rgba(42,82,22,0.07); border-left:5px solid #2A5216; border-radius:6px; font-size:clamp(20px,3.2vw,24px); font-weight:800; color:#2A5216; line-height:1.4; letter-spacing:-0.01em;">A total of <span style="font-size:1.18em;">24 days</span> from when he handed us the keys to accepting an offer.</p>
 
   <p class="story-subhead">What we did:</p>
   <ul class="story-list">
     <li>Repaired damaged walls and ceilings.</li>
     <li><strong>Interior paint:</strong> walls, ceilings, trim, doors, and closets.</li>
     <li><strong>Exterior paint:</strong> stucco, trim, eaves, doors, and garage door.</li>
-    <li><strong>Electrical:</strong> replaced ceiling lights, outlets, and switches.</li>
+    <li><strong>Electrical:</strong> replaced all ceiling lights, outlets, and switches.</li>
     <li><strong>Electrical repairs:</strong> fixed broken outlets and broken recessed lights.</li>
     <li>Installed new smoke and carbon monoxide detectors.</li>
     <li><strong>Fireplace:</strong> removed the gold cover, cleaned and painted the interior black.</li>
@@ -948,7 +923,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeZillowL
 </script>
 
 
-<a href="larry-chou.vcf" download="larry-chou" class="save-contact-pill" aria-label="Save Larry Chou to contacts">+ Save<br>Contact</a>
 
 <!-- Google Places (new) address autocomplete. Lead-safe: the address that gets
      submitted lives in a hidden field that is filled both on suggestion-select
