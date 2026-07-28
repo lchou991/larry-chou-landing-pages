@@ -21,14 +21,18 @@ const UNIVERSAL_TAGS = [
   "16 Day Prep Campaign",
 ];
 
+// NOTE: a form missing from this map is silently ignored by the handler, so its
+// leads reach Netlify but never Follow Up Boss. "consult-v2" was missing while
+// all-done2.html was live and submitting under that name.
 const FORM_TAGS = {
   "consult":         UNIVERSAL_TAGS,
   "consult-relief":  UNIVERSAL_TAGS,
+  "consult-v2":      UNIVERSAL_TAGS,
   "home-valuation":  [...UNIVERSAL_TAGS, "all-done", "valuation", "no_outreach"],
 };
 
 // Forms that should additionally apply MAILER_TAGS based on referrer URL.
-const FORMS_WITH_MAILER_TAGS = new Set(["consult", "consult-relief"]);
+const FORMS_WITH_MAILER_TAGS = new Set(["consult", "consult-relief", "consult-v2"]);
 
 // Add new mailers here as you create them — one line per mailer
 // IMPORTANT: More-specific paths must be listed BEFORE less-specific ones
