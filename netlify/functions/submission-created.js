@@ -4,13 +4,30 @@
  * Forwards tracked form leads (consult, consult-relief, home-valuation) to
  * Follow Up Boss via /v1/events. Tag set is determined by form name.
  *
+ * Also reports the conversion to Meta's Conversions API, server-side. That is
+ * now the primary ad signal: it does not depend on a consent click, an ad
+ * blocker, or Safari's tracking prevention, and every one of these submissions
+ * is a real person who just handed over their name, phone and email to be
+ * contacted. The browser pixel still fires where consent allows, carrying the
+ * same event_id, so Meta collapses the pair into one conversion.
+ *
  * Required env vars (set in Netlify UI → Site → Environment variables):
  *   FUB_API_KEY      — your Follow Up Boss API key
  *   FUB_X_SYSTEM     — your system name registered with FUB
  *   FUB_X_SYSTEM_KEY — your system key registered with FUB
+ *   META_CAPI_TOKEN  — Meta system-user access token (Events Manager →
+ *                      Settings → Conversions API → Generate access token).
+ *                      Absent, the CAPI call is skipped and FUB is unaffected.
+ *   META_TEST_CODE   — optional. Set while validating in Events Manager →
+ *                      Test Events, then remove so real traffic is not tagged.
  */
 
+import crypto from "node:crypto";
+
 const FUB_EVENTS_URL = "https://api.followupboss.com/v1/events";
+
+const META_PIXEL_ID = "1533514048115355";
+const META_API_VER  = "v21.0";
 
 // Base tags per form. Forms not listed here are ignored by this handler.
 // Consult forms get UNIVERSAL_TAGS + MAILER_TAGS based on referrer URL.
@@ -150,6 +167,86 @@ async function sendToFub(payload) {
 }
 
 // ---------------------------------------------------------------------------
+// Meta Conversions API
+// ---------------------------------------------------------------------------
+
+/* Meta requires the identifying fields be SHA-256 of a normalised value:
+   trimmed, lowercased, punctuation stripped from phone numbers. Hashing an
+   un-normalised string produces a valid-looking hash that never matches, which
+   fails silently as "poor match quality" rather than an error. */
+function sha256(value) {
+  return crypto.createHash("sha256").update(String(value)).digest("hex");
+}
+function hashed(value) {
+  if (!value) return undefined;
+  const v = String(value).trim().toLowerCase();
+  return v ? sha256(v) : undefined;
+}
+function hashedPhone(phone) {
+  if (!phone) return undefined;
+  // E.164 without the plus. Bare 10-digit US numbers get a country code, or
+  // they will not match a US audience.
+  let d = String(phone).replace(/\D/g, "");
+  if (!d) return undefined;
+  if (d.length === 10) d = "1" + d;
+  return sha256(d);
+}
+
+function buildCapiPayload(formData, pageUrl) {
+  const { name = "", email = "", phone = "", event_id = "" } = formData;
+  const parts = String(name).trim().split(/\s+/).filter(Boolean);
+
+  const user_data = {
+    em: hashed(email),
+    ph: hashedPhone(phone),
+    fn: hashed(parts[0]),
+    ln: hashed(parts.length > 1 ? parts.slice(1).join(" ") : ""),
+    country: sha256("us"),
+    // Netlify puts the submitter's ip and user agent in the submission data.
+    // They are sent unhashed; Meta expects these two in the clear.
+    client_ip_address: formData.ip || undefined,
+    client_user_agent: formData.user_agent || undefined,
+  };
+  Object.keys(user_data).forEach((k) => user_data[k] === undefined && delete user_data[k]);
+
+  return {
+    data: [
+      {
+        event_name: "Lead",
+        event_time: Math.floor(Date.now() / 1000),
+        // Shared with the browser pixel so the two deduplicate. Absent, Meta
+        // treats the server copy as its own conversion, which double-counts
+        // anyone who also had the pixel running.
+        event_id: event_id || undefined,
+        action_source: "website",
+        event_source_url: pageUrl || undefined,
+        user_data,
+      },
+    ],
+  };
+}
+
+async function sendToMeta(payload) {
+  const token = process.env.META_CAPI_TOKEN;
+  if (!token) return { skipped: "META_CAPI_TOKEN not set" };
+
+  const body = { ...payload, access_token: token };
+  if (process.env.META_TEST_CODE) body.test_event_code = process.env.META_TEST_CODE;
+
+  const res = await fetch(
+    `https://graph.facebook.com/${META_API_VER}/${META_PIXEL_ID}/events`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    }
+  );
+  let out;
+  try { out = await res.json(); } catch { out = await res.text().catch(() => "(empty)"); }
+  return { ok: res.ok, status: res.status, body: out };
+}
+
+// ---------------------------------------------------------------------------
 // Handler
 // ---------------------------------------------------------------------------
 
@@ -205,6 +302,22 @@ export const handler = async (event) => {
   if (!name && !email && !phone) {
     console.warn(`[${timestamp}] Submission appears empty — skipping FUB call`);
     return { statusCode: 200, body: "Skipped — no usable contact data" };
+  }
+
+  // ── 5b. Meta Conversions API ────────────────────────────────────────────
+  // Before FUB and in its own try, because the two are independent: a Meta
+  // outage or a bad token must never cost the lead its CRM record.
+  try {
+    const capi = await sendToMeta(buildCapiPayload(formData, pageUrl));
+    if (capi.skipped) {
+      console.warn(`[${timestamp}] Meta CAPI skipped — ${capi.skipped}`);
+    } else if (capi.ok) {
+      console.log(`[${timestamp}] Meta CAPI accepted Lead. event_id=${formData.event_id || "(none)"} received=${capi.body?.events_received}`);
+    } else {
+      console.error(`[${timestamp}] Meta CAPI rejected. status=${capi.status} body=`, JSON.stringify(capi.body));
+    }
+  } catch (err) {
+    console.error(`[${timestamp}] Meta CAPI threw:`, err.message);
   }
 
   // ── 6. Build and send FUB payload ───────────────────────────────────────

@@ -958,10 +958,18 @@ gmp-place-autocomplete::part(input) {
     fields.forEach(function(field){
       field.addEventListener('focus', onFormStart, { once: false });
     });
+    // One id per lead, written to two places: sessionStorage for the browser
+    // pixel on /thank-you, and a hidden field so it travels with the form to
+    // the Netlify function, which sends the same conversion to Meta's
+    // Conversions API. Meta collapses the two on event_id, so the server copy
+    // and the browser copy are one conversion, not two.
     var form = document.querySelector('form[name="consult-v2"]');
     if (form) {
       form.addEventListener('submit', function(){
-        sessionStorage.setItem('lead_eid', 'lead_' + Date.now());
+        var eid = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+        sessionStorage.setItem('lead_eid', eid);
+        var slot = form.querySelector('input[name="event_id"]');
+        if (slot) slot.value = eid;
       }, { once: true });
     }
 
@@ -1297,6 +1305,9 @@ gmp-place-autocomplete::part(input) {
       <input type="hidden" name="form-name" value="consult-v2">
       <input type="hidden" name="mailer" value="All Done">
       <input type="hidden" name="source" value="Meta Ad">
+      <!-- Filled on submit. Deduplicates the server-side Conversions API Lead
+           against the browser pixel's. -->
+      <input type="hidden" name="event_id" value="">
       <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
 
       <div class="fstep" data-step="1">
