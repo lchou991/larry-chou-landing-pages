@@ -128,18 +128,55 @@
     });
   }
 
-  /* ---- the banner ---- */
+  /* ---- the banner ----
+     Styles travel with the script rather than living in each page's stylesheet.
+     Only all-done defines the site's design tokens; the older pages have --ink
+     and nothing else, so these are literal values. Font is inherited so the
+     banner picks up whatever face the page is already using. */
+  function injectStyles() {
+    if (document.getElementById('consent-css')) return;
+    var css = document.createElement('style');
+    css.id = 'consent-css';
+    css.textContent =
+      '.consent{position:fixed;left:0;right:0;bottom:0;z-index:10000;' +
+        'background:#111111;color:#FFFFFF;border-top:4px solid #A9853F;' +
+        'padding:clamp(14px,2vw,18px) clamp(20px,5vw,40px)}' +
+      '.consent-inner{max-width:940px;margin-inline:auto;display:flex;' +
+        'align-items:center;justify-content:space-between;gap:clamp(14px,2.4vw,28px);' +
+        'flex-wrap:wrap}' +
+      '.consent-copy{color:#FFFFFF;font-size:15px;font-weight:600;line-height:1.5;' +
+        'margin:0;max-width:62ch;flex:1 1 320px}' +
+      '.consent-copy a{color:#FFFFFF;text-decoration:underline;text-underline-offset:3px}' +
+      '.consent-actions{display:flex;gap:10px;flex:0 0 auto}' +
+      '.consent-btn{font:inherit;font-size:16px;font-weight:700;padding:11px 26px;' +
+        'border-radius:999px;cursor:pointer;background:#FFFFFF;color:#111111;' +
+        'border:2px solid #FFFFFF}' +
+      '.consent-btn:hover{background:transparent;color:#FFFFFF}' +
+      '.consent-btn:focus-visible{outline:3px solid #A9853F;outline-offset:3px}' +
+      '@media (max-width:560px){.consent-inner{flex-direction:column;align-items:stretch}' +
+        '.consent-actions{justify-content:stretch}.consent-btn{flex:1}}';
+    document.head.appendChild(css);
+  }
 
   function buildBanner() {
     if (document.querySelector('.consent')) return;
+    injectStyles();
     var wrap = document.createElement('div');
     wrap.className = 'consent';
     wrap.setAttribute('role', 'dialog');
     wrap.setAttribute('aria-label', 'Cookie choices');
+    /* The opening line is a factual claim. It holds on every page that shows
+       this banner today: all-done and all-done2 are Meta ads, gbp is Google
+       PPC, prep-plan is the mailer. If the banner is ever added to a page
+       reached organically, that sentence has to come off there, because a
+       false statement at the top of a consent notice defeats the notice. */
     wrap.innerHTML =
       '<div class="consent-inner">' +
-        '<p class="consent-copy">We use cookies to see how this site is doing, ' +
-        'and to measure our ads. <a href="' + PRIVACY + '">Privacy</a></p>' +
+        '<p class="consent-copy">You arrived here from an ad we placed. ' +
+        'We use third-party tools that measure how our ads perform and record ' +
+        'how you use this page so we can provide our services to more ' +
+        'homeowners in the Bay Area. ' +
+        '<a href="' + PRIVACY + '">Privacy</a></p>' +
         '<div class="consent-actions">' +
           '<button type="button" class="consent-btn consent-yes">Accept</button>' +
           '<button type="button" class="consent-btn consent-no">Decline</button>' +
