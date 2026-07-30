@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>We prepare and sell your home | 16DayPrep</title>
+<title>I prepare and sell your home | 16DayPrep</title>
 <meta name="description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://16day.larrychou.com/all-done">
-<meta property="og:title" content="We prepare and sell your home. Without the to-do list.">
+<meta property="og:title" content="I prepare and sell your home. Without the to-do list.">
 <meta property="og:description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:image" content="https://16day.larrychou.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="We prepare and sell your home. Without the to-do list.">
+<meta name="twitter:title" content="I prepare and sell your home. Without the to-do list.">
 <meta name="twitter:description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta name="twitter:image" content="https://16day.larrychou.com/og-image.jpg">
 
@@ -751,6 +751,15 @@ img { max-width: 100%; height: auto; display: block; }
 .form-guarantee { background: var(--ink); color: #fff; padding: 16px 20px 17px; margin-bottom: 22px; }
 .guarantee-label { display: block; font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 20px; line-height: 1.15; color: #fff; margin-bottom: 9px; }
 .guarantee-text { color: #fff; font-size: 17px; line-height: 1.45; }
+/* The written-budget proof: projected against final, ruled rows, ink on the
+   cream card. No colour on the figures, so it reads as a receipt, not a pitch. */
+.budget-proof { margin: clamp(18px, 2.4vw, 24px) 0; border-top: 1px solid var(--rule); }
+.budget-proof > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+.bp-label { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); line-height: 1.35; }
+.bp-label span { display: block; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--ink-mid); }
+.bp-num { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 5vw, 32px); line-height: 1; color: var(--ink); white-space: nowrap; }
+/* Staging line at the form. A plain line, no badge, no colour. */
+.form-bonus { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.4; margin: 2px 0 20px; }
 .form-group { margin-bottom: 14px; }
 .form-group label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 7px; color: var(--ink); }
 .form-group input, .form-group select, .form-group textarea {
@@ -1101,8 +1110,8 @@ gmp-place-autocomplete::part(input) {
     <span class="lp-tag lp-tag-after">After</span>
   </section>
   <div class="lp-hero-copy">
-    <h1>Hand us the keys.</h1>
-    <p class="hero-sub">We prep your home in <span class="hl">16 days</span>.<br>Then we sell it.</p>
+    <h1>Hand me the keys.</h1>
+    <p class="hero-sub">I prep your home in <span class="hl">16 days</span>.<br>Then I sell it.</p>
   </div>
 
   <!-- Desktop only. Appears once the after frame has settled and replaces the
@@ -1112,7 +1121,7 @@ gmp-place-autocomplete::part(input) {
        event with it. The address is carried down to the real form instead. -->
   <div class="lp-hero-offer">
     <p class="lp-offer-h">Sell on easy mode</p>
-    <p class="lp-offer-sub">We&rsquo;ll do the hard stuff in 16 days.</p>
+    <p class="lp-offer-sub">I&rsquo;ll do the hard stuff in 16 days.</p>
     <form class="lp-hero-form" data-hero-handoff>
       <input name="hero-address" type="text" placeholder="Property address"
              aria-label="Property address" autocomplete="street-address">
@@ -1247,34 +1256,20 @@ gmp-place-autocomplete::part(input) {
 
 <div class="story-section hiw">
   <div class="hiw-card">
-  <h2>How it works.</h2>
-  <p class="hiw-lead">My team completes all of the prep in 16 days and has your home ready to hit the market on the 17th day. The prep is fully managed and the sale is executed together as one package.</p>
+  <h2>The 16-Day Prep &amp; Sale Package</h2>
+  <p class="hiw-lead">I manage every detail to get your home prepped in 16 days and then sold, giving you total peace of mind and maximum equity, without ever having to manage contractors or show up in person.</p>
 
-  <!-- The "What we handle" label is gone: the heading above already says what
-       this list is, and naming it twice made the six steps read as one of two
-       matched columns rather than as the process itself. -->
-  <ol class="hiw-steps">
-    <li>We start with a home tour.</li>
-    <li>You get your home&rsquo;s value as-is and the after-prep value.</li>
-    <li>We give you the prep plan and budget <span class="hiw-aside">(usually 1% or less of your home&rsquo;s value)</span></li>
-    <li>Once you approve, we get bids from contractors and start work.</li>
-    <li>We coordinate the prep day to day. You never need to be there.</li>
-    <li>We sell your home.</li>
-  </ol>
-
-  <!-- Six numbered steps above, two unnumbered lines here. The contrast is the
-       argument, so nothing is added to state it: the block is quiet, inset, and
-       short, and the whitespace around two items after a run of six is what
-       makes the point. -->
-  <div class="yours">
-    <p class="yours-label">What you handle</p>
-    <ul class="yours-list">
-      <li>You approve every step from your phone.</li>
-      <li>You pay contractors directly. No markup, no middleman.</li>
-    </ul>
-  </div>
-
-  <p class="hiw-close">Our last seller handed over the keys and didn&rsquo;t see the home again until it was staged, photographed, and ready to launch 16 days later. He approved every step from his phone.</p>
+  <p class="story-subhead">What&rsquo;s included</p>
+  <ul class="story-list">
+    <li><strong>Full-service agent representation:</strong> end-to-end guidance and negotiation from the first meeting through closing day.</li>
+    <li><strong>Whole-house staging package:</strong> full professional staging to make your home look its absolute best for buyers.</li>
+    <li><strong>16-day turnkey home prep:</strong> I handle the entire prep process so your home is market-ready in just over two weeks.</li>
+    <li><strong>Upfront prep plan and clear budget:</strong> a complete roadmap and budget before any work begins, usually 1% or less of your home&rsquo;s value.</li>
+    <li><strong>Fully managed contractor work:</strong> I coordinate every crew, and you pay contractors directly at cost, with no markup.</li>
+    <li><strong>Live project management app:</strong> track progress, photos, and sale milestones in real time from anywhere in the world.</li>
+    <li><strong>Moving and vehicle shipping coordination:</strong> I schedule and manage reputable movers and car transport for you.</li>
+    <li><strong>Extended on-call support:</strong> direct answers 8 AM to 11 PM PT, 7 days a week.</li>
+  </ul>
   </div>
 </div>
 
@@ -1291,11 +1286,12 @@ gmp-place-autocomplete::part(input) {
 <div class="cta-section cta-action-zone" id="form">
   <div class="form-box">
     <div class="form-heading">Get Your 16-Day Prep Plan</div>
-    <p class="form-offer">I'll walk your home, tell you what we'll fix, what we'll skip, and what it'll cost.</p>
+    <p class="form-offer">I'll walk your home, tell you what I'll fix, what I'll skip, and what it'll cost.</p>
     <div class="form-guarantee">
       <p class="guarantee-label">My Budget Guarantee</p>
       <p class="guarantee-text">Your prep bill won't exceed your approved budget by more than 10%. If it does, <strong>I pay for the overage.</strong></p>
     </div>
+    <p class="form-bonus">Staging included free, up to a $7,500 value.</p>
     <!-- Two steps, same form element. Step 1 asks only for the address, and
          clicking Continue posts it on its own as consult-v2-start before step 2
          is revealed. So an address typed by someone who then loses interest is
@@ -1365,13 +1361,31 @@ gmp-place-autocomplete::part(input) {
 </div>
 
 <div class="story-section">
-  <p class="story-label">The <span class="chip">16DayPrep</span>: what we did on a recent San Jose sale.</p>
-  <p class="story-text">The seller signed up and handed me the keys to 1458 Portobelo Dr in San Jose.<br><br>16 days later, this home went from "needs work" to clean, move-in ready, and market-ready. We put the house on the market on day 17. Our seller went under contract in 7 days.</p>
-  <p class="sale-stat">A total of <b>24 days</b> from when he handed us the keys to accepting an offer.</p>
+  <div class="hiw-card">
+  <h2>A written budget you can hold me to</h2>
+  <p class="hiw-lead">The two things that go wrong on any home project are the budget and the timeline. 16DayPrep is built to remove both: a written plan and a fixed budget before any contractor starts, and the whole job on a 16-day clock. You approve the number, then you hold me to it. This is the number I gave my last homeowner at 1458 Portobelo, against what it actually cost.</p>
+
+  <div class="budget-proof">
+    <div><span class="bp-label">Projected budget<span>Owner approved</span></span><span class="bp-num">$18,350</span></div>
+    <div><span class="bp-label">Final invoice</span><span class="bp-num">$18,454</span></div>
+    <div><span class="bp-label">Difference &middot; 0.6% over</span><span class="bp-num">+$104</span></div>
+  </div>
+
+  <div class="form-guarantee">
+    <p class="guarantee-label">My Budget Guarantee</p>
+    <p class="guarantee-text">Your prep bill won&rsquo;t exceed your approved budget by more than 10%. If it does, <strong>I pay for the overage.</strong></p>
+  </div>
+  </div>
+</div>
+
+<div class="story-section">
+  <p class="story-label">The <span class="chip">16DayPrep</span>: what I did on a recent San Jose sale.</p>
+  <p class="story-text">The seller signed up and handed me the keys to 1458 Portobelo Dr in San Jose.<br><br>16 days later, this home went from "needs work" to clean, move-in ready, and market-ready. I put the house on the market on day 17. My seller went under contract in 7 days.</p>
+  <p class="sale-stat">A total of <b>24 days</b> from when he handed me the keys to accepting an offer.</p>
 
   <div class="did-grid">
   <div class="did-card did-card--kept">
-  <p class="did-head">What we did</p>
+  <p class="did-head">What I did</p>
   <p class="did-sub">In 16 days.</p>
   <ul class="story-list">
     <li>Repaired damaged walls and ceilings.</li>
@@ -1399,7 +1413,7 @@ gmp-place-autocomplete::part(input) {
   </div>
 
   <div class="did-card did-card--skip">
-  <p class="did-head">What we skipped</p>
+  <p class="did-head">What I skipped</p>
   <p class="did-sub">The return wasn&rsquo;t worth it.</p>
   <ul class="story-list story-list--didnt">
     <li>No kitchen remodel.</li>
@@ -1426,23 +1440,6 @@ gmp-place-autocomplete::part(input) {
     <div class="testi-attr">San Jose Seller</div>
   </div>
 </section>
-
-<div class="story-section">
-
-  <h2>Why I created <span class="chip">16DayPrep</span>.</h2>
-
-  <div class="why-body">
-    <p class="why-lead">I couldn&rsquo;t believe the invoices I was seeing. <strong>The seller wasted $47k.</strong></p>
-    <p>My clients bought that house. We tore out almost everything and did a <strong>$250k renovation</strong>.</p>
-    <p>We replaced the cabinets they&rsquo;d repainted, the windows where they&rsquo;d painted the trim, and ripped out the floors they&rsquo;d refinished.</p>
-    <p>I analyzed 92 home sales over a 6 month period and saw the same story over and over. Months of work that wasn&rsquo;t justified for the sale.</p>
-    <p>I wanted to cut out the wasted time and money sellers pour into the wrong work. So I asked my next client to let me manage the full prep and sale.</p>
-    <p>I took total ownership of the sale at 1458 Portobelo so my client only had to approve key decisions and pay invoices remotely. He approved, and <span class="chip">16DayPrep</span> was born.</p>
-  </div>
-
-  <a href="#form" class="final-cta-btn">Get My Prep Plan</a>
-
-</div>
 
 <div style="padding:32px 0;"></div>
 

@@ -172,9 +172,9 @@
        false statement at the top of a consent notice defeats the notice. */
     wrap.innerHTML =
       '<div class="consent-inner">' +
-        '<p class="consent-copy">You arrived here from an ad we placed. ' +
-        'We use third-party tools that measure how our ads perform and record ' +
-        'how you use this page so we can provide our services to more ' +
+        '<p class="consent-copy">You arrived here from an ad I placed. ' +
+        'I use third-party tools that measure how my ads perform and record ' +
+        'how you use this page so I can provide my services to more ' +
         'homeowners in the Bay Area. ' +
         '<a href="' + PRIVACY + '">Privacy</a></p>' +
         '<div class="consent-actions">' +
