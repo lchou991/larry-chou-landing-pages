@@ -19,3 +19,14 @@
   from   = "/thank-you"
   to     = "/thank-you.html"
   status = 200
+
+# ── all-done2 retired; send any lingering ad traffic to the active page ──
+[[redirects]]
+  from   = "/all-done2"
+  to     = "/all-done"
+  status = 301
+
+[[redirects]]
+  from   = "/all-done2.html"
+  to     = "/all-done"
+  status = 301
