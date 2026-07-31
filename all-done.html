@@ -1538,42 +1538,49 @@ gmp-place-autocomplete::part(input) {
 </style>
 <script>
 function initAddressAutocomplete(){
-  var hidden = document.getElementById('f-address');
-  if(!hidden || !window.google || !google.maps || !google.maps.places) return;
+  if(!window.google || !google.maps || !google.maps.places) return;
   var PAE = google.maps.places.PlaceAutocompleteElement;
   if(!PAE) return;
 
-  var pae;
-  try { pae = new PAE({ includedRegionCodes: ['us'] }); }
-  catch(e){ return; } // graceful: original input stays usable
-  try { pae.placeholder = '123 Main St, San Jose, CA'; } catch(e){}
-  try { pae.noInputIcon = true; } catch(e){}
+  // Attach the widget to a given text input: insert the Google element, demote
+  // the original to a hidden mirror that keeps its name (Netlify submits it, and
+  // the hero handoff reads it), and keep that mirror filled as the user types or
+  // selects. Lead-safe: a typed-but-never-selected address is never lost.
+  function attach(hidden){
+    if(!hidden || hidden.dataset.pacDone) return;
+    hidden.dataset.pacDone = '1';
 
-  // Insert the Google widget, then demote the original input to a hidden mirror
-  // that Netlify submits as "address".
-  hidden.parentNode.insertBefore(pae, hidden);
-  hidden.type = 'hidden';
-  hidden.removeAttribute('required');
+    var pae;
+    try { pae = new PAE({ includedRegionCodes: ['us'] }); }
+    catch(e){ return; } // graceful: original input stays usable
+    try { pae.placeholder = hidden.getAttribute('placeholder') || '123 Main St, San Jose, CA'; } catch(e){}
+    try { pae.noInputIcon = true; } catch(e){}
 
-  // Mirror the widget's public `value` (the typed text) into the hidden field,
-  // so a typed-but-not-selected address still submits. Lead-safe.
-  function mirror(){ try { if(typeof pae.value === 'string') hidden.value = pae.value; } catch(e){} }
-  pae.addEventListener('input', mirror);
+    hidden.parentNode.insertBefore(pae, hidden);
+    hidden.type = 'hidden';
+    hidden.removeAttribute('required');
 
-  // On suggestion select, write the clean formatted address.
-  pae.addEventListener('gmp-select', async function(e){
-    try {
-      var pred = e.placePrediction || (e.detail && e.detail.placePrediction);
-      if(!pred){ mirror(); return; }
-      var place = pred.toPlace();
-      await place.fetchFields({ fields: ['formattedAddress'] });
-      hidden.value = (place.formattedAddress || pae.value || '').replace(/,\s*USA$/, '');
-    } catch(err){ mirror(); }
-  });
+    function mirror(){ try { if(typeof pae.value === 'string') hidden.value = pae.value; } catch(e){} }
+    pae.addEventListener('input', mirror);
 
-  // Final safety net: capture the latest typed text right before submit.
-  var form = hidden.closest('form');
-  if(form) form.addEventListener('submit', mirror, true);
+    pae.addEventListener('gmp-select', async function(e){
+      try {
+        var pred = e.placePrediction || (e.detail && e.detail.placePrediction);
+        if(!pred){ mirror(); return; }
+        var place = pred.toPlace();
+        await place.fetchFields({ fields: ['formattedAddress'] });
+        hidden.value = (place.formattedAddress || pae.value || '').replace(/,\s*USA$/, '');
+      } catch(err){ mirror(); }
+    });
+
+    var form = hidden.closest('form');
+    if(form) form.addEventListener('submit', mirror, true);
+  }
+
+  // Both the main form's step-1 field and the hero "doorway" field get it, so
+  // the address autocompletes wherever the visitor actually types on this page.
+  attach(document.getElementById('f-address'));
+  attach(document.querySelector('form[data-hero-handoff] input[name="hero-address"]'));
 }
 </script>
 <script async defer
