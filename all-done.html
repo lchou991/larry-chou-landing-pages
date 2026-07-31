@@ -248,8 +248,35 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 819px) {
   .lp-hero-copy {
     margin: clamp(12px, 3.4vw, 18px) var(--gutter) 0;
-    padding: clamp(20px, 5vw, 28px) clamp(16px, 4.4vw, 24px);
+    padding: clamp(20px, 5vw, 28px) clamp(16px, 4.4vw, 24px) clamp(14px, 3vw, 18px);
   }
+  /* Smaller here than the base: the headline is a full sentence now, not three
+     words, so the big size ran it to four lines and shouted. This sits it on two.
+     Extra specificity (.lp-hero-wrap) so it beats the base rule declared below. */
+  .lp-hero-wrap .lp-hero-copy h1 { font-size: clamp(18px, 5.2vw, 22px); line-height: 1.12; margin-bottom: 0; }
+
+  /* The CTA joins the headline inside the same ink box on a phone: same gutter
+     inset, no gap above it, so the copy bar and the form read as one slab. The
+     offer's own headings come off (the headline is the pitch) and the field
+     stacks over the button. The address still hands off to the full form below,
+     so this is a shortcut into it, not a second competing submission. */
+  .lp-hero-wrap .lp-hero-offer {
+    display: block;
+    position: static;
+    background: var(--ink);
+    margin: 0 var(--gutter) 0;
+    padding: 0 clamp(16px, 4.4vw, 24px) clamp(20px, 5vw, 26px);
+    animation: none;
+    text-align: center;
+  }
+  .lp-hero-offer .lp-offer-h, .lp-hero-offer .lp-offer-sub { display: none; }
+  .lp-hero-wrap .lp-hero-form { grid-template-columns: 1fr; gap: 12px; }
+  /* Fit the button to its text and shorten it, rather than letting it stretch
+     the full width of the box, which read as oversized. */
+  .lp-hero-wrap .lp-hero-btn { justify-self: center; width: auto; padding: 12px 26px; font-size: 16px; }
+  /* Staging line joins the box, quiet: small, medium weight, a touch muted so it
+     does not shout next to the button. */
+  .lp-hero-wrap .lp-hero-bonus { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.72); text-align: center; margin: 12px 0 0; }
 }
 .lp-hero-copy h1 {
   font-family: var(--display); font-weight: 400;
@@ -311,6 +338,7 @@ img { max-width: 100%; height: auto; display: block; }
    photo and the real form further down; a second form in a 293px-tall hero
    would be two asks stacked on top of each other. */
 .lp-hero-offer { display: none; }
+.lp-hero-bonus { display: none; }
 @media (min-width: 820px) {
   .lp-hero-offer {
     display: block;
@@ -492,12 +520,13 @@ img { max-width: 100%; height: auto; display: block; }
 /* Ink, not gold. Gold is 2.4:1 against paper and disappears again over a
    photograph; these sit on both. Black holds its edge on either. */
 .ba-nav {
-  width: 46px; height: 46px; border-radius: 999px; border: 0; cursor: pointer;
-  background: var(--ink); color: #fff; font-size: 22px; line-height: 1;
+  min-width: 44px; min-height: 44px; border: 0; cursor: pointer;
+  background: none; color: var(--ink); font-size: 28px; line-height: 1;
   display: grid; place-items: center;
-  transition: background .2s ease, transform .14s ease;
+  opacity: .55;
+  transition: opacity .2s ease, transform .14s ease;
 }
-.ba-nav:hover { background: var(--gold); }
+.ba-nav:hover { opacity: 1; }
 .ba-nav:active { transform: scale(.94); }
 /* The dot you see is 11px; the button you tap is 24px. They were 11px square
    as targets, well under the 24px minimum, which on a phone is a coin-flip tap
@@ -530,25 +559,10 @@ img { max-width: 100%; height: auto; display: block; }
    --ba-vh is the measured height of the active page, set by the same JS that
    pins the viewport. Half of it is exactly the gap between the two images, so
    the arrows land on the seam at every room whatever its height. */
+/* Phones: the arrows stay in the control row, one on each side of the dots
+   (bare chevrons, no disc), rather than sitting on the photographs. */
 @media (max-width: 819px) {
-  .ba-pager { position: relative; }
-  .ba-nav {
-    position: absolute;
-    top: calc(var(--ba-vh, 300px) / 2);
-    translate: 0 -50%;
-    z-index: 4;
-    /* Gold on a photograph needs an edge of its own to sit against. */
-    box-shadow: 0 2px 10px rgba(0,0,0,.45);
-  }
-  .ba-prev { left: 10px; }
-  .ba-next { right: 10px; }
-  /* The arrows have left the flow, so this row is only the dots. */
-  .ba-controls { justify-content: center; }
-  /* The Before badge sits at the bottom-left of the top photo, which is the
-     seam, which is now where the prev arrow is: they overlapped by 9px. The
-     badge moves to the top of its own photo. After stays put, at the bottom of
-     the lower photo, nowhere near the seam. */
-  .ba-cmp .ba-shot-before .ba-label { top: 10px; bottom: auto; }
+  .ba-controls { gap: 14px; }
 }
 
 /* ---- before / after ---- */
@@ -759,7 +773,7 @@ img { max-width: 100%; height: auto; display: block; }
 .bp-label span { display: block; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--ink-mid); }
 .bp-num { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 5vw, 32px); line-height: 1; color: var(--ink); white-space: nowrap; }
 /* Staging line at the form. A plain line, no badge, no colour. */
-.form-bonus { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.4; margin: 2px 0 20px; }
+.form-bonus { font-size: 13px; font-weight: 500; color: var(--ink-soft); line-height: 1.4; margin: 2px 0 20px; }
 .form-group { margin-bottom: 14px; }
 .form-group label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 7px; color: var(--ink); }
 .form-group input, .form-group select, .form-group textarea {
@@ -949,7 +963,7 @@ gmp-place-autocomplete::part(input) {
      Nothing loads until the visitor accepts. The no-script pixel image is gone
      with them: it fires on render and cannot be gated, so it would have been
      the one tracker that ignored the banner. -->
-<script src="/analytics.js"></script>
+<script src="/analytics.js?v=2"></script>
 
 <!-- form_start event + lead_eid setter for Pixel deduplication -->
 <script>
@@ -1092,8 +1106,6 @@ gmp-place-autocomplete::part(input) {
 </head>
 <body>
 
-<div class="continuity-bar"><span class="bar-line2"><span class="chip">16DayPrep</span> &nbsp;·&nbsp; Silicon Valley | San Jose</span></div>
-
 <!-- Hero. The green room holds, wipes to the staged bedroom, and the headline
      sits on top. Same mechanic as larrychou.com. The two photos are the ones
      the before/after grid already loads, so this adds no new downloads, and
@@ -1110,8 +1122,7 @@ gmp-place-autocomplete::part(input) {
     <span class="lp-tag lp-tag-after">After</span>
   </section>
   <div class="lp-hero-copy">
-    <h1>Hand me the keys.</h1>
-    <p class="hero-sub">I prep your home in <span class="hl">16 days</span>.<br>Then I sell it.</p>
+    <h1>Get your home ready to sell<br>in <span class="hl">16 days</span></h1>
   </div>
 
   <!-- Desktop only. Appears once the after frame has settled and replaces the
@@ -1121,12 +1132,13 @@ gmp-place-autocomplete::part(input) {
        event with it. The address is carried down to the real form instead. -->
   <div class="lp-hero-offer">
     <p class="lp-offer-h">Sell on easy mode</p>
-    <p class="lp-offer-sub">I&rsquo;ll do the hard stuff in 16 days.</p>
+    <p class="lp-offer-sub">I&rsquo;ll do the hard stuff in 16 days</p>
     <form class="lp-hero-form" data-hero-handoff>
       <input name="hero-address" type="text" placeholder="Property address"
              aria-label="Property address" autocomplete="street-address">
       <button class="lp-hero-btn" type="submit">Get My 16-Day Prep Plan</button>
     </form>
+    <p class="lp-hero-bonus">Staging included free, up to $7,500</p>
   </div>
 </div>
 

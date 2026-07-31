@@ -140,21 +140,26 @@
     css.textContent =
       '.consent{position:fixed;left:0;right:0;bottom:0;z-index:10000;' +
         'background:#111111;color:#FFFFFF;border-top:4px solid #A9853F;' +
-        'padding:clamp(14px,2vw,18px) clamp(20px,5vw,40px)}' +
+        'padding:clamp(9px,1.6vw,14px) clamp(16px,5vw,40px)}' +
       '.consent-inner{max-width:940px;margin-inline:auto;display:flex;' +
-        'align-items:center;justify-content:space-between;gap:clamp(14px,2.4vw,28px);' +
+        'align-items:center;justify-content:space-between;gap:clamp(8px,2vw,20px);' +
         'flex-wrap:wrap}' +
-      '.consent-copy{color:#FFFFFF;font-size:15px;font-weight:600;line-height:1.5;' +
+      '.consent-copy{color:#FFFFFF;font-size:12px;font-weight:500;line-height:1.4;' +
         'margin:0;max-width:62ch;flex:1 1 320px}' +
       '.consent-copy a{color:#FFFFFF;text-decoration:underline;text-underline-offset:3px}' +
-      '.consent-actions{display:flex;gap:10px;flex:0 0 auto}' +
-      '.consent-btn{font:inherit;font-size:16px;font-weight:700;padding:11px 26px;' +
+      '.consent-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto}' +
+      '.consent-privacy{margin-left:auto;color:#FFFFFF;font-size:12px;font-weight:500;' +
+        'text-decoration:underline;text-underline-offset:3px;white-space:nowrap}' +
+      '.consent-btn{font:inherit;font-size:14px;font-weight:600;line-height:1;padding:4px 16px;' +
         'border-radius:999px;cursor:pointer;background:#FFFFFF;color:#111111;' +
-        'border:2px solid #FFFFFF}' +
+        'border:1px solid #FFFFFF}' +
       '.consent-btn:hover{background:transparent;color:#FFFFFF}' +
       '.consent-btn:focus-visible{outline:3px solid #A9853F;outline-offset:3px}' +
       '@media (max-width:560px){.consent-inner{flex-direction:column;align-items:stretch}' +
-        '.consent-actions{justify-content:stretch}.consent-btn{flex:1}}';
+        /* In a column, flex-basis:320px reads as height and balloons the banner
+           to half the screen. Size the copy to its content instead. */
+        '.consent-copy{flex:0 1 auto}' +
+        '.consent-actions{justify-content:flex-start}.consent-btn{flex:0 0 auto}}';
     document.head.appendChild(css);
   }
 
@@ -175,11 +180,11 @@
         '<p class="consent-copy">You arrived here from an ad I placed. ' +
         'I use third-party tools that measure how my ads perform and record ' +
         'how you use this page so I can provide my services to more ' +
-        'homeowners in the Bay Area. ' +
-        '<a href="' + PRIVACY + '">Privacy</a></p>' +
+        'homeowners in the Bay Area.</p>' +
         '<div class="consent-actions">' +
           '<button type="button" class="consent-btn consent-yes">Accept</button>' +
           '<button type="button" class="consent-btn consent-no">Decline</button>' +
+          '<a class="consent-privacy" href="' + PRIVACY + '">Privacy</a>' +
         '</div>' +
       '</div>';
     document.body.appendChild(wrap);
