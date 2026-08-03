@@ -276,7 +276,11 @@ img { max-width: 100%; height: auto; display: block; }
   .lp-hero-wrap .lp-hero-btn { justify-self: center; width: auto; padding: 12px 26px; font-size: 16px; }
   /* Staging line joins the box, quiet: small, medium weight, a touch muted so it
      does not shout next to the button. */
-  .lp-hero-wrap .lp-hero-bonus { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.72); text-align: center; margin: 12px 0 0; }
+  .lp-hero-wrap .lp-hero-bonus { display: block; text-align: center; margin: 14px 0 0; }
+  .lp-hero-wrap .lp-hero-bonus strong { display: block; font-size: 19px; font-weight: 800; color: #FFFFFF; line-height: 1.2; }
+  .lp-hero-wrap .lp-hero-bonus-sub { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.78); margin-top: 4px; line-height: 1.3; }
+  .lp-hero-wrap .lp-hero-scarcity { display: block; text-align: center; margin: 10px 0 0; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.9); line-height: 1.3; }
+  .lp-hero-wrap .lp-hero-scarcity strong { color: #FFFFFF; }
 }
 .lp-hero-copy h1 {
   font-family: var(--display); font-weight: 400;
@@ -339,6 +343,7 @@ img { max-width: 100%; height: auto; display: block; }
    would be two asks stacked on top of each other. */
 .lp-hero-offer { display: none; }
 .lp-hero-bonus { display: none; }
+.lp-hero-scarcity { display: none; }
 @media (min-width: 820px) {
   .lp-hero-offer {
     display: block;
@@ -773,7 +778,24 @@ img { max-width: 100%; height: auto; display: block; }
 .bp-label span { display: block; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--ink-mid); }
 .bp-num { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 5vw, 32px); line-height: 1; color: var(--ink); white-space: nowrap; }
 /* Staging line at the form. A plain line, no badge, no colour. */
-.form-bonus { font-size: 13px; font-weight: 500; color: var(--ink-soft); line-height: 1.4; margin: 2px 0 20px; }
+.form-bonus { font-size: 13px; font-weight: 500; color: var(--ink-mid); line-height: 1.4; margin: 2px 0 20px; }
+/* Free-bonus stack at the form. Item names carry the same 18px/700 as the CTA
+   label so the value reads at full weight, not as fine print; the dollar
+   figures sit in gold and right-align like a menu. */
+.offer-stack { margin: 0 0 12px; padding: 15px 20px 17px; border: 2px solid var(--ink); background: var(--paper); }
+.offer-scarcity { margin: 0; font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--ink); text-align: center; line-height: 1.4; }
+.offer-scarcity strong { color: var(--gold); }
+.offer-scarcity-sub { display: block; margin-top: 5px; font-size: 13px; font-weight: 500; color: var(--ink-mid); line-height: 1.4; }
+.offer-terms { margin: 8px auto 20px; max-width: 44ch; font-size: 12px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; }
+.offer-terms strong { font-weight: 700; }
+.offer-stack-lead { font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; color: var(--ink-mid); margin: 0 0 12px; }
+.offer-line { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; line-height: 1.25; }
+.offer-line + .offer-line { margin-top: 10px; }
+.offer-line strong { font-size: 18px; font-weight: 700; color: var(--ink); }
+.offer-line span { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--gold); white-space: nowrap; }
+.offer-total { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-top: 12px; padding-top: 12px; border-top: 2px solid var(--ink); }
+.offer-total strong { font-size: 18px; font-weight: 700; color: var(--ink); }
+.offer-total span { font-family: var(--sans); font-size: 18px; font-weight: 800; color: var(--gold); white-space: nowrap; }
 .form-group { margin-bottom: 14px; }
 .form-group label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 7px; color: var(--ink); }
 .form-group input, .form-group select, .form-group textarea {
@@ -1136,14 +1158,15 @@ gmp-place-autocomplete::part(input) {
     <form class="lp-hero-form" data-hero-handoff>
       <input name="hero-address" type="text" placeholder="Property address"
              aria-label="Property address" autocomplete="street-address">
-      <button class="lp-hero-btn" type="submit">Get My 16-Day Prep Plan</button>
+      <button class="lp-hero-btn" type="submit">Get My House Ready to Sell in 16 Days</button>
     </form>
-    <p class="lp-hero-bonus">Staging included free, up to $7,500</p>
+    <p class="lp-hero-bonus"><strong>$23,500 in prep, included free</strong><span class="lp-hero-bonus-sub">Whole-house painting + professional staging</span></p>
+    <p class="lp-hero-scarcity">Open to the next <strong>3</strong> homeowners who sign up to sell</p>
   </div>
 </div>
 
 <div style="max-width:680px; margin:0 auto; padding:0 24px 4px;">
-  <p class="sale-addr"><span class="sale-addr-lead">Results from</span> 1458 Portobelo Dr &middot; San Jose</p>
+  <p class="sale-addr"><span class="sale-addr-lead">Results from a recent sale</span> 1458 Portobelo Dr &middot; San Jose</p>
   <div class="proof-row">
     <div class="proof-badges">
       <div class="proof-badge">
@@ -1275,8 +1298,8 @@ gmp-place-autocomplete::part(input) {
   <ul class="story-list">
     <li><strong>Full-service agent representation:</strong> end-to-end guidance and negotiation from the first meeting through closing day.</li>
     <li><strong>Premium staging credit:</strong> up to $7,500 toward professional staging with one of my preferred vendors.</li>
-    <li><strong>16-day turnkey home prep:</strong> I handle the entire prep process so your home is market-ready in just over two weeks.</li>
-    <li><strong>Upfront prep plan and clear budget:</strong> a complete roadmap and budget before any work begins, usually 1% or less of your home&rsquo;s value.</li>
+    <li><strong>16-day turnkey home prep:</strong> I handle the entire prep process so your home is market-ready in 16 days.</li>
+    <li><strong>Upfront prep plan and clear budget:</strong> an itemized scope of work and costs before any work begins, usually 1% or less of your home&rsquo;s value.</li>
     <li><strong>Fully managed contractor work:</strong> I coordinate every crew, and you pay contractors directly at cost, with no markup.</li>
     <li><strong>Live project management app:</strong> track progress, photos, and sale milestones in real time from anywhere in the world.</li>
     <li><strong>Moving and vehicle shipping coordination:</strong> I schedule and manage reputable movers and car transport for you.</li>
@@ -1303,7 +1326,14 @@ gmp-place-autocomplete::part(input) {
       <p class="guarantee-label">My Budget Guarantee</p>
       <p class="guarantee-text">Your prep bill won't exceed your approved budget by more than 10%. If it does, <strong>I pay for the overage.</strong></p>
     </div>
-    <p class="form-bonus">Staging included free, up to a $7,500 value.</p>
+    <div class="offer-stack">
+      <p class="offer-stack-lead">Included free with your prep</p>
+      <p class="offer-line"><strong>Whole-house painting</strong> <span>$16,000 value</span></p>
+      <p class="offer-line"><strong>Professional staging</strong> <span>up to $7,500 value</span></p>
+      <p class="offer-total"><strong>Included free</strong> <span>$23,500 value</span></p>
+    </div>
+    <p class="offer-scarcity">Open to the next <strong>3</strong> homeowners who sign up to sell<span class="offer-scarcity-sub">In exchange, you agree to feature your home as a case study and leave a review</span></p>
+    <p class="offer-terms">Eligibility: single-family home, valued $2M+, under 2,000&nbsp;sq&nbsp;ft, no cathedral ceilings or two-story interior spaces, within 15 miles of San Jose, vacant and listed with me within 60 days</p>
     <!-- Two steps, same form element. Step 1 asks only for the address, and
          clicking Continue posts it on its own as consult-v2-start before step 2
          is revealed. So an address typed by someone who then loses interest is
@@ -1343,7 +1373,7 @@ gmp-place-autocomplete::part(input) {
           <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
         </div>
         <div class="form-divider"></div>
-        <button type="submit" class="form-submit">Get My Prep Plan</button>
+        <button type="submit" class="form-submit">Get My House Ready to Sell in 16 Days</button>
       </div>
     </form>
 
@@ -1375,7 +1405,7 @@ gmp-place-autocomplete::part(input) {
 <div class="story-section">
   <div class="hiw-card">
   <h2>A written budget you can hold me to</h2>
-  <p class="hiw-lead">The two things that go wrong on any home project are the budget and the timeline. 16DayPrep is built to remove both: a written plan and a fixed budget before any contractor starts, and the whole job on a 16-day clock. You approve the number, then you hold me to it. This is the number I gave my last homeowner at 1458 Portobelo, against what it actually cost.</p>
+  <p class="hiw-lead">The two things that <strong>go wrong</strong> on any home project are the <strong>budget</strong> and the <strong>timeline</strong>. 16DayPrep is built to remove both: a written plan and a fixed budget before any contractor starts, and the whole job on a 16-day clock. You approve the number, then you hold me to it. This is the number I gave my last homeowner at 1458 Portobelo, against what it actually cost.</p>
 
   <div class="budget-proof">
     <div><span class="bp-label">Projected budget<span>Owner approved</span></span><span class="bp-num">$18,350</span></div>
