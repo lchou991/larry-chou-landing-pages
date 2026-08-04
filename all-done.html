@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>I prepare and sell your home | 16DayPrep</title>
+<title>$23,500 in whole-house painting and staging | 16DayPrep</title>
 <meta name="description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://16day.larrychou.com/all-done">
@@ -20,7 +20,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cabin:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cabin:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <style>
 /* ---- all-done2 v2 ----
    Same page, same copy, same order. Restyled onto larrychou.com's system:
@@ -143,267 +143,78 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 
-/* ---- hero: the wipe, ported from larrychou.com ----
-   Green room holds, sweeps to the staged bedroom, settles there. The headline
-   is jet black because it only ever sits on the bright after frame by the time
-   it matters, and black measures ~11:1 against it where white measures 1.8. */
-.lp-hero {
-  position: relative;
-  background: var(--paper);
-  overflow: hidden;
-  display: block;
-  /* 4/3 is the photos' own aspect, so object-fit crops nothing: the whole
-     frame shows. A fixed min-height made this a portrait box holding a
-     landscape photo and threw away 33% of the width, which on the green room
-     is exactly where the sticker door is. */
-  aspect-ratio: 4 / 3;
-  min-height: 0;
-  padding: 0;
-  max-width: none;
+/* ---- hero: the offer panel ----
+   The before/after photos left the hero; the carousel below already carries
+   them. The offer is the biggest pull on the page now, so it IS the hero: one
+   cream card, the number leading, the button dropping to the form. */
+/* Cream masthead: the brokerage brand over the offer, quiet. */
+.site-top { background: var(--paper); padding: 12px var(--gutter) 10px; }
+.site-top-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.site-top p { margin: 0; max-width: none; font-family: var(--sans); line-height: 1.25; }
+.site-top-name { font-size: 16px; font-weight: 700; color: var(--ink); }
+.site-top-mark { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-mid); text-align: right; white-space: nowrap; }
+.site-top-brokerage { font-size: 12px; font-weight: 500; color: var(--ink-mid); }
+@media (max-width: 559px) {
+  .site-top-mark { font-size: 11px; letter-spacing: .06em; }
 }
-/* Wide screens: 4/3 at 1280 would be 960px tall and push everything below the
-   fold, so the hero caps and takes a small vertical crop instead. 16/9 costs
-   about 25% off the top and bottom, against 33% off the sides before. */
-@media (min-width: 820px) {
-  /* Height, not aspect-ratio. aspect-ratio with a max-height makes the box
-     shrink its WIDTH to keep the ratio, which left the hero 1216px wide inside
-     a 1440px window with a bare strip down the right. A fixed height at full
-     width is what lets object-fit do its job. */
-  .lp-hero { aspect-ratio: 16 / 9; height: auto; }
-}
-.lp-hero-media { position: absolute; inset: 0; }
-.lp-hero-media img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 34%;
-}
-.lp-hero-media img.after {
-  clip-path: inset(0 100% 0 0);
-  animation: lpwipe 5.8184s cubic-bezier(.65,0,.35,1) 1 forwards;
-  animation-delay: .4s;
-}
-/* The ad's opener, beat for beat. BEAT = 0.7273s at 82.497 BPM, so the whole
-   move is 8 beats = 5.8184s and each percentage below is a beat boundary:
-     beat 0-1  hold on the green room      0 -> 12.5%
-     beat 1-2  tease in to 55%                -> 25%
-     beat 2-3  tease back to 100%             -> 37.5%
-     beat 3-6  the wipe, 100% -> 0%           -> 75%
-     beat 6-8  settled                        -> 100%
-   The tease is the point: it shows you there is something behind the green
-   room, takes it away, then gives it to you. */
-@keyframes lpwipe {
-  0%, 12.5% { clip-path: inset(0 0 0 100%); }
-  25%       { clip-path: inset(0 0 0 55%); }
-  37.5%     { clip-path: inset(0 0 0 100%); }
-  75%, 100% { clip-path: inset(0 0 0 0); }
-}
-/* The gold edge rides the reveal. */
-.lp-wipe {
-  position: absolute; top: 0; bottom: 0; width: 3px;
-  background: var(--gold); left: 100%; opacity: 0;
-  animation: lpwipeline 5.8184s cubic-bezier(.65,0,.35,1) 1 forwards;
-  animation-delay: .4s;
-}
-/* The gold edge rides every move, including the tease and the pull-back. */
-@keyframes lpwipeline {
-  0%, 12.4%   { left: 100%; opacity: 0; }
-  12.5%       { left: 100%; opacity: 1; }
-  25%         { left: 55%;  opacity: 1; }
-  37.5%       { left: 100%; opacity: 1; }
-  75%         { left: 0%;   opacity: 1; }
-  76%, 100%   { left: 0%;   opacity: 0; }
-}
-.lp-tag {
-  position: absolute; z-index: 2;
-  background: rgba(17,17,17,.72); color: #fff;
-  font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-  padding: 7px 14px; border-radius: 999px;
-}
-.lp-tag-before { top: 14px; left: var(--gutter); animation: lptagout 5.8184s linear 1 forwards; animation-delay: .4s; }
-.lp-tag-after  { bottom: 14px; right: var(--gutter); opacity: 0; animation: lptagin 5.8184s linear 1 forwards; animation-delay: .4s; }
-@keyframes lptagout { 0%,40% { opacity: 1; } 58%,100% { opacity: 0; } }
-@keyframes lptagin  { 0%,60% { opacity: 0; } 74%,100% { opacity: 1; } }
-
-/* Two treatments, by width.
-
-   On phones the copy sits under the picture on ink. There is no room to put
-   type over a 390px-wide photograph without it running through the mirror,
-   the window frame and the plant, and a 4:3 hero already fills the fold.
-
-   From 820px up it moves onto the photograph, centred, exactly as the hero on
-   larrychou.com does. Wide screens have the room, and the bar was reading as a
-   separate black slab bolted under the image rather than one hero. */
 .lp-hero-wrap { position: relative; }
-.lp-hero-copy {
-  position: relative; z-index: 2;
-  text-align: center;
-  background: var(--ink);
-  padding: clamp(22px, 4vw, 40px) var(--gutter) clamp(24px, 4.4vw, 44px);
+.offer-hero {
+  background: var(--paper); border: 2px solid var(--ink); text-align: center;
+  margin: clamp(12px, 3.4vw, 20px) var(--gutter) 0;
+  padding: clamp(26px, 5vw, 46px) clamp(16px, 4.4vw, 32px) clamp(22px, 4.4vw, 32px);
 }
-.lp-hero-copy > * { max-width: 940px; margin-inline: auto; }
-/* Phones: a black box around the copy, not a band across the page. Full bleed
-   and flush to the photo read as one slab of image-plus-black; inset to the
-   same gutter as the cards below, with air above it, it reads as its own
-   object and the hero photograph keeps its own edge. */
-@media (max-width: 819px) {
-  .lp-hero-copy {
-    margin: clamp(12px, 3.4vw, 18px) var(--gutter) 0;
-    padding: clamp(20px, 5vw, 28px) clamp(16px, 4.4vw, 24px) clamp(14px, 3vw, 18px);
-  }
-  /* Smaller here than the base: the headline is a full sentence now, not three
-     words, so the big size ran it to four lines and shouted. This sits it on two.
-     Extra specificity (.lp-hero-wrap) so it beats the base rule declared below. */
-  .lp-hero-wrap .lp-hero-copy h1 { font-size: clamp(18px, 5.2vw, 22px); line-height: 1.12; margin-bottom: 0; }
-
-  /* The CTA joins the headline inside the same ink box on a phone: same gutter
-     inset, no gap above it, so the copy bar and the form read as one slab. The
-     offer's own headings come off (the headline is the pitch) and the field
-     stacks over the button. The address still hands off to the full form below,
-     so this is a shortcut into it, not a second competing submission. */
-  .lp-hero-wrap .lp-hero-offer {
-    display: block;
-    position: static;
-    background: var(--ink);
-    margin: 0 var(--gutter) 0;
-    padding: 0 clamp(16px, 4.4vw, 24px) clamp(20px, 5vw, 26px);
-    animation: none;
-    text-align: center;
-  }
-  .lp-hero-offer .lp-offer-h, .lp-hero-offer .lp-offer-sub { display: none; }
-  .lp-hero-wrap .lp-hero-form { grid-template-columns: 1fr; gap: 12px; }
-  /* Fit the button to its text and shorten it, rather than letting it stretch
-     the full width of the box, which read as oversized. */
-  .lp-hero-wrap .lp-hero-btn { justify-self: center; width: auto; padding: 12px 26px; font-size: 16px; }
-  /* Staging line joins the box, quiet: small, medium weight, a touch muted so it
-     does not shout next to the button. */
-  .lp-hero-wrap .lp-hero-bonus { display: block; text-align: center; margin: 14px 0 0; }
-  .lp-hero-wrap .lp-hero-bonus strong { display: block; font-size: 19px; font-weight: 800; color: #FFFFFF; line-height: 1.2; }
-  .lp-hero-wrap .lp-hero-bonus-sub { display: block; font-size: 13px; font-weight: 500; color: rgba(255,255,255,.78); margin-top: 4px; line-height: 1.3; }
-  .lp-hero-wrap .lp-hero-scarcity { display: block; text-align: center; margin: 10px 0 0; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.9); line-height: 1.3; }
-  .lp-hero-wrap .lp-hero-scarcity strong { color: #FFFFFF; }
-}
-.lp-hero-copy h1 {
-  font-family: var(--display); font-weight: 400;
-  font-size: clamp(34px, 7.4vw, 68px); line-height: 1.03;
-  letter-spacing: -0.01em; color: #FFFFFF; margin-bottom: 12px;
-}
-.lp-hero-copy .hero-sub { color: #FFFFFF; font-weight: 700; }
-/* "16 days" is set in the display face, not a heavier Cabin. Cabin is loaded
-   at 500/600/700 and has no heavier cut, so 700-on-700 left the weight doing
-   nothing and a synthesised 800 would only smear the letterforms. Alfa Slab
-   One is already loaded, is genuinely far heavier, and is what every other
-   figure on this page is set in, so the number matches the numbers elsewhere.
-   Slightly smaller by ratio because a slab at the same size out-measures the
-   sans around it. */
-.lp-hero-copy .hl {
-  color: #FFFFFF;
-  font-family: var(--display); font-weight: 400;
-  font-size: .94em; letter-spacing: 0;
-}
-
-/* Desktop: onto the photograph, mirroring larrychou.com. No scrim and no
-   darkening of the image; the contrast goes on the letterforms instead, using
-   the same five stacked shadows the main site's hero runs. The heavier bottom
-   padding lifts the block above the midline, again as it does there. */
 @media (min-width: 820px) {
-  .lp-hero-copy {
-    position: absolute; inset: 0; z-index: 3;
-    display: flex; flex-direction: column; justify-content: center;
-    background: none;
-    padding: clamp(30px, 4vw, 46px) var(--gutter) clamp(70px, 10vw, 150px);
-    pointer-events: none;
-  }
-  .lp-hero-copy h1, .lp-hero-copy .hero-sub {
-    text-shadow:
-      0 1px 2px rgba(0,0,0,.92),
-      0 2px 4px rgba(0,0,0,.88),
-      0 2px 10px rgba(0,0,0,.8),
-      0 0 22px rgba(0,0,0,.7),
-      0 0 46px rgba(0,0,0,.5);
-  }
-  /* The marker carries itself on the photograph too, so nothing is overridden
-     here. It used to be a flat wash that needed darkening to survive the bright
-     after frame. */
-
-  /* The headline belongs to the before-world. It clears out as the wipe edge
-     crosses the centred block, which on this timeline is a little past the
-     halfway mark, and the offer takes its place. */
-  .lp-hero-copy h1, .lp-hero-copy .hero-sub {
-    animation: lpherotextout 5.8184s linear .4s both;
-  }
+  .offer-hero { margin-inline: auto; max-width: 760px; }
 }
-@keyframes lpherotextout {
-  0%, 50%  { opacity: 1; }
-  54%, 100% { opacity: 0; }
-}
-
-/* ---- hero offer: mirrors the offer block on larrychou.com ----
-   Hidden outright below 820px. Phones already carry the ink copy bar under the
-   photo and the real form further down; a second form in a 293px-tall hero
-   would be two asks stacked on top of each other. */
-.lp-hero-offer { display: none; }
-.lp-hero-bonus { display: none; }
-.lp-hero-scarcity { display: none; }
-@media (min-width: 820px) {
-  .lp-hero-offer {
-    display: block;
-    /* Anchored to the top of the hero, not centred and lifted. Centring meant
-       the block's position depended on its own height and on a hand-tuned
-       clamp, and it landed in the middle of the photograph, over the bed. The
-       measured position on larrychou.com is 10% down the hero, so that is what
-       this is: everything sits on the ceiling and the upper wall, and the bed,
-       the rug and the plant stay clear. A percentage rather than a pixel
-       offset because the hero is 16/9 here, so its height scales with the
-       width and this holds at every one. */
-    position: absolute;
-    top: 10%; left: 0; right: 0; bottom: auto;
-    margin-inline: auto;
-    height: fit-content;
-    width: min(96%, 760px);
-    z-index: 4;
-    text-align: center;
-    animation: lpofferin 5.8184s ease .4s both;
-  }
-}
-/* Held until the after frame has settled, then stays. `both` covers the delay
-   so it cannot flash on load. */
-@keyframes lpofferin {
-  0%, 76%   { opacity: 0; visibility: hidden; }
-  84%, 100% { opacity: 1; visibility: visible; }
-}
-/* Jet black, no halo. This block only ever appears on the after frame, which
-   is a bright room: black measures around 11:1 there where white is under 2
-   and would need a five-layer shadow propping it up. If the after photo is
-   ever swapped for a dark room, this has to go back to white. */
-/* Averaged over the block the after frame is bright, 0.62 luminance, and black
-   measures 13:1 on it. But it is a photograph, not a fill: 1.8% of the heading
-   area and 7.1% of the subhead area is the dark ring of the mirror and the
-   leaves of the plant, where black falls under 3:1. Rather than darken the
-   image, which is not allowed here, ink type gets a paper halo, the same
-   treatment the main site uses for ink over this photo. Hard contact edge plus
-   stacked glows, so the letters carry their own light ground across whatever
-   they cross. */
-.lp-offer-h, .lp-offer-sub {
-  color: #000000; max-width: none;
-  text-shadow:
-    0 0 1px rgba(242,239,233,1),
-    0 1px 2px rgba(242,239,233,.95),
-    0 -1px 2px rgba(242,239,233,.95),
-    0 2px 6px rgba(242,239,233,.85),
-    0 0 14px rgba(242,239,233,.75),
-    0 0 28px rgba(242,239,233,.6);
-}
-.lp-offer-h {
+.offer-hero > * { max-width: 560px; margin-inline: auto; }
+.offer-hero h1 {
   font-family: var(--display); font-weight: 400;
-  font-size: clamp(30px, 5vw, 58px); line-height: 1.04;
-  margin: 0 0 6px;
+  font-size: clamp(26px, 6.6vw, 48px); line-height: 1.06;
+  letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px; max-width: none;
 }
-.lp-offer-sub {
-  font-size: clamp(17px, 2.1vw, 24px); font-weight: 700;
-  margin: 0 0 16px;
+/* The clarity line: names the actual service (prep AND sell) and frames the
+   free work as a bonus inside it, so the "free" above is never mistaken for a
+   standalone giveaway or a free sale. */
+/* Ad-scent eyebrow: the video ends on "make the easy move, I do the hard
+   stuff in 16 days", so the page opens on the same words. Confirms "right
+   place" before the $23,500 offer reads as the bonus. */
+.oh-eyebrow { font-family: "Playfair Display", Georgia, serif; font-style: italic; font-size: clamp(18px, 2.6vw, 25px); font-weight: 600; color: var(--mallard); text-align: center; margin: clamp(18px, 3.6vw, 24px) auto 2px; padding: 0 var(--gutter); max-width: none; line-height: 1.3; }
+.oh-roman { font-style: normal; font-weight: 700; }
+/* The scope line: quiet, but present, so the "free" above is never read as a
+   free sale. Names what Seller pays without a percentage. */
+.oh-cost { font-size: 14px; font-weight: 500; color: var(--ink-mid); margin: 0 auto 22px; max-width: 40ch; line-height: 1.4; }
+/* The breakdown, a quiet two-line receipt. */
+.oh-stack { margin-bottom: 20px; max-width: 400px; }
+.oh-line { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 8px 0; border-top: 1px solid var(--rule); max-width: none; }
+.oh-line:last-child { border-bottom: 1px solid var(--rule); }
+.oh-line strong { font-size: 16px; font-weight: 700; color: var(--ink); }
+.oh-line span { font-family: var(--sans); font-size: 14px; font-weight: 700; color: var(--gold); white-space: nowrap; }
+.oh-why { margin: 0 auto 20px; max-width: 46ch; font-size: 14px; font-weight: 500; color: var(--ink-mid); line-height: 1.5; }
+.offer-hero .lp-hero-btn { display: inline-block; text-decoration: none; }
+/* Styled as a live status readout, not body copy: a chip with a pulsing
+   indicator dot, so the number reads as a value being tracked. */
+.slots-row { text-align: center; margin: 0 0 20px; }
+.oh-slots {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 0; padding: 8px 16px;
+  background: #FFFFFF; border: 1px solid var(--ink);
+  font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink-mid);
+  white-space: nowrap;
 }
+.oh-slots strong { color: var(--ink); }
+
+.oh-slots-dot {
+  width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto;
+  background: var(--action);
+  animation: slotpulse 2s ease-in-out infinite;
+}
+@keyframes slotpulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(18,122,95,.45); }
+  50%      { box-shadow: 0 0 0 6px rgba(18,122,95,0); }
+}
+@media (prefers-reduced-motion: reduce) { .oh-slots-dot { animation: none; } }
 /* Grid, not flex, so the field takes everything the button does not need. */
-.lp-hero-form { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; }
+.lp-hero-form { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); align-items: stretch; }
 /* Sitting on a photograph, a hairline border and a flat fill read as
    decoration. Both controls get an ink outline and a hard offset shadow so
    they look like objects laid on the image rather than tinted areas of it. */
@@ -417,8 +228,8 @@ img { max-width: 100%; height: auto; display: block; }
 .lp-hero-form input::placeholder { color: var(--ink); opacity: 1; }
 .lp-hero-form input:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
 .lp-hero-btn {
-  cursor: pointer; white-space: nowrap;
-  padding: 15px 30px; font-family: var(--sans); font-size: 18px; font-weight: 700;
+  cursor: pointer; line-height: 1.25;
+  padding: 14px 24px; font-family: var(--sans); font-size: clamp(16px, 4.4vw, 18px); font-weight: 700;
   color: #FFFFFF; background: var(--action);
   border: 2px solid var(--ink); border-radius: 999px;
   box-shadow: 4px 4px 0 rgba(17,17,17,.42);
@@ -427,25 +238,7 @@ img { max-width: 100%; height: auto; display: block; }
 .lp-hero-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(17,17,17,.5); }
 .lp-hero-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 rgba(17,17,17,.42); }
 
-/* Someone who has asked for less movement gets the after frame, no sweep. */
 @media (prefers-reduced-motion: reduce) {
-  .lp-hero-media img.after { animation: none; clip-path: inset(0 0 0 0); }
-  .lp-wipe { display: none; }
-  .lp-tag-before { display: none; }
-  .lp-tag-after { opacity: 1; animation: none; }
-}
-/* Without the swap animation the headline and the offer would both render, in
-   the same place, on top of each other. So at these widths the headline goes
-   back to the phone treatment, an ink bar under the picture, and the offer
-   keeps the photograph to itself. Nothing moves and nothing is lost. */
-@media (prefers-reduced-motion: reduce) and (min-width: 820px) {
-  .lp-hero-copy {
-    position: relative; inset: auto; z-index: 2;
-    display: block; background: var(--ink); pointer-events: auto;
-    padding: clamp(22px, 4vw, 40px) var(--gutter) clamp(24px, 4.4vw, 44px);
-  }
-  .lp-hero-copy h1, .lp-hero-copy .hero-sub { animation: none; text-shadow: none; }
-  .lp-hero-offer { animation: none; }
   .lp-hero-btn { transition: none; }
   .lp-hero-btn:hover, .lp-hero-btn:active { transform: none; }
 }
@@ -605,6 +398,10 @@ img { max-width: 100%; height: auto; display: block; }
 .story-list { list-style: none; }
 .story-list li { padding: 11px 0; border-top: 1px solid var(--rule); }
 .story-list li:first-child { border-top: 0; }
+/* The two package lines the 3-seller offer makes free. A gold bar and a small
+   tag mark them as the limited pieces without turning the list into a flyer. */
+.story-list li.li-offer { border-left: 4px solid var(--gold); padding-left: 14px; background: rgba(169,133,63,.07); }
+.li-offer-tag { display: block; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
 .story-cost { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 3vw, 30px); color: var(--ink); margin-top: 22px; }
 .story-list--didnt li { color: var(--ink); }
 
@@ -679,6 +476,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .hiw-card > h2 { margin-top: 0; }
 .hiw-lead { font-size: 18px; font-weight: 500; line-height: 1.7; color: var(--ink-mid); margin: 0 0 clamp(16px, 2.2vw, 22px); max-width: none; }
+.hiw-note { font-size: 15px; font-weight: 500; line-height: 1.6; color: var(--ink-mid); margin: clamp(16px, 2.2vw, 22px) 0 0; padding-top: clamp(14px, 2vw, 18px); border-top: 1px solid var(--rule); max-width: none; }
 .hiw-close { font-size: 18px; font-weight: 500; line-height: 1.7; color: var(--ink-mid); margin: clamp(20px, 2.6vw, 26px) 0 0; max-width: none; }
 /* Numbered, because the count is the point: six things happen and none of them
    are the seller's. The numerals are gold and small so they mark the sequence
@@ -779,23 +577,11 @@ img { max-width: 100%; height: auto; display: block; }
 .bp-num { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 5vw, 32px); line-height: 1; color: var(--ink); white-space: nowrap; }
 /* Staging line at the form. A plain line, no badge, no colour. */
 .form-bonus { font-size: 13px; font-weight: 500; color: var(--ink-mid); line-height: 1.4; margin: 2px 0 20px; }
-/* Free-bonus stack at the form. Item names carry the same 18px/700 as the CTA
-   label so the value reads at full weight, not as fine print; the dollar
-   figures sit in gold and right-align like a menu. */
-.offer-stack { margin: 0 0 12px; padding: 15px 20px 17px; border: 2px solid var(--ink); background: var(--paper); }
-.offer-scarcity { margin: 0; font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--ink); text-align: center; line-height: 1.4; }
+/* The offer reminder at the form: one bold line, terms under it. */
+.offer-scarcity { margin: 0 0 20px; font-family: var(--sans); font-size: clamp(18px, 2.4vw, 21px); font-weight: 700; color: var(--ink); text-align: center; line-height: 1.35; }
 .offer-scarcity strong { color: var(--gold); }
 .offer-scarcity-sub { display: block; margin-top: 5px; font-size: 13px; font-weight: 500; color: var(--ink-mid); line-height: 1.4; }
-.offer-terms { margin: 8px auto 20px; max-width: 44ch; font-size: 12px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; }
-.offer-terms strong { font-weight: 700; }
-.offer-stack-lead { font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; color: var(--ink-mid); margin: 0 0 12px; }
-.offer-line { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; line-height: 1.25; }
-.offer-line + .offer-line { margin-top: 10px; }
-.offer-line strong { font-size: 18px; font-weight: 700; color: var(--ink); }
-.offer-line span { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--gold); white-space: nowrap; }
-.offer-total { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-top: 12px; padding-top: 12px; border-top: 2px solid var(--ink); }
-.offer-total strong { font-size: 18px; font-weight: 700; color: var(--ink); }
-.offer-total span { font-family: var(--sans); font-size: 18px; font-weight: 800; color: var(--gold); white-space: nowrap; }
+.offer-terms { margin: 14px auto 0; max-width: 52ch; font-size: 12px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; }
 .form-group { margin-bottom: 14px; }
 .form-group label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 7px; color: var(--ink); }
 .form-group input, .form-group select, .form-group textarea {
@@ -804,6 +590,7 @@ img { max-width: 100%; height: auto; display: block; }
   border: 2px solid var(--ink); border-radius: 0;
 }
 .form-divider { height: 1px; background: var(--rule); margin: 22px 0; }
+.form-promise { margin: 14px 0 0; font-size: 14px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; max-width: none; }
 
 /* Step 2 opens with the address already given, so the visitor can see the form
    knows it and does not wonder whether it took. The change link goes back. */
@@ -909,6 +696,19 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ---- zillow lightbox ---- */
+/* Offer-terms modal: an on-screen card, same click-to-expand feel as the photo
+   lightbox. Keeps the visitor on the page and gives the "free" claim its
+   plain-language terms without shipping them the signable addendum. */
+.terms-link { background: none; border: 0; padding: 0; margin: 0; font: inherit; color: var(--action); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; white-space: nowrap; }
+.terms-modal { position: fixed; inset: 0; z-index: 9999; background: rgba(17,17,17,.7); display: none; align-items: center; justify-content: center; padding: 20px; }
+.terms-modal.active { display: flex; }
+.terms-card { background: var(--paper); border: 2px solid var(--ink); max-width: 620px; width: 100%; max-height: 86vh; overflow-y: auto; padding: clamp(22px, 4vw, 34px); position: relative; text-align: left; }
+.terms-card h3 { font-family: var(--display); font-weight: 400; font-size: clamp(20px, 3vw, 26px); color: var(--ink); margin: 0 36px 4px 0; line-height: 1.1; max-width: none; }
+.terms-card .terms-sub { font-size: 13px; font-weight: 600; color: var(--ink-mid); margin: 0 0 16px; max-width: none; }
+.terms-card h4 { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); margin: 16px 0 5px; }
+.terms-card p { font-size: 14px; line-height: 1.55; color: var(--ink-mid); margin: 0 0 8px; max-width: none; }
+.terms-fine { font-size: 12px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.terms-close { position: absolute; top: 8px; right: 14px; background: none; border: 0; font-size: 30px; line-height: 1; color: var(--ink); cursor: pointer; }
 .zillow-lightbox { position: fixed; inset: 0; z-index: 9999; background: rgba(17,17,17,.92); display: none; align-items: center; justify-content: center; padding: 20px; }
 /* .active, matching what the script toggles. This said .open while the JS adds
    and removes "active", so the lightbox could never be shown. */
@@ -985,7 +785,7 @@ gmp-place-autocomplete::part(input) {
      Nothing loads until the visitor accepts. The no-script pixel image is gone
      with them: it fires on render and cannot be gated, so it would have been
      the one tracker that ignored the banner. -->
-<script src="/analytics.js?v=2"></script>
+<script src="/analytics.js?v=5"></script>
 
 <!-- form_start event + lead_eid setter for Pixel deduplication -->
 <script>
@@ -1100,69 +900,52 @@ gmp-place-autocomplete::part(input) {
       });
     }
 
-    // The hero form is a doorway, not a second submission. It fills the address
-    // in step 1, captures it, and drops the visitor straight into step 2, so
-    // the address is never typed twice and every completed lead still arrives
-    // through one form with one conversion event.
-    var hero = document.querySelector('form[data-hero-handoff]');
-    if (hero) {
-      hero.addEventListener('submit', function(e){
-        e.preventDefault();
-        var typed = hero.querySelector('input[name="hero-address"]').value.trim();
-        if (typed) {
-          if (addr) { addr.value = typed; addr.dispatchEvent(new Event('input', { bubbles: true })); }
-          var pae = placesEl();
-          if (pae) { try { pae.value = typed; } catch (e) {} }
-        }
-        var box = document.getElementById('form');
-        if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setTimeout(function(){
-          if (typed) openStep2(); else if (addr) addr.focus({ preventScroll: true });
-        }, 600);
-      });
-    }
   });
 })();
+</script>
+
+<script>
+/* One number to edit by hand: the chip's data-slots-open. Every other slot
+   count on the page mirrors it, so a sold spot is a one-character edit that
+   cannot leave a stale "3" behind. Deliberately no singular/plural fixup at 1:
+   "the next 1 homeowners" reads hand-edited, which is the point.
+   The "as of" date renders as today, always, in the visitor's timezone. */
+document.addEventListener('DOMContentLoaded', function () {
+  var d = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  document.querySelectorAll('[data-today]').forEach(function (el) { el.textContent = d; });
+
+  var master = document.querySelector('[data-slots-open]');
+  var n = master ? parseInt(master.textContent, 10) : NaN;
+  if (isNaN(n)) return;
+  document.querySelectorAll('[data-slots-mirror]').forEach(function (el) { el.textContent = n; });
+});
 </script>
 
 </head>
 <body>
 
-<!-- Hero. The green room holds, wipes to the staged bedroom, and the headline
-     sits on top. Same mechanic as larrychou.com. The two photos are the ones
-     the before/after grid already loads, so this adds no new downloads, and
-     they are webp here rather than jpg, which makes the page lighter than it
-     was. -->
-<div class="lp-hero-wrap">
-  <section class="lp-hero" id="top">
-    <div class="lp-hero-media" aria-hidden="true">
-      <img src="before-5.webp?v=3" alt="" width="1200" height="900" fetchpriority="high" decoding="async">
-      <img class="after" src="after-5.webp?v=3" alt="" width="1200" height="900" fetchpriority="high" decoding="async">
-      <span class="lp-wipe"></span>
-    </div>
-    <span class="lp-tag lp-tag-before">Before</span>
-    <span class="lp-tag lp-tag-after">After</span>
-  </section>
-  <div class="lp-hero-copy">
-    <h1>Get your home ready to sell<br>in <span class="hl">16 days</span></h1>
+<header class="site-top">
+  <div class="site-top-row">
+    <p class="site-top-name">Larry Chou</p>
+    <p class="site-top-mark">16-Day Home Prep and Sales</p>
   </div>
+  <p class="site-top-brokerage">Keller Williams Silicon Valley</p>
+</header>
 
-  <!-- Desktop only. Appears once the after frame has settled and replaces the
-       headline, the same swap larrychou.com runs in its hero. It does not post
-       anywhere: there is one Netlify form on this page and splitting
-       submissions across two would split the lead record and the conversion
-       event with it. The address is carried down to the real form instead. -->
-  <div class="lp-hero-offer">
-    <p class="lp-offer-h">Sell on easy mode</p>
-    <p class="lp-offer-sub">I&rsquo;ll do the hard stuff in 16 days</p>
-    <form class="lp-hero-form" data-hero-handoff>
-      <input name="hero-address" type="text" placeholder="Property address"
-             aria-label="Property address" autocomplete="street-address">
-      <button class="lp-hero-btn" type="submit">Get My House Ready to Sell in 16 Days</button>
-    </form>
-    <p class="lp-hero-bonus"><strong>$23,500 in prep, included free</strong><span class="lp-hero-bonus-sub">Whole-house painting + professional staging</span></p>
-    <p class="lp-hero-scarcity">Open to the next <strong>3</strong> homeowners who sign up to sell</p>
-  </div>
+<!-- Hero. The offer replaced the before/after wipe: the photos live in the
+     carousel below, and the 3-seller offer is the biggest pull on the page,
+     so it opens it. The address form is the same doorway into the real form
+     it always was. -->
+<div class="lp-hero-wrap">
+  <p class="oh-eyebrow"><span class="oh-roman">Make the easy move.</span> I prepare, list, and sell your home</p>
+  <section class="offer-hero" id="top">
+    <h1>$23,500<br>in free whole-house painting and staging</h1>
+    <div class="oh-stack">
+      <p class="oh-line"><strong>Whole-house painting</strong> <span>$16,000 value</span></p>
+      <p class="oh-line"><strong>Professional staging</strong> <span>up to $7,500 value</span></p>
+    </div>
+    <a class="lp-hero-btn" href="#form">See If My Home Qualifies</a>
+  </section>
 </div>
 
 <div style="max-width:680px; margin:0 auto; padding:0 24px 4px;">
@@ -1174,12 +957,12 @@ gmp-place-autocomplete::part(input) {
         <div class="proof-label">Days of Prep</div>
       </div>
       <div class="proof-badge">
-        <div class="proof-num">48 hrs</div>
-        <div class="proof-label">Multiple Offers</div>
+        <div class="proof-num">2</div>
+        <div class="proof-label">Days to Multiple Offers</div>
       </div>
       <div class="proof-badge">
-        <div class="proof-num">7 days</div>
-        <div class="proof-label">Pending</div>
+        <div class="proof-num">7</div>
+        <div class="proof-label">Days to Accepted Offer</div>
       </div>
     </div>
   </div>
@@ -1289,28 +1072,6 @@ gmp-place-autocomplete::part(input) {
 
 </div>
 
-<div class="story-section hiw">
-  <div class="hiw-card">
-  <h2>The 16-Day Prep &amp; Sale Package</h2>
-  <p class="hiw-lead">I manage every detail to get your home prepped in 16 days and then sold, giving you total peace of mind and maximum equity, without ever having to manage contractors or show up in person.</p>
-
-  <p class="story-subhead">What&rsquo;s included</p>
-  <ul class="story-list">
-    <li><strong>Full-service agent representation:</strong> end-to-end guidance and negotiation from the first meeting through closing day.</li>
-    <li><strong>Premium staging credit:</strong> up to $7,500 toward professional staging with one of my preferred vendors.</li>
-    <li><strong>16-day turnkey home prep:</strong> I handle the entire prep process so your home is market-ready in 16 days.</li>
-    <li><strong>Upfront prep plan and clear budget:</strong> an itemized scope of work and costs before any work begins, usually 1% or less of your home&rsquo;s value.</li>
-    <li><strong>Fully managed contractor work:</strong> I coordinate every crew, and you pay contractors directly at cost, with no markup.</li>
-    <li><strong>Live project management app:</strong> track progress, photos, and sale milestones in real time from anywhere in the world.</li>
-    <li><strong>Moving and vehicle shipping coordination:</strong> I schedule and manage reputable movers and car transport for you.</li>
-    <li><strong>Extended on-call support:</strong> direct answers 8 AM to 11 PM PT, 7 days a week.</li>
-  </ul>
-  </div>
-</div>
-
-
-
-
 <div class="seller-quote">
   <div class="sq-panel">
     <p class="sq-attrib"><span class="sq-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> &nbsp;Wangda Tan, 1458 Portobelo, San Jose</p>
@@ -1320,20 +1081,12 @@ gmp-place-autocomplete::part(input) {
 
 <div class="cta-section cta-action-zone" id="form">
   <div class="form-box">
-    <div class="form-heading">Get Your 16-Day Prep Plan</div>
-    <p class="form-offer">I'll walk your home, tell you what I'll fix, what I'll skip, and what it'll cost.</p>
-    <div class="form-guarantee">
-      <p class="guarantee-label">My Budget Guarantee</p>
-      <p class="guarantee-text">Your prep bill won't exceed your approved budget by more than 10%. If it does, <strong>I pay for the overage.</strong></p>
-    </div>
-    <div class="offer-stack">
-      <p class="offer-stack-lead">Included free with your prep</p>
-      <p class="offer-line"><strong>Whole-house painting</strong> <span>$16,000 value</span></p>
-      <p class="offer-line"><strong>Professional staging</strong> <span>up to $7,500 value</span></p>
-      <p class="offer-total"><strong>Included free</strong> <span>$23,500 value</span></p>
-    </div>
-    <p class="offer-scarcity">Open to the next <strong>3</strong> homeowners who sign up to sell<span class="offer-scarcity-sub">In exchange, you agree to feature your home as a case study and leave a review</span></p>
-    <p class="offer-terms">Eligibility: single-family home, valued $2M+, under 2,000&nbsp;sq&nbsp;ft, no cathedral ceilings or two-story interior spaces, within 15 miles of San Jose, vacant and listed with me within 60 days</p>
+    <div class="form-heading">Let&rsquo;s start with your address</div>
+    <p class="offer-scarcity">$23,500 in free painting and staging for <strong data-slots-mirror>3</strong> qualifying homeowners who use my 16-Day Home Prep and Sales Service<span class="offer-scarcity-sub">In return, all I ask is permission to feature your home as a case study</span></p>
+    <p class="oh-why">Why free? I&rsquo;m building the case-study portfolio for this service, and a few more showcase homes are needed</p>
+    <!-- Slot count is edited BY HAND when a spot fills: change the number
+         inside data-slots-open (and nothing else). The date fills itself. -->
+    <div class="slots-row"><p class="oh-slots"><span class="oh-slots-dot" aria-hidden="true"></span><strong data-slots-open>3</strong>&nbsp;of 3 spots open &middot; <span data-today></span></p></div>
     <!-- Two steps, same form element. Step 1 asks only for the address, and
          clicking Continue posts it on its own as consult-v2-start before step 2
          is revealed. So an address typed by someone who then loses interest is
@@ -1356,10 +1109,10 @@ gmp-place-autocomplete::part(input) {
         <div class="form-divider"></div>
         <!-- type=button: this must not submit the form, it advances the step. -->
         <button type="button" class="form-submit" data-step-next>Continue</button>
+        <p class="offer-terms">Single-family home, valued $1.75M+, under 2,000&nbsp;sq&nbsp;ft, no cathedral ceilings, within 15 miles of San Jose, must be vacant, and listed with me within 60 days &middot; <button type="button" class="terms-link" onclick="openTerms()">Full offer terms</button></p>
       </div>
 
       <div class="fstep" data-step="2" hidden>
-        <p class="fstep-recap">Prep plan for <span data-addr-recap></span> <button type="button" class="fstep-edit" data-step-back>Change</button></p>
         <div class="form-group">
           <label for="f-name">Name</label>
           <input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
@@ -1373,7 +1126,8 @@ gmp-place-autocomplete::part(input) {
           <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
         </div>
         <div class="form-divider"></div>
-        <button type="submit" class="form-submit">Get My House Ready to Sell in 16 Days</button>
+        <button type="submit" class="form-submit">See If My Home Qualifies</button>
+        <p class="form-promise">I&rsquo;ll personally review your home and call you today. Submitted after hours? First thing tomorrow.</p>
       </div>
     </form>
 
@@ -1402,23 +1156,7 @@ gmp-place-autocomplete::part(input) {
   </div>
 </div>
 
-<div class="story-section">
-  <div class="hiw-card">
-  <h2>A written budget you can hold me to</h2>
-  <p class="hiw-lead">The two things that <strong>go wrong</strong> on any home project are the <strong>budget</strong> and the <strong>timeline</strong>. 16DayPrep is built to remove both: a written plan and a fixed budget before any contractor starts, and the whole job on a 16-day clock. You approve the number, then you hold me to it. This is the number I gave my last homeowner at 1458 Portobelo, against what it actually cost.</p>
 
-  <div class="budget-proof">
-    <div><span class="bp-label">Projected budget<span>Owner approved</span></span><span class="bp-num">$18,350</span></div>
-    <div><span class="bp-label">Final invoice</span><span class="bp-num">$18,454</span></div>
-    <div><span class="bp-label">Difference &middot; 0.6% over</span><span class="bp-num">+$104</span></div>
-  </div>
-
-  <div class="form-guarantee">
-    <p class="guarantee-label">My Budget Guarantee</p>
-    <p class="guarantee-text">Your prep bill won&rsquo;t exceed your approved budget by more than 10%. If it does, <strong>I pay for the overage.</strong></p>
-  </div>
-  </div>
-</div>
 
 <div class="story-section">
   <p class="story-label">The <span class="chip">16DayPrep</span>: what I did on a recent San Jose sale.</p>
@@ -1451,7 +1189,6 @@ gmp-place-autocomplete::part(input) {
     <li>Staged, photographed, and launched the listing.</li>
     <li><strong>Licensed trades:</strong> C-33 painter. C-10 electrician.</li>
   </ul>
-  <p class="did-foot">Prep work cost: $18,454.</p>
   </div>
 
   <div class="did-card did-card--skip">
@@ -1470,18 +1207,32 @@ gmp-place-autocomplete::part(input) {
   </div>
   </div>
 
-  <a href="#form" class="final-cta-btn">Get My Prep Plan</a>
+  <a href="#form" class="final-cta-btn">See If My Home Qualifies</a>
 </div>
 
-<hr class="rule-line">
 
-<section class="testi-section">
-  <div class="testi-inner">
-    <p class="testi-eyebrow">What a seller said</p>
-    <p class="testi-quote">"He talked us out of repainting the kitchen cabinets and replacing the counters because the whole kitchen layout is dated."</p>
-    <div class="testi-attr">San Jose Seller</div>
+
+<div class="story-section hiw">
+  <div class="hiw-card">
+  <h2>The 16-Day Home Prep and Sales Service</h2>
+  <p class="hiw-lead">I manage every detail to get your home prepped in 16 days and then sold, giving you total peace of mind and maximum equity, without ever having to manage contractors or show up in person.</p>
+
+  <p class="story-subhead">What&rsquo;s included</p>
+  <ul class="story-list">
+    <li><strong>Full-service agent representation:</strong> end-to-end guidance and negotiation from the first meeting through closing day.</li>
+    <li class="li-offer"><span class="li-offer-tag">Limited offer</span><strong>Free whole-house painting:</strong> interior and exterior, a $16,000 value.</li>
+    <li class="li-offer"><span class="li-offer-tag">Limited offer</span><strong>Premium staging credit:</strong> up to $7,500 toward professional staging with one of my preferred vendors.</li>
+    <li><strong>16-day turnkey home prep:</strong> I handle the entire prep process so your home is market-ready in 16 days.</li>
+    <li><strong>Upfront prep plan and clear budget:</strong> an itemized scope of work and costs before any work begins, usually 1% or less of your home&rsquo;s value.</li>
+    <li><strong>Fully managed contractor work:</strong> I coordinate every crew, and you pay contractors directly at cost, with no markup.</li>
+    <li><strong>Live project management app:</strong> track progress, photos, and sale milestones in real time from anywhere in the world.</li>
+    <li><strong>Moving and vehicle shipping coordination:</strong> I schedule and manage reputable movers and car transport for you.</li>
+    <li><strong>Extended on-call support:</strong> direct answers 8 AM to 11 PM PT, 7 days a week.</li>
+  </ul>
+  <p class="hiw-note">Painting and staging cost you $0, and they&rsquo;re usually 75&ndash;80% of a home&rsquo;s prep. That leaves only minor prep for you, plus sales commission.</p>
+  <a href="#form" class="final-cta-btn">See If My Home Qualifies</a>
   </div>
-</section>
+</div>
 
 <div style="padding:32px 0;"></div>
 
@@ -1504,6 +1255,31 @@ gmp-place-autocomplete::part(input) {
     </div>
   </div>
 </footer>
+
+<div class="terms-modal" id="terms-modal" onclick="if(!event.target.closest('.terms-card')||event.target.closest('.terms-close'))closeTerms()" role="dialog" aria-label="Offer terms">
+  <div class="terms-card">
+    <button class="terms-close" onclick="closeTerms()" aria-label="Close">&times;</button>
+    <h3>Painting &amp; Staging Offer Terms</h3>
+    <p class="terms-sub">16-Day Home Prep and Sales Service</p>
+
+    <h4>What you get</h4>
+    <p>Free whole-house painting (interior and exterior, surface preparation and paint) and up to $7,500 in professional staging. I pay for both.</p>
+
+    <h4>Who qualifies</h4>
+    <p>A single-family home valued at $1.75M or more, under 2,000 sq ft, with no cathedral ceilings, within 15 miles of San Jose, vacant, and listed with me within 60 days.</p>
+
+    <h4>What I ask in return</h4>
+    <p>You list your home for sale with me, keep it vacant through closing, cooperate with the prep and showings, and let me feature your home as a case study (photos, video, the address, and the results in my marketing).</p>
+
+    <h4>The one condition</h4>
+    <p>I pay these costs up front, before your home sells. If you take the home off the market, cancel, or list with another agent after painting or staging has started, you reimburse me the actual amount I paid the painting and staging vendors, with no markup and less any refunds. You always keep the right to accept or reject any offer.</p>
+
+    <h4>Availability</h4>
+    <p>Open to the next 3 qualifying sellers. I may withdraw the offer at any time.</p>
+
+    <p class="terms-fine">This is a plain-language summary, not the agreement. The offer is governed by a written addendum to your listing agreement, which controls. Larry Chou, CA DRE&nbsp;#02247191, salesperson at Keller Williams Silicon Valley, CA DRE&nbsp;#01327739.</p>
+  </div>
+</div>
 
 <div class="zillow-lightbox" id="zillow-lightbox" onclick="if(event.target.tagName!=='IMG'&&!event.target.closest('.zillow-lightbox-close'))closeZillowLightbox()" role="dialog" aria-label="Photo enlargement">
   <button class="zillow-lightbox-close" onclick="closeZillowLightbox()" aria-label="Close">&times;</button>
@@ -1541,7 +1317,9 @@ function closeZillowLightbox(){
   document.getElementById('zillow-lightbox').classList.remove('active');
   document.body.style.overflow='';
 }
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeZillowLightbox();});
+function openTerms(){var m=document.getElementById('terms-modal');m.classList.add('active');document.body.style.overflow='hidden';}
+function closeTerms(){document.getElementById('terms-modal').classList.remove('active');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeZillowLightbox();closeTerms();}});
 </script>
 
 
@@ -1607,10 +1385,7 @@ function initAddressAutocomplete(){
     if(form) form.addEventListener('submit', mirror, true);
   }
 
-  // Both the main form's step-1 field and the hero "doorway" field get it, so
-  // the address autocompletes wherever the visitor actually types on this page.
   attach(document.getElementById('f-address'));
-  attach(document.querySelector('form[data-hero-handoff] input[name="hero-address"]'));
 }
 </script>
 <script async defer

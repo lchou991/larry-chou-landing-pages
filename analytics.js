@@ -170,17 +170,10 @@
     wrap.className = 'consent';
     wrap.setAttribute('role', 'dialog');
     wrap.setAttribute('aria-label', 'Cookie choices');
-    /* The opening line is a factual claim. It holds on every page that shows
-       this banner today: all-done and all-done2 are Meta ads, gbp is Google
-       PPC, prep-plan is the mailer. If the banner is ever added to a page
-       reached organically, that sentence has to come off there, because a
-       false statement at the top of a consent notice defeats the notice. */
     wrap.innerHTML =
       '<div class="consent-inner">' +
-        '<p class="consent-copy">You arrived here from an ad I placed. ' +
-        'I use third-party tools that measure how my ads perform and record ' +
-        'how you use this page so I can provide my services to more ' +
-        'homeowners in the Bay Area.</p>' +
+        '<p class="consent-copy">' +
+        'I use third-party tools for data on how this page performs.</p>' +
         '<div class="consent-actions">' +
           '<button type="button" class="consent-btn consent-yes">Accept</button>' +
           '<button type="button" class="consent-btn consent-no">Decline</button>' +
