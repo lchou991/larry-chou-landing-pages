@@ -900,6 +900,21 @@ gmp-place-autocomplete::part(input) {
       });
     }
 
+    // Phone must be a complete number, not just an area code. `required` only
+    // blocks an empty field, so "408" slipped through. Count the actual digits
+    // and set a native validity message, so the browser stops the submit and
+    // prompts the visitor to finish the number.
+    var phone = document.getElementById('f-phone');
+    if (phone) {
+      var checkPhone = function () {
+        var digits = phone.value.replace(/\D/g, '');
+        phone.setCustomValidity(digits.length >= 10 ? '' : 'Please enter your full phone number, including area code.');
+      };
+      phone.addEventListener('input', checkPhone);
+      phone.addEventListener('blur', checkPhone);
+      checkPhone();
+    }
+
   });
 })();
 </script>
