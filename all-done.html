@@ -915,6 +915,20 @@ gmp-place-autocomplete::part(input) {
       checkPhone();
     }
 
+    // Native type=email accepts "a@b" with no real domain. Require a domain
+    // with a dot so things like "test@test" are caught. Empty is left to
+    // `required`.
+    var email = document.getElementById('f-email');
+    if (email) {
+      var checkEmail = function () {
+        var ok = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email.value);
+        email.setCustomValidity(ok || email.value === '' ? '' : 'Please enter a valid email address.');
+      };
+      email.addEventListener('input', checkEmail);
+      email.addEventListener('blur', checkEmail);
+      checkEmail();
+    }
+
   });
 })();
 </script>
