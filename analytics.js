@@ -199,16 +199,20 @@
      the confirmation page only, an absent choice keeps the previous behaviour.
      An explicit Decline is honoured everywhere. Rolling the banner out to the
      rest removes that branch. */
-  var isConfirmation = /^\/thank-you(\.html)?\/?$/.test(location.pathname);
+  /* Opt-out model, matching standard US retail practice: the ad pixel and
+     Clarity fire on load for everyone, exactly like GA4 already does. The only
+     visitor who is not tracked is one who has explicitly opted out. */
   var choice = read();
 
-  if (choice === 'granted') {
-    startAdTools();
-  } else if (choice === 'denied') {
+  if (choice === 'denied') {
     clearAdCookies();
-  } else if (isConfirmation) {
-    startAdTools();
   } else {
+    startAdTools();
+  }
+
+  /* First-time visitors still get the notice and a real, honored opt-out.
+     Returning visitors who already chose are not shown it again. */
+  if (!choice) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', buildBanner);
     } else {
