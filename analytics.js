@@ -173,20 +173,16 @@
     wrap.innerHTML =
       '<div class="consent-inner">' +
         '<p class="consent-copy">' +
-        'I use third-party tools for data on how this page performs.</p>' +
+        'I use cookies and third-party tools for analytics and advertising. ' +
+        'By using this site you agree to my <a class="consent-privacy" href="' + PRIVACY + '">Privacy Policy</a>.</p>' +
         '<div class="consent-actions">' +
-          '<button type="button" class="consent-btn consent-yes">Accept</button>' +
-          '<button type="button" class="consent-btn consent-no">Decline</button>' +
-          '<a class="consent-privacy" href="' + PRIVACY + '">Privacy</a>' +
+          '<button type="button" class="consent-btn consent-yes">Got it</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(wrap);
 
     wrap.querySelector('.consent-yes').addEventListener('click', function () {
-      write('granted'); wrap.remove(); startAdTools();
-    });
-    wrap.querySelector('.consent-no').addEventListener('click', function () {
-      write('denied'); wrap.remove(); clearAdCookies();
+      write('granted'); wrap.remove();
     });
   }
 
@@ -228,6 +224,6 @@
     var t = e.target.closest && e.target.closest('[data-consent-open]');
     if (!t) return;
     e.preventDefault();
-    buildBanner();
+    location.href = PRIVACY;
   });
 })();
