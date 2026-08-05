@@ -205,16 +205,9 @@
   } else {
     startAdTools();
   }
-
-  /* First-time visitors still get the notice and a real, honored opt-out.
-     Returning visitors who already chose are not shown it again. */
-  if (!choice) {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', buildBanner);
-    } else {
-      buildBanner();
-    }
-  }
+  /* No consent banner. US opt-out model: tracking fires on load, and the
+     disclosure lives in the privacy policy (linked in the footer). No federal
+     law requires a banner, and CCPA's thresholds do not reach this site. */
 
   fireConversion();
 
