@@ -772,15 +772,6 @@ img { max-width: 100%; height: auto; display: block; }
 .zillow-lightbox-close { position: absolute; top: 16px; right: 20px; background: none; border: 0; color: #fff; font-size: 40px; line-height: 1; cursor: pointer; }
 .zillow-lightbox-hint { color: #fff; text-align: center; margin-top: 14px; font-size: 15px; }
 
-/* ---- google places, dressed as the field it replaces ---- */
-gmp-place-autocomplete { width: 100%; display: block; color-scheme: light; background: #FFFFFF; border: 1px solid rgba(17,17,17,0.28); border-radius: 0; }
-gmp-place-autocomplete:focus-within { outline: none; border-color: var(--ink); }
-gmp-place-autocomplete::part(input) {
-  width: 100%; box-sizing: border-box; background: transparent;
-  border: none; box-shadow: none; outline: none;
-  color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.4; padding: 14px 16px;
-}
-
 /* ---- consent banner ----
    Accept and Decline are deliberately identical in size, weight and colour.
    CPRA wants the two choices equally easy to take, and a grey "Decline" beside
@@ -884,22 +875,10 @@ gmp-place-autocomplete::part(input) {
     var addr   = document.getElementById('f-address');
     var partialSent = false;
 
-    // Google Places replaces the address input with its own element and demotes
-    // #f-address to a hidden mirror, so neither the value nor the focus target
-    // can be assumed to be that input. Both are resolved at call time.
-    function placesEl() { return step1 && step1.querySelector('gmp-place-autocomplete'); }
-    function currentAddress() {
-      var v = addr && (addr.value || '').trim();
-      if (v) return v;
-      var pae = placesEl();
-      if (pae && typeof pae.value === 'string') return pae.value.trim();
-      return '';
-    }
-    function focusAddress() {
-      var pae = placesEl();
-      if (pae) { try { pae.focus(); return; } catch (e) {} }
-      if (addr) addr.focus({ preventScroll: true });
-    }
+    // The visible input IS the form field; the autocomplete dropdown only
+    // fills it. So the value and focus target are always #f-address itself.
+    function currentAddress() { return addr ? (addr.value || '').trim() : ''; }
+    function focusAddress() { if (addr) addr.focus({ preventScroll: true }); }
 
     function sendPartial() {
       if (partialSent || !addr) return;
@@ -1400,68 +1379,113 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeZillow
 
 
 
-<!-- Google Places (new) address autocomplete. Lead-safe: the address that gets
-     submitted lives in a hidden field that is filled both on suggestion-select
-     AND continuously as the user types (via the widget's public `value`), so a
-     never-selected address is never lost. If Google fails to load, the original
-     field stays a plain text box. -->
+<!-- Google Places address autocomplete, custom inline dropdown. The visible
+     input IS the form field (name=address), so anything typed is lead-safe by
+     construction. Google's own widget was dropped because on phones it opens a
+     full-screen picker that looks like leaving the page; suggestions render in
+     a small list directly under the field instead. If Google fails to load,
+     the field is a plain text box. -->
 <style>
-/* Places widget, dressed to match the fields around it: same 2px ink frame,
-   white fill, and the emerald focus ring the rest of the form uses. */
-gmp-place-autocomplete {
-  width: 100%; display: block; color-scheme: light;
-  background: #FFFFFF; border: 1px solid rgba(17,17,17,0.28); border-radius: 0;
+.ac-wrap { position: relative; }
+.ac-list {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: 60;
+  background: #FFFFFF; border: 1px solid rgba(17,17,17,0.28); border-top: none;
+  max-height: 292px; overflow-y: auto;
+  box-shadow: 0 12px 26px rgba(17,17,17,.14);
 }
-gmp-place-autocomplete:focus-within { outline: none; border-color: #111111; }
-gmp-place-autocomplete::part(input) {
-  width: 100%; box-sizing: border-box;
-  background: transparent; border: none; box-shadow: none; outline: none;
-  color: #111111; font-family: 'Cabin', system-ui, sans-serif;
-  font-size: 17px; line-height: 1.4; padding: 14px 16px;
+.ac-row {
+  display: block; width: 100%; text-align: left; cursor: pointer;
+  background: #FFFFFF; border: 0; border-bottom: 1px solid rgba(17,17,17,0.12);
+  padding: 12px 15px; font-family: var(--sans);
 }
+.ac-row:last-child { border-bottom: 0; }
+.ac-row:hover, .ac-row:focus { background: #F2EFE9; outline: none; }
+.ac-main { display: block; font-size: 15px; font-weight: 600; color: #111111; line-height: 1.35; }
+.ac-sec  { display: block; font-size: 13px; font-weight: 500; color: #6B655C; line-height: 1.35; }
+.ac-attrib { padding: 6px 15px 8px; font-family: var(--sans); font-size: 11px; font-weight: 500; color: #6B655C; text-align: right; background: #FFFFFF; }
 </style>
 <script>
 function initAddressAutocomplete(){
-  if(!window.google || !google.maps || !google.maps.places) return;
-  var PAE = google.maps.places.PlaceAutocompleteElement;
-  if(!PAE) return;
+  var input = document.getElementById('f-address');
+  if(!input || !window.google || !google.maps || !google.maps.places) return;
+  var P = google.maps.places;
+  if(!P.AutocompleteSuggestion || !P.AutocompleteSessionToken) return;
 
-  // Attach the widget to a given text input: insert the Google element, demote
-  // the original to a hidden mirror that keeps its name (Netlify submits it, and
-  // the hero handoff reads it), and keep that mirror filled as the user types or
-  // selects. Lead-safe: a typed-but-never-selected address is never lost.
-  function attach(hidden){
-    if(!hidden || hidden.dataset.pacDone) return;
-    hidden.dataset.pacDone = '1';
+  var wrap = document.createElement('div');
+  wrap.className = 'ac-wrap';
+  input.parentNode.insertBefore(wrap, input);
+  wrap.appendChild(input);
+  var list = document.createElement('div');
+  list.className = 'ac-list';
+  list.hidden = true;
+  wrap.appendChild(list);
 
-    var pae;
-    try { pae = new PAE({ includedRegionCodes: ['us'] }); }
-    catch(e){ return; } // graceful: original input stays usable
-    try { pae.placeholder = hidden.getAttribute('placeholder') || '123 Main St, San Jose, CA'; } catch(e){}
-    try { pae.noInputIcon = true; } catch(e){}
+  var token = new P.AutocompleteSessionToken();
+  var timer = null;
 
-    hidden.parentNode.insertBefore(pae, hidden);
-    hidden.type = 'hidden';
-    hidden.removeAttribute('required');
+  function close(){ list.hidden = true; list.innerHTML = ''; }
 
-    function mirror(){ try { if(typeof pae.value === 'string') hidden.value = pae.value; } catch(e){} }
-    pae.addEventListener('input', mirror);
-
-    pae.addEventListener('gmp-select', async function(e){
-      try {
-        var pred = e.placePrediction || (e.detail && e.detail.placePrediction);
-        if(!pred){ mirror(); return; }
-        var place = pred.toPlace();
-        await place.fetchFields({ fields: ['formattedAddress'] });
-        hidden.value = (place.formattedAddress || pae.value || '').replace(/,\s*USA$/, '');
-      } catch(err){ mirror(); }
+  function render(sugs){
+    list.innerHTML = '';
+    var shown = 0;
+    sugs.slice(0, 5).forEach(function(s){
+      var pp = s.placePrediction;
+      if(!pp) return;
+      var row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'ac-row';
+      var main = pp.mainText ? pp.mainText.text : (pp.text ? pp.text.text : '');
+      var sec  = pp.secondaryText ? pp.secondaryText.text : '';
+      var m = document.createElement('span'); m.className = 'ac-main'; m.textContent = main;
+      var c = document.createElement('span'); c.className = 'ac-sec';  c.textContent = sec;
+      row.appendChild(m); row.appendChild(c);
+      /* mousedown, so the tap does not blur the input before click lands */
+      row.addEventListener('mousedown', function(e){ e.preventDefault(); });
+      row.addEventListener('click', function(){
+        var full = pp.text ? pp.text.text : (main + (sec ? ', ' + sec : ''));
+        input.value = full.replace(/,\s*USA$/, '');
+        close();
+        input.focus();
+        /* Terminate the billing session properly: a Place Details fetch closes
+           it (per-keystroke requests bill individually otherwise), and the
+           canonical formatted address is better than the prediction text. */
+        try {
+          var place = pp.toPlace();
+          place.fetchFields({ fields: ['formattedAddress'] }).then(function(){
+            if (place.formattedAddress) input.value = place.formattedAddress.replace(/,\s*USA$/, '');
+          })['catch'](function(){});
+        } catch(e){}
+        token = new P.AutocompleteSessionToken();
+      });
+      list.appendChild(row);
+      shown++;
     });
-
-    var form = hidden.closest('form');
-    if(form) form.addEventListener('submit', mirror, true);
+    if (shown > 0) {
+      /* Required attribution for a custom results container. */
+      var a = document.createElement('div');
+      a.className = 'ac-attrib';
+      a.textContent = 'Google Maps';
+      list.appendChild(a);
+    }
+    list.hidden = shown === 0;
   }
 
-  attach(document.getElementById('f-address'));
+  input.setAttribute('autocomplete', 'off');
+  var seq = 0;
+  input.addEventListener('input', function(){
+    var q = input.value.trim();
+    clearTimeout(timer);
+    if(q.length < 3){ close(); return; }
+    timer = setTimeout(function(){
+      var my = ++seq;
+      P.AutocompleteSuggestion.fetchAutocompleteSuggestions({
+        input: q, sessionToken: token, includedRegionCodes: ['us']
+      }).then(function(res){ if (my === seq) render((res && res.suggestions) || []); })
+        .catch(function(){ if (my === seq) close(); });
+    }, 250);
+  });
+  input.addEventListener('blur', function(){ setTimeout(close, 150); });
+  input.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
 }
 </script>
 <script async defer
