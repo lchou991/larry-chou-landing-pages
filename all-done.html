@@ -20,7 +20,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cabin:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Cabin:wght@500;600;700&family=Libre+Caslon+Display&family=Libre+Caslon+Text:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <style>
 /* ---- all-done2 v2 ----
    Same page, same copy, same order. Restyled onto larrychou.com's system:
@@ -31,6 +31,7 @@
    lightened, arguments left-aligned and only the hooks centred. */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { scroll-padding-top: 72px; }
 :root {
   color-scheme: light;
   --paper:    #F2EFE9;   /* cream panel */
@@ -41,8 +42,9 @@
   --gold:     #A9853F;
   --action:   #127A5F;   /* emerald: the CTA colour, same as the main site */
   --action-dk:#0E5F4A;
+  --taupe:    #6B655C;   /* muted secondary text and micro-labels */
   --rule:     rgba(17,17,17,0.17);
-  --display:  "Alfa Slab One", Rockwell, Georgia, serif;
+  --display:  "Libre Caslon Display", Georgia, serif;
   --sans:     "Cabin", system-ui, -apple-system, sans-serif;
   --gutter:   clamp(20px, 5vw, 40px);
 }
@@ -108,13 +110,13 @@ img { max-width: 100%; height: auto; display: block; }
    background still shows through the 2px gaps, so the same colour draws both
    the outer frame and the two dividers between the figures. */
 .proof-badges {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-  background: var(--mallard);
-  border: 2px solid var(--mallard);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
 }
-.proof-badge { background: #FFFFFF; padding: clamp(16px, 2.6vw, 26px) 8px; text-align: center; }
-.proof-num { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 4.4vw, 40px); line-height: 1.05; color: var(--ink); }
-.proof-label { font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-top: 6px; }
+.proof-badge { background: var(--surface); padding: clamp(16px, 2.6vw, 26px) 8px; text-align: center; }
+.proof-num { font-family: var(--display); font-weight: 400; font-size: clamp(28px, 4.6vw, 44px); line-height: 1.05; color: var(--ink); }
+.proof-label { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe); margin-top: 8px; }
 
 
 /* The sale's address, carrying the proof row. It was a 12px grey caption
@@ -148,25 +150,45 @@ img { max-width: 100%; height: auto; display: block; }
    them. The offer is the biggest pull on the page now, so it IS the hero: one
    cream card, the number leading, the button dropping to the form. */
 /* Cream masthead: the brokerage brand over the offer, quiet. */
-.site-top { background: var(--paper); padding: 12px var(--gutter) 10px; }
+.site-top {
+  background: var(--paper); padding: 12px var(--gutter) 10px;
+  position: sticky; top: 0; z-index: 1000;
+  border-bottom: 1px solid var(--rule);
+}
+.site-top-contact {
+  font-size: 15px; font-weight: 700; color: var(--ink);
+  text-decoration: none; white-space: nowrap;
+}
+.site-top-contact:hover { color: var(--action); }
 .site-top-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .site-top p { margin: 0; max-width: none; font-family: var(--sans); line-height: 1.25; }
 .site-top-name { font-size: 16px; font-weight: 700; color: var(--ink); }
-.site-top-mark { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-mid); text-align: right; white-space: nowrap; }
 .site-top-brokerage { font-size: 12px; font-weight: 500; color: var(--ink-mid); }
-@media (max-width: 559px) {
-  .site-top-mark { font-size: 11px; letter-spacing: .06em; }
-}
 .lp-hero-wrap { position: relative; }
 .offer-hero {
-  background: var(--paper); border: 2px solid var(--ink); text-align: center;
+  background: var(--paper); border: 1px solid var(--rule); text-align: center;
+  container-type: inline-size; overflow: hidden;
   margin: clamp(12px, 3.4vw, 20px) var(--gutter) 0;
-  padding: clamp(26px, 5vw, 46px) clamp(16px, 4.4vw, 32px) clamp(22px, 4.4vw, 32px);
 }
-@media (min-width: 820px) {
-  .offer-hero { margin-inline: auto; max-width: 760px; }
+/* Split hero: single column on mobile, two columns (content left, image right)
+   on desktop so the horizontal space is used instead of left as dead margin. */
+.oh-grid { display: grid; grid-template-columns: 1fr; }
+.oh-col-content { padding: clamp(26px, 5vw, 40px) clamp(20px, 4.4vw, 32px); container-type: inline-size; }
+.oh-col-content > * { max-width: 460px; margin-inline: auto; }
+.oh-col-media { display: none; }
+.oh-col-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (min-width: 900px) {
+  .offer-hero { margin-inline: auto; max-width: 1080px; }
+  .oh-grid { grid-template-columns: 1.05fr 0.95fr; align-items: stretch; }
+  .oh-col-content { padding: clamp(40px, 4vw, 60px); text-align: left; display: flex; flex-direction: column; justify-content: center; }
+  .oh-col-content > * { margin-inline: 0; max-width: 100%; }
+  .oh-col-content .oh-offer { margin-inline: 0; max-width: 40ch; }
+  .oh-col-media { display: block; }
+  .oh-col-content .oh-rot-wrap { justify-content: flex-start; }
+  .oh-col-content .slots-row { text-align: left; }
+  .oh-col-content .hero-form { margin-inline: 0; }
+  .oh-col-content .agent-card { justify-content: flex-start; }
 }
-.offer-hero > * { max-width: 560px; margin-inline: auto; }
 .offer-hero h1 {
   font-family: var(--display); font-weight: 400;
   font-size: clamp(26px, 6.6vw, 48px); line-height: 1.06;
@@ -180,6 +202,37 @@ img { max-width: 100%; height: auto; display: block; }
    place" before the $23,500 offer reads as the bonus. */
 .oh-eyebrow { font-family: "Playfair Display", Georgia, serif; font-style: italic; font-size: clamp(18px, 2.6vw, 25px); font-weight: 600; color: var(--mallard); text-align: center; margin: clamp(18px, 3.6vw, 24px) auto 2px; padding: 0 var(--gutter); max-width: none; line-height: 1.3; }
 .oh-roman { font-style: normal; font-weight: 700; }
+/* Cycling headline (Opendoor pattern): a fixed lead line naming me as the one
+   doing the work, then a rotating benefit so the reader is never the subject of
+   a chore. Caslon, matching the luxury-hospitality reference. */
+.oh-eyebrow-lbl { font-family: var(--sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 14px; }
+.offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(34px, 5.4vw, 52px); line-height: 1.06; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 18px; max-width: 14ch; }
+/* The offer continues the headline sentence, so it speaks in the same serif
+   voice at a step-down size: "Sell without the to-do list… and get up to
+   $23,500…" reads as one thought, not headline plus fine print. */
+.oh-offer { font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(21px, 2.6vw, 27px); font-weight: 400; color: var(--ink); line-height: 1.3; margin: 0 auto 20px; max-width: 24ch; }
+.oh-offer strong { color: var(--gold); font-weight: 400; }
+.oh-offer-sub { display: block; font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--taupe); line-height: 1.5; margin-top: 10px; letter-spacing: 0.02em; }
+.oh-offer-sub strong { color: var(--ink-mid); font-weight: 600; }
+/* The offer sits in its own note: a quiet white card with a gold top rule, so
+   the number reads as a distinct object rather than more headline text. */
+.offer-note {
+  background: #FFFFFF; border: 1px solid var(--rule); border-top: 2px solid var(--gold);
+  padding: 18px 22px 16px; margin: 0 0 22px;
+}
+.offer-note-label { font-family: var(--sans); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 8px; }
+.offer-note .oh-offer { margin: 0; }
+.offer-note .oh-stack { margin: 14px 0 0; max-width: none; }
+.offer-note .slots-row { margin: 12px 0 0; }
+.offer-note .oh-slots { border: none; padding: 0; background: transparent; }
+/* The address form now lives in the hero (Opendoor pattern). Constrained and
+   left-aligned inside the centred hero so labels and fields read normally. */
+.hero-form { max-width: 440px; margin: 6px auto 0; text-align: left; }
+.addr-recap { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--taupe); margin: 0 0 18px; }
+.addr-recap span { color: var(--ink); font-weight: 600; }
+.hero-form .form-divider { display: none; }
+.hero-form .form-submit { margin-top: 14px; }
+.hero-form .form-group { margin-bottom: 22px; }
 /* The scope line: quiet, but present, so the "free" above is never read as a
    free sale. Names what Seller pays without a percentage. */
 .oh-cost { font-size: 14px; font-weight: 500; color: var(--ink-mid); margin: 0 auto 22px; max-width: 40ch; line-height: 1.4; }
@@ -194,16 +247,17 @@ img { max-width: 100%; height: auto; display: block; }
    indicator dot, so the number reads as a value being tracked. */
 .slots-row { text-align: center; margin: 0 0 20px; }
 .oh-slots {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin: 0; padding: 8px 16px;
-  background: #FFFFFF; border: 1px solid var(--ink);
-  font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink-mid);
+  display: inline-block;
+  margin: 0; padding: 7px 15px;
+  background: transparent; border: 1px solid var(--rule);
+  font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 0.03em; color: var(--ink-mid);
   white-space: nowrap;
 }
-.oh-slots strong { color: var(--ink); }
+.oh-slots strong { color: var(--ink); font-weight: 600; }
 
 .oh-slots-dot {
-  width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto;
+  display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+  margin-right: 8px; vertical-align: middle; position: relative; top: -1px;
   background: var(--action);
   animation: slotpulse 2s ease-in-out infinite;
 }
@@ -417,7 +471,7 @@ img { max-width: 100%; height: auto; display: block; }
      thing that reads as a template. */
   .did-grid { grid-template-columns: 1.55fr 1fr; align-items: start; }
 }
-.did-card { padding: clamp(20px, 2.6vw, 30px); border: 2px solid var(--ink); }
+.did-card { padding: clamp(20px, 2.6vw, 30px); border: 1px solid var(--rule); }
 .did-card--kept { background: var(--paper); }
 .did-card--skip { background: var(--ink); border-color: var(--ink); }
 /* Two classes deep, because .story-list--didnt li already sets ink at (0,1,1)
@@ -457,21 +511,21 @@ img { max-width: 100%; height: auto; display: block; }
    emphasis block on the page. */
 .sale-stat {
   margin: clamp(16px, 2.2vw, 22px) 0 0;
-  padding: clamp(16px, 2.2vw, 22px) clamp(18px, 2.4vw, 26px);
-  background: var(--mallard); border-left: 6px solid var(--gold);
-  font-family: var(--sans); font-weight: 700;
-  font-size: clamp(19px, 2.6vw, 24px); line-height: 1.35;
-  color: #FFFFFF; max-width: none;
+  padding: 6px clamp(18px, 2.4vw, 26px);
+  background: transparent; border-left: 2px solid var(--gold);
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(20px, 2.8vw, 26px); line-height: 1.4;
+  color: var(--ink); max-width: none;
 }
-.sale-stat b { font-family: var(--display); font-weight: 400; font-size: 1.24em; }
+.sale-stat b { font-family: var(--display); font-weight: 400; font-size: 1.1em; }
 
 /* ---- how it works ----
    A cream card, the same paper-and-ink treatment the form box and the "what we
    did" card use, so the process reads as one object rather than loose text. */
 .hiw-card {
   background: var(--paper);
-  border: 2px solid var(--ink);
-  padding: clamp(22px, 3.4vw, 36px);
+  border: 1px solid var(--rule);
+  padding: clamp(26px, 4vw, 44px);
 }
 .hiw-card > h2 { margin-top: 0; }
 .hiw-lead { font-size: 18px; font-weight: 500; line-height: 1.7; color: var(--ink-mid); margin: 0 0 clamp(16px, 2.2vw, 22px); max-width: none; }
@@ -542,26 +596,24 @@ img { max-width: 100%; height: auto; display: block; }
    the markup carries none of its own. */
 .seller-quote { padding-block: clamp(18px, 2.4vw, 28px); }
 .sq-panel {
-  background: var(--mallard); color: #FFFFFF;
-  border: 0; border-left: 6px solid var(--gold); border-radius: 0;
-  padding: clamp(20px, 3vw, 30px);
+  background: transparent; color: var(--ink);
+  border: 0; border-left: 2px solid var(--gold); border-radius: 0;
+  padding: 6px clamp(20px, 3vw, 30px);
 }
 .sq-attrib {
-  font-family: var(--sans); font-size: 15px; font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase;
-  color: #FFFFFF; margin: 0 0 14px; max-width: none;
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--taupe); margin: 0 0 12px; max-width: none;
 }
-/* Gold at #A9853F is 2.2:1 on mallard and reads as dirt. These are 17px
-   decorative glyphs, not text, but they still have to be seen. */
-.sq-stars { color: #F0C56B; letter-spacing: .05em; font-size: 17px; }
+.sq-stars { color: var(--gold); letter-spacing: .08em; font-size: 13px; }
 .sq-text {
-  font-family: var(--sans); font-size: clamp(20px, 3vw, 24px); font-weight: 600;
-  color: #FFFFFF; line-height: 1.5; margin: 0; max-width: none;
+  font-family: var(--display); font-size: clamp(22px, 3vw, 28px); font-weight: 400;
+  color: var(--ink); line-height: 1.4; margin: 0; max-width: none;
 }
 
 /* ---- form ---- */
 .cta-section { padding-block: clamp(24px, 3.4vw, 40px); }
-.form-box { background: var(--paper); border: 2px solid var(--ink); padding: clamp(22px, 3.4vw, 36px); }
+.form-box { background: var(--paper); border: 1px solid var(--rule); padding: clamp(22px, 3.4vw, 36px); }
 .form-heading { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 3.8vw, 38px); line-height: 1.08; color: var(--ink); margin-bottom: 10px; }
 .form-offer { font-size: 19px; margin-bottom: 20px; }
 .form-guarantee { background: var(--ink); color: #fff; padding: 16px 20px 17px; margin-bottom: 22px; }
@@ -582,12 +634,14 @@ img { max-width: 100%; height: auto; display: block; }
 .offer-scarcity-sub { display: block; margin-top: 5px; font-size: 13px; font-weight: 500; color: var(--ink-mid); line-height: 1.4; }
 .offer-terms { margin: 14px auto 0; max-width: 52ch; font-size: 12px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; }
 .form-group { margin-bottom: 14px; }
-.form-group label { display: block; font-weight: 700; font-size: 15px; margin-bottom: 7px; color: var(--ink); }
+.form-group label { display: block; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; margin-bottom: 9px; color: var(--taupe); }
 .form-group input, .form-group select, .form-group textarea {
-  width: 100%; font-family: var(--sans); font-size: 17px; font-weight: 500;
-  padding: 13px 15px; background: #fff; color: var(--ink);
-  border: 2px solid var(--ink); border-radius: 0;
+  width: 100%; font-family: var(--sans); font-size: 17px; font-weight: 400;
+  padding: 14px 16px; background: #FFFFFF; color: var(--ink);
+  border: 1px solid rgba(17,17,17,0.28); border-radius: 0;
 }
+.form-group input::placeholder { color: #9A9488; opacity: 1; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--ink); }
 .form-divider { height: 1px; background: var(--rule); margin: 22px 0; }
 .form-promise { margin: 14px 0 0; font-size: 14px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; max-width: none; }
 
@@ -605,8 +659,8 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--action); text-decoration: underline; cursor: pointer;
 }
 .form-submit, .final-cta-btn, .text-pill {
-  display: inline-block; font-family: var(--sans); font-weight: 700; font-size: 19px;
-  padding: 17px 34px; border: 2px solid var(--action); border-radius: 999px;
+  display: inline-block; font-family: var(--sans); font-weight: 700; font-size: 18px;
+  padding: 15px 30px; border: 2px solid var(--action); border-radius: 999px;
   background: var(--action); color: #fff; cursor: pointer; text-decoration: none; text-align: center;
   transition: background .2s ease, color .2s ease, border-color .2s ease, transform .14s ease, box-shadow .14s ease;
 }
@@ -670,10 +724,10 @@ img { max-width: 100%; height: auto; display: block; }
 /* ---- the agent block under the form ---- */
 .agent-card {
   margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule);
-  display: flex; align-items: center; gap: 16px;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
 }
 .agent-shot { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-.agent-lines { flex: 1; min-width: 0; }
+.agent-lines { flex: 0 0 auto; min-width: 0; }
 .agent-name { font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1.3; margin: 0 0 4px; max-width: none; }
 .agent-meta { font-size: 15px; font-weight: 600; color: var(--ink-mid); line-height: 1.5; margin: 0 0 5px; max-width: none; }
 /* Outline, not solid. This pill sits directly under the form's primary submit,
@@ -683,7 +737,7 @@ img { max-width: 100%; height: auto; display: block; }
    now on the site's own --action. */
 .agent-card .text-pill {
   background: #FFFFFF; color: var(--action); border-color: var(--action);
-  font-size: 17px; padding: 12px 22px;
+  font-size: 16px; padding: 12px 22px;
 }
 .agent-card .text-pill:hover { background: var(--action); color: #FFFFFF; border-color: var(--action); }
 /* Tight to the brokerage line above it, with the gap below separating the
@@ -698,10 +752,10 @@ img { max-width: 100%; height: auto; display: block; }
 /* Offer-terms modal: an on-screen card, same click-to-expand feel as the photo
    lightbox. Keeps the visitor on the page and gives the "free" claim its
    plain-language terms without shipping them the signable addendum. */
-.terms-link { background: none; border: 0; padding: 0; margin: 0; font: inherit; color: var(--action); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; white-space: nowrap; }
+.terms-link { background: none; border: 0; padding: 0; margin: 0; font: inherit; color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--rule); cursor: pointer; white-space: nowrap; }
 .terms-modal { position: fixed; inset: 0; z-index: 9999; background: rgba(17,17,17,.7); display: none; align-items: center; justify-content: center; padding: 20px; }
 .terms-modal.active { display: flex; }
-.terms-card { background: var(--paper); border: 2px solid var(--ink); max-width: 620px; width: 100%; max-height: 86vh; overflow-y: auto; padding: clamp(22px, 4vw, 34px); position: relative; text-align: left; }
+.terms-card { background: var(--paper); border: 1px solid var(--rule); max-width: 620px; width: 100%; max-height: 86vh; overflow-y: auto; padding: clamp(22px, 4vw, 34px); position: relative; text-align: left; }
 .terms-card h3 { font-family: var(--display); font-weight: 400; font-size: clamp(20px, 3vw, 26px); color: var(--ink); margin: 0 36px 4px 0; line-height: 1.1; max-width: none; }
 .terms-card .terms-sub { font-size: 13px; font-weight: 600; color: var(--ink-mid); margin: 0 0 16px; max-width: none; }
 .terms-card h4 { font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); margin: 16px 0 5px; }
@@ -719,12 +773,12 @@ img { max-width: 100%; height: auto; display: block; }
 .zillow-lightbox-hint { color: #fff; text-align: center; margin-top: 14px; font-size: 15px; }
 
 /* ---- google places, dressed as the field it replaces ---- */
-gmp-place-autocomplete { width: 100%; display: block; color-scheme: light; background: #fff; border: 2px solid var(--ink); border-radius: 0; }
-gmp-place-autocomplete:focus-within { outline: 3px solid var(--action); outline-offset: 2px; }
+gmp-place-autocomplete { width: 100%; display: block; color-scheme: light; background: #FFFFFF; border: 1px solid rgba(17,17,17,0.28); border-radius: 0; }
+gmp-place-autocomplete:focus-within { outline: none; border-color: var(--ink); }
 gmp-place-autocomplete::part(input) {
   width: 100%; box-sizing: border-box; background: transparent;
   border: none; box-shadow: none; outline: none;
-  color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.4; padding: 13px 15px;
+  color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.4; padding: 14px 16px;
 }
 
 /* ---- consent banner ----
@@ -946,6 +1000,22 @@ document.addEventListener('DOMContentLoaded', function () {
   var n = master ? parseInt(master.textContent, 10) : NaN;
   if (isNaN(n)) return;
   document.querySelectorAll('[data-slots-mirror]').forEach(function (el) { el.textContent = n; });
+
+  /* Hero headline: rotate the benefit after "so you can". Fixed lead line keeps
+     me as the subject of the work; only the payoff cycles. */
+  var rot = document.getElementById('hero-rot');
+  if (rot) {
+    var phrases = ['sell without the to-do list', 'avoid managing contractors', 'move on your terms'];
+    var i = 0;
+    setInterval(function () {
+      rot.classList.add('is-out');
+      setTimeout(function () {
+        i = (i + 1) % phrases.length;
+        rot.textContent = phrases[i];
+        rot.classList.remove('is-out');
+      }, 320);
+    }, 2400);
+  }
 });
 </script>
 
@@ -955,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <header class="site-top">
   <div class="site-top-row">
     <p class="site-top-name">Larry Chou</p>
-    <p class="site-top-mark">16-Day Home Prep and Sales</p>
+    <a class="site-top-contact" href="tel:+14087591201">(408) 759-1201</a>
   </div>
   <p class="site-top-brokerage">Keller Williams Silicon Valley</p>
 </header>
@@ -965,35 +1035,71 @@ document.addEventListener('DOMContentLoaded', function () {
      so it opens it. The address form is the same doorway into the real form
      it always was. -->
 <div class="lp-hero-wrap">
-  <p class="oh-eyebrow"><span class="oh-roman">Make the easy move.</span> I prepare, list, and sell your home</p>
   <section class="offer-hero" id="top">
-    <h1>$23,500<br>in free whole-house painting and staging</h1>
-    <div class="oh-stack">
-      <p class="oh-line"><strong>Whole-house painting</strong> <span>$16,000 value</span></p>
-      <p class="oh-line"><strong>Professional staging</strong> <span>up to $7,500 value</span></p>
+    <div class="oh-grid">
+    <div class="oh-col-content">
+    <p class="oh-eyebrow-lbl">I handle the prep</p>
+    <h1 class="oh-head">Sell without the to-do list</h1>
+    <div class="offer-note">
+      <p class="oh-offer">Up to <strong>$23,500</strong> in free whole-house painting and staging<span class="oh-offer-sub">For the next <strong data-slots-mirror>2</strong> homeowners who sign up</span></p>
+      <div class="slots-row"><p class="oh-slots"><span class="oh-slots-dot" aria-hidden="true"></span><strong data-slots-open>2</strong>&nbsp;spots open &middot; as of <span data-today></span></p></div>
     </div>
-    <a class="lp-hero-btn" href="#form">See If My Home Qualifies</a>
-  </section>
-</div>
+    <div class="hero-form" id="form">
+      <form name="consult-v2" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="consult-v2">
+        <input type="hidden" name="mailer" value="All Done">
+        <input type="hidden" name="source" value="Meta Ad">
+        <input type="hidden" name="event_id" value="">
+        <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
 
-<div style="max-width:680px; margin:0 auto; padding:0 24px 4px;">
-  <p class="sale-addr"><span class="sale-addr-lead">Results from a recent sale</span> 1458 Portobelo Dr &middot; San Jose</p>
-  <div class="proof-row">
-    <div class="proof-badges">
-      <div class="proof-badge">
-        <div class="proof-num">16</div>
-        <div class="proof-label">Days of Prep</div>
-      </div>
-      <div class="proof-badge">
-        <div class="proof-num">2</div>
-        <div class="proof-label">Days to Multiple Offers</div>
-      </div>
-      <div class="proof-badge">
-        <div class="proof-num">7</div>
-        <div class="proof-label">Days to Accepted Offer</div>
+        <div class="fstep" data-step="1">
+          <div class="form-group">
+            <label for="f-address">Property Address</label>
+            <input type="text" id="f-address" name="address" placeholder="123 Main St, San Jose, CA" autocomplete="street-address" required>
+          </div>
+          <div class="form-divider"></div>
+          <button type="button" class="form-submit" data-step-next>Get Started</button>
+          <p class="offer-terms">A single-family home valued at $1.5M or more, within 15 miles of San Jose, vacant, and listed with me within 90 days &middot; <button type="button" class="terms-link" onclick="openTerms()">Full offer terms</button></p>
+        </div>
+
+        <div class="fstep" data-step="2" hidden>
+          <p class="addr-recap">Your home: <span data-addr-recap></span> &middot; <button type="button" class="terms-link" data-step-back>Edit</button></p>
+          <div class="form-group">
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="(408) 555-0100" autocomplete="tel" inputmode="tel" required>
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
+          </div>
+          <div class="form-divider"></div>
+          <button type="submit" class="form-submit">See If My Home Qualifies</button>
+          <p class="form-promise">I&rsquo;ll personally review your home and call you today. Submitted after hours? First thing tomorrow.</p>
+        </div>
+      </form>
+
+      <form name="consult-v2-start" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="consult-v2-start">
+        <input type="text" name="address">
+        <input type="text" name="mailer">
+        <input type="text" name="source">
+        <p hidden><label>Do not fill: <input name="bot-field"></label></p>
+      </form>
+    </div>
+    <div class="agent-card">
+      <img class="agent-shot" src="larry-headshot.jpg" alt="Larry Chou" width="72" height="72" loading="lazy" decoding="async">
+      <div class="agent-lines">
+        <a href="sms:+14087591201" class="text-pill">Questions? 408-759-1201</a>
       </div>
     </div>
-  </div>
+    </div>
+    <div class="oh-col-media" aria-hidden="true"><img src="after-1.webp" alt="" decoding="async"></div>
+    </div>
+  </section>
 </div>
 
 <div class="before-after">
@@ -1100,6 +1206,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </div>
 
+<div style="max-width:680px; margin:0 auto; padding:0 24px 4px;">
+  <p class="sale-addr"><span class="sale-addr-lead">Results from a recent sale</span> 1458 Portobelo Dr &middot; San Jose</p>
+  <div class="proof-row">
+    <div class="proof-badges">
+      <div class="proof-badge">
+        <div class="proof-num">16</div>
+        <div class="proof-label">Days of Prep</div>
+      </div>
+      <div class="proof-badge">
+        <div class="proof-num">2</div>
+        <div class="proof-label">Days to Multiple Offers</div>
+      </div>
+      <div class="proof-badge">
+        <div class="proof-num">7</div>
+        <div class="proof-label">Days to Accepted Offer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="seller-quote">
   <div class="sq-panel">
     <p class="sq-attrib"><span class="sq-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> &nbsp;Wangda Tan, 1458 Portobelo, San Jose</p>
@@ -1107,87 +1233,10 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </div>
 
-<div class="cta-section cta-action-zone" id="form">
-  <div class="form-box">
-    <div class="form-heading">Let&rsquo;s start with your address</div>
-    <p class="offer-scarcity">$23,500 in free painting and staging for <strong data-slots-mirror>2</strong> qualifying homeowners who use my 16-Day Home Prep and Sales Service<span class="offer-scarcity-sub">In return, all I ask is permission to feature your home as a case study</span></p>
-    <!-- Slot count is edited BY HAND when a spot fills: change the number
-         inside data-slots-open (and nothing else). The date fills itself. -->
-    <div class="slots-row"><p class="oh-slots"><span class="oh-slots-dot" aria-hidden="true"></span><strong data-slots-open>2</strong>&nbsp;spots open &middot; <span data-today></span></p></div>
-    <!-- Two steps, same form element. Step 1 asks only for the address, and
-         clicking Continue posts it on its own as consult-v2-start before step 2
-         is revealed. So an address typed by someone who then loses interest is
-         already recorded, instead of being lost with the rest of the form. The
-         full form still posts as consult-v2 exactly as before. -->
-    <form name="consult-v2" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="consult-v2">
-      <input type="hidden" name="mailer" value="All Done">
-      <input type="hidden" name="source" value="Meta Ad">
-      <!-- Filled on submit. Deduplicates the server-side Conversions API Lead
-           against the browser pixel's. -->
-      <input type="hidden" name="event_id" value="">
-      <p style="display:none;"><label>Do not fill: <input name="bot-field"></label></p>
-
-      <div class="fstep" data-step="1">
-        <div class="form-group">
-          <label for="f-address">Property Address</label>
-          <input type="text" id="f-address" name="address" placeholder="123 Main St, San Jose, CA" autocomplete="street-address" required>
-        </div>
-        <div class="form-divider"></div>
-        <!-- type=button: this must not submit the form, it advances the step. -->
-        <button type="button" class="form-submit" data-step-next>Continue</button>
-        <p class="offer-terms">A single-family home valued at $1.5M or more, within 15 miles of San Jose, vacant, and listed with me within 90 days &middot; <button type="button" class="terms-link" onclick="openTerms()">Full offer terms</button></p>
-      </div>
-
-      <div class="fstep" data-step="2" hidden>
-        <div class="form-group">
-          <label for="f-name">Name</label>
-          <input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
-        </div>
-        <div class="form-group">
-          <label for="f-phone">Phone</label>
-          <input type="tel" id="f-phone" name="phone" placeholder="(408) 555-0100" autocomplete="tel" inputmode="tel" required>
-        </div>
-        <div class="form-group">
-          <label for="f-email">Email</label>
-          <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
-        </div>
-        <div class="form-divider"></div>
-        <button type="submit" class="form-submit">See If My Home Qualifies</button>
-        <p class="form-promise">I&rsquo;ll personally review your home and call you today. Submitted after hours? First thing tomorrow.</p>
-      </div>
-    </form>
-
-    <!-- Netlify registers forms by parsing the deployed HTML, so the partial
-         needs a static declaration even though it is only ever posted by fetch.
-         Never shown, never filled by hand. -->
-    <form name="consult-v2-start" data-netlify="true" netlify-honeypot="bot-field" hidden>
-      <input type="hidden" name="form-name" value="consult-v2-start">
-      <input type="text" name="address">
-      <input type="text" name="mailer">
-      <input type="text" name="source">
-      <p hidden><label>Do not fill: <input name="bot-field"></label></p>
-    </form>
-    <div class="agent-card">
-      <img class="agent-shot" src="larry-headshot.jpg" alt="Larry Chou" width="72" height="72" loading="lazy" decoding="async">
-      <div class="agent-lines">
-        <p class="agent-name">Larry Chou</p>
-        <p class="agent-meta">Keller Williams Silicon Valley &middot; DRE 02247191</p>
-        <!-- Email sits with the name and brokerage, which is the block of
-             contact text it belongs to. The pill is a control, not a line of
-             that block, so it goes last rather than splitting the two apart. -->
-        <p class="agent-email"><a href="mailto:hey@larrychou.com">hey@larrychou.com</a></p>
-        <a href="sms:+14087591201" class="text-pill">Questions? 408-759-1201</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 <div class="story-section">
   <p class="story-label">The <span class="chip">16DayPrep</span>: what I did on a recent San Jose sale.</p>
-  <p class="story-text">The seller signed up and handed me the keys to 1458 Portobelo Dr in San Jose.<br><br>16 days later, this home went from "needs work" to clean, move-in ready, and market-ready. I put the house on the market on day 17. My seller went under contract in 7 days.</p>
+  <p class="story-text">The homeowner signed up and handed me the keys to 1458 Portobelo Dr in San Jose.<br><br>16 days later, this home went from "needs work" to clean, move-in ready, and market-ready. I put the house on the market on day 17. The homeowner went under contract in 7 days.</p>
   <p class="sale-stat">A total of <b>24 days</b> from when he handed me the keys to accepting an offer.</p>
 
   <div class="did-grid">
@@ -1234,7 +1283,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
   </div>
 
-  <a href="#form" class="final-cta-btn">See If My Home Qualifies</a>
+  <a href="#top" class="final-cta-btn">Get Started</a>
 </div>
 
 
@@ -1250,14 +1299,14 @@ document.addEventListener('DOMContentLoaded', function () {
     <li class="li-offer"><span class="li-offer-tag">Limited offer</span><strong>Free whole-house painting:</strong> interior and exterior, a $16,000 value.</li>
     <li class="li-offer"><span class="li-offer-tag">Limited offer</span><strong>Premium staging credit:</strong> up to $7,500 toward professional staging with one of my preferred vendors.</li>
     <li><strong>16-day turnkey home prep:</strong> I handle the entire prep process so your home is market-ready in 16 days.</li>
-    <li><strong>Upfront prep plan and clear budget:</strong> an itemized scope of work and costs before any work begins, usually 1% or less of your home&rsquo;s value.</li>
-    <li><strong>Fully managed contractor work:</strong> I coordinate every crew, and you pay contractors directly at cost, with no markup.</li>
+    <li><strong>Upfront prep plan and clear budget:</strong> an itemized scope of work and costs before any work begins, usually 1% or less of your home&rsquo;s value. Nothing starts until you approve the plan.</li>
+    <li><strong>Fully managed contractor work:</strong> you approve the vendors and the scope of work I propose, I coordinate every crew, and you pay contractors directly at cost, with no markup.</li>
     <li><strong>Live project management app:</strong> track progress, photos, and sale milestones in real time from anywhere in the world.</li>
     <li><strong>Moving and vehicle shipping coordination:</strong> I schedule and manage reputable movers and car transport for you.</li>
     <li><strong>Extended on-call support:</strong> direct answers 8 AM to 11 PM PT, 7 days a week.</li>
   </ul>
   <p class="hiw-note">Painting and staging cost you $0, and they&rsquo;re usually 75&ndash;80% of a home&rsquo;s prep. That leaves only minor prep for you, plus sales commission.</p>
-  <a href="#form" class="final-cta-btn">See If My Home Qualifies</a>
+  <a href="#top" class="final-cta-btn">Get Started</a>
   </div>
 </div>
 
@@ -1361,14 +1410,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeZillow
    white fill, and the emerald focus ring the rest of the form uses. */
 gmp-place-autocomplete {
   width: 100%; display: block; color-scheme: light;
-  background: #FFFFFF; border: 2px solid #111111; border-radius: 0;
+  background: #FFFFFF; border: 1px solid rgba(17,17,17,0.28); border-radius: 0;
 }
-gmp-place-autocomplete:focus-within { outline: 3px solid #127A5F; outline-offset: 2px; }
+gmp-place-autocomplete:focus-within { outline: none; border-color: #111111; }
 gmp-place-autocomplete::part(input) {
   width: 100%; box-sizing: border-box;
   background: transparent; border: none; box-shadow: none; outline: none;
   color: #111111; font-family: 'Cabin', system-ui, sans-serif;
-  font-size: 17px; line-height: 1.4; padding: 13px 15px;
+  font-size: 17px; line-height: 1.4; padding: 14px 16px;
 }
 </style>
 <script>
