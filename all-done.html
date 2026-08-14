@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<title>$23,500 in whole-house painting and staging | 16DayPrep</title>
+<title>Up to $7,500 in free staging | 16DayPrep</title>
 <meta name="description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://16day.larrychou.com/all-done">
@@ -182,7 +182,6 @@ img { max-width: 100%; height: auto; display: block; }
   .oh-grid { grid-template-columns: 1.05fr 0.95fr; align-items: stretch; }
   .oh-col-content { padding: clamp(40px, 4vw, 60px); text-align: left; display: flex; flex-direction: column; justify-content: center; }
   .oh-col-content > * { margin-inline: 0; max-width: 100%; }
-  .oh-col-content .oh-offer { margin-inline: 0; max-width: 40ch; }
   .oh-col-media { display: block; }
   .oh-col-content .oh-rot-wrap { justify-content: flex-start; }
   .oh-col-content .slots-row { text-align: left; }
@@ -206,7 +205,8 @@ img { max-width: 100%; height: auto; display: block; }
    doing the work, then a rotating benefit so the reader is never the subject of
    a chore. Caslon, matching the luxury-hospitality reference. */
 .oh-eyebrow-lbl { font-family: var(--sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 14px; }
-.offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(34px, 5.4vw, 52px); line-height: 1.06; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 18px; max-width: 14ch; }
+.offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(27px, 4.2vw, 40px); line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 10px; max-width: none; text-wrap: balance; }
+.oh-sub { font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(18px, 2.4vw, 22px); font-weight: 400; color: var(--ink-mid); line-height: 1.35; margin: 0 0 20px; }
 /* The offer continues the headline sentence, so it speaks in the same serif
    voice at a step-down size: "Sell without the to-do list… and get up to
    $23,500…" reads as one thought, not headline plus fine print. */
@@ -218,12 +218,12 @@ img { max-width: 100%; height: auto; display: block; }
    the number reads as a distinct object rather than more headline text. */
 .offer-note {
   background: #FFFFFF; border: 1px solid var(--rule); border-top: 2px solid var(--gold);
-  padding: 18px 22px 16px; margin: 0 0 22px;
+  padding: 18px 22px 16px; margin: 0 auto 22px; text-align: center;
 }
 .offer-note-label { font-family: var(--sans); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 8px; }
-.offer-note .oh-offer { margin: 0; }
+.offer-note .oh-offer { margin: 0 auto; }
 .offer-note .oh-stack { margin: 14px 0 0; max-width: none; }
-.offer-note .slots-row { margin: 12px 0 0; }
+.offer-note .slots-row { margin: 12px 0 0; text-align: center; }
 .offer-note .oh-slots { border: none; padding: 0; background: transparent; }
 /* The address form now lives in the hero (Opendoor pattern). Constrained and
    left-aligned inside the centred hero so labels and fields read normally. */
@@ -1017,10 +1017,10 @@ document.addEventListener('DOMContentLoaded', function () {
   <section class="offer-hero" id="top">
     <div class="oh-grid">
     <div class="oh-col-content">
-    <p class="oh-eyebrow-lbl">I handle the prep</p>
-    <h1 class="oh-head">Sell without the to-do list</h1>
+    <h1 class="oh-head">Selling your home has never been easier</h1>
+    <p class="oh-sub">Hand me the keys, I&rsquo;ll handle the rest</p>
     <div class="offer-note">
-      <p class="oh-offer">Up to <strong>$23,500</strong> in free whole-house painting and staging<span class="oh-offer-sub">For the next <strong data-slots-mirror>2</strong> homeowners who sign up</span></p>
+      <p class="oh-offer">Up to <strong>$7,500</strong> in free staging<span class="oh-offer-sub">For the next <strong data-slots-mirror>2</strong> homeowners who sign up</span></p>
       <div class="slots-row"><p class="oh-slots"><span class="oh-slots-dot" aria-hidden="true"></span><strong data-slots-open>2</strong>&nbsp;spots open &middot; as of <span data-today></span></p></div>
     </div>
     <div class="hero-form" id="form">
@@ -1038,7 +1038,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
           <div class="form-divider"></div>
           <button type="button" class="form-submit" data-step-next>Get Started</button>
-          <p class="offer-terms">A single-family home valued at $1.5M or more, within 15 miles of San Jose, vacant, and listed with me within 90 days &middot; <button type="button" class="terms-link" onclick="openTerms()">Full offer terms</button></p>
+          <p class="offer-terms">A single-family home within 15 miles of San Jose, vacant &middot; <button type="button" class="terms-link" onclick="openTerms()">Full offer terms</button></p>
         </div>
 
         <div class="fstep" data-step="2" hidden>
@@ -1056,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
           </div>
           <div class="form-divider"></div>
-          <button type="submit" class="form-submit">See If My Home Qualifies</button>
+          <button type="submit" class="form-submit">Submit</button>
           <p class="form-promise">I&rsquo;ll personally review your home and call you today. Submitted after hours? First thing tomorrow.</p>
         </div>
       </form>
@@ -1275,8 +1275,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <p class="story-subhead">What&rsquo;s included</p>
   <ul class="story-list">
     <li><strong>Full-service agent representation:</strong> end-to-end guidance and negotiation from the first meeting through closing day.</li>
-    <li class="li-offer"><span class="li-offer-tag">Limited offer</span><strong>Free whole-house painting:</strong> interior and exterior, a $16,000 value.</li>
-    <li class="li-offer"><span class="li-offer-tag">Limited offer</span><strong>Premium staging credit:</strong> up to $7,500 toward professional staging with one of my preferred vendors.</li>
+    <li class="li-offer"><span class="li-offer-tag">Limited offer</span><strong>Premium staging credit:</strong> up to $7,500 toward staging with one of my preferred vendors.</li>
     <li><strong>16-day turnkey home prep:</strong> I handle the entire prep process so your home is market-ready in 16 days.</li>
     <li><strong>Upfront prep plan and clear budget:</strong> an itemized scope of work and costs before any work begins, usually 1% or less of your home&rsquo;s value. Nothing starts until you approve the plan.</li>
     <li><strong>Fully managed contractor work:</strong> you approve the vendors and the scope of work I propose, I coordinate every crew, and you pay contractors directly at cost, with no markup.</li>
@@ -1284,7 +1283,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <li><strong>Moving and vehicle shipping coordination:</strong> I schedule and manage reputable movers and car transport for you.</li>
     <li><strong>Extended on-call support:</strong> direct answers 8 AM to 11 PM PT, 7 days a week.</li>
   </ul>
-  <p class="hiw-note">Painting and staging cost you $0, and they&rsquo;re usually 75&ndash;80% of a home&rsquo;s prep. That leaves only minor prep for you, plus sales commission.</p>
+  <p class="hiw-note">Staging costs you $0. The rest of the prep is an itemized budget you approve up front, at cost with no markup.</p>
   <a href="#top" class="final-cta-btn">Get Started</a>
   </div>
 </div>
@@ -1318,16 +1317,16 @@ document.addEventListener('DOMContentLoaded', function () {
     <p class="terms-sub">16-Day Home Prep and Sales Service</p>
 
     <h4>What you get</h4>
-    <p>Free whole-house painting (interior and exterior, surface preparation and paint) and up to $7,500 in professional staging. I pay for both.</p>
+    <p>Up to $7,500 in staging with one of my preferred vendors. I pay for it.</p>
 
     <h4>Who qualifies</h4>
-    <p>A single-family home valued at $1.5M or more, within 15 miles of San Jose, vacant, and listed with me within 90 days.</p>
+    <p>A single-family home within 15 miles of San Jose, vacant, and listed with me.</p>
 
     <h4>What I ask in return</h4>
     <p>You list your home for sale with me, keep it vacant through closing, cooperate with the prep and showings, and let me feature your home as a case study (photos, video, the address, and the results in my marketing).</p>
 
     <h4>The one condition</h4>
-    <p>I pay these costs up front, before your home sells. If you take the home off the market, cancel, or list with another agent after painting or staging has started, you reimburse me the actual amount I paid the painting and staging vendors, with no markup and less any refunds. You always keep the right to accept or reject any offer.</p>
+    <p>I pay these costs up front, before your home sells. If you take the home off the market, cancel, or list with another agent after staging has started, you reimburse me the actual amount I paid the staging vendor, with no markup and less any refunds. You always keep the right to accept or reject any offer.</p>
 
     <h4>Availability</h4>
     <p>Open to the next <span data-slots-mirror>2</span> qualifying homeowners. I may withdraw the offer at any time.</p>
