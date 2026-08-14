@@ -151,18 +151,20 @@ img { max-width: 100%; height: auto; display: block; }
    cream card, the number leading, the button dropping to the form. */
 /* Cream masthead: the brokerage brand over the offer, quiet. */
 .site-top {
-  background: var(--paper); padding: 12px var(--gutter) 10px;
+  background: var(--ink); padding: 14px var(--gutter) 12px;
   position: sticky; top: 0; z-index: 1000;
-  border-bottom: 1px solid var(--rule);
 }
-.site-top-contact {
-  font-size: 15px; font-weight: 700; color: var(--ink);
-  text-decoration: none; white-space: nowrap;
-}
-.site-top-contact:hover { color: var(--action); }
-.site-top-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+
+.site-top-inner { max-width: 1080px; margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.site-top-sub { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: rgba(242,239,233,0.85); margin-top: 3px; }
+.site-top-contact-col { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.site-top-phone { font-family: var(--sans); font-size: 15px; font-weight: 700; letter-spacing: 0.02em; color: var(--paper); text-decoration: none; white-space: nowrap; }
+.site-top-phone:hover { color: #FFFFFF; }
+.site-top-email { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: rgba(242,239,233,0.85); text-decoration: none; }
+.site-top-email:hover { color: #FFFFFF; }
+@media (max-width: 559px) { .site-top-email { display: none; } }
 .site-top p { margin: 0; max-width: none; font-family: var(--sans); line-height: 1.25; }
-.site-top-name { font-size: 16px; font-weight: 700; color: var(--ink); }
+.site-top-name { font-family: "Libre Caslon Text", Georgia, serif; font-size: 19px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--paper); }
 .site-top-brokerage { font-size: 12px; font-weight: 500; color: var(--ink-mid); }
 .lp-hero-wrap { position: relative; }
 .offer-hero {
@@ -186,6 +188,7 @@ img { max-width: 100%; height: auto; display: block; }
   .oh-col-content .oh-rot-wrap { justify-content: flex-start; }
   .oh-col-content .slots-row { text-align: left; }
   .oh-col-content .hero-form { margin-inline: 0; }
+  .oh-col-content .offer-note { max-width: 440px; margin-left: 0; margin-right: 0; }
   .oh-col-content .agent-card { justify-content: flex-start; }
 }
 .offer-hero h1 {
@@ -205,12 +208,16 @@ img { max-width: 100%; height: auto; display: block; }
    doing the work, then a rotating benefit so the reader is never the subject of
    a chore. Caslon, matching the luxury-hospitality reference. */
 .oh-eyebrow-lbl { font-family: var(--sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 14px; }
-.offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(27px, 4.2vw, 40px); line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 10px; max-width: none; text-wrap: balance; }
-.oh-sub { font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(18px, 2.4vw, 22px); font-weight: 400; color: var(--ink-mid); line-height: 1.35; margin: 0 0 20px; }
+.offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(19px, 3.1vw, 28px); line-height: 1.18; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 18px; max-width: none; text-align: left; }
+/* Staggered editorial setting: line one flush left, line two stepped right,
+   the pair centered as a block; the subheading centers beneath. */
+.oh-l1 { display: block; }
+.oh-l2 { display: block; padding-left: 0.9em; }
+.oh-sub { font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(15px, 2vw, 19px); font-weight: 400; color: var(--ink-mid); line-height: 1.35; margin: 0 0 20px; text-align: center; }
 /* The offer continues the headline sentence, so it speaks in the same serif
    voice at a step-down size: "Sell without the to-do list… and get up to
    $23,500…" reads as one thought, not headline plus fine print. */
-.oh-offer { font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(21px, 2.6vw, 27px); font-weight: 400; color: var(--ink); line-height: 1.3; margin: 0 auto 20px; max-width: 24ch; }
+.oh-offer { font-family: "Libre Caslon Text", Georgia, serif; font-size: clamp(18px, 2.4vw, 23px); font-weight: 400; color: var(--ink); line-height: 1.3; margin: 0 auto 20px; max-width: 24ch; }
 .oh-offer strong { color: var(--gold); font-weight: 400; }
 .oh-offer-sub { display: block; font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--taupe); line-height: 1.5; margin-top: 10px; letter-spacing: 0.02em; }
 .oh-offer-sub strong { color: var(--ink-mid); font-weight: 600; }
@@ -1002,11 +1009,16 @@ document.addEventListener('DOMContentLoaded', function () {
 <body>
 
 <header class="site-top">
-  <div class="site-top-row">
-    <p class="site-top-name">Larry Chou</p>
-    <a class="site-top-contact" href="tel:+14087591201">(408) 759-1201</a>
+  <div class="site-top-inner">
+    <div class="site-top-brand">
+      <p class="site-top-name">Larry Chou</p>
+      <p class="site-top-sub">Keller Williams Silicon Valley</p>
+    </div>
+    <div class="site-top-contact-col">
+      <a class="site-top-phone" href="tel:+14087591201">(408) 759-1201</a>
+      <a class="site-top-email" href="mailto:hey@larrychou.com">hey@larrychou.com</a>
+    </div>
   </div>
-  <p class="site-top-brokerage">Keller Williams Silicon Valley</p>
 </header>
 
 <!-- Hero. The offer replaced the before/after wipe: the photos live in the
@@ -1017,7 +1029,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <section class="offer-hero" id="top">
     <div class="oh-grid">
     <div class="oh-col-content">
-    <h1 class="oh-head">Selling your home has never been easier</h1>
+    <h1 class="oh-head"><span class="oh-l1">Preparing your home</span><span class="oh-l2">for sale has never been easier</span></h1>
     <p class="oh-sub">Hand me the keys, I&rsquo;ll handle the rest</p>
     <div class="offer-note">
       <p class="oh-offer">Up to <strong>$7,500</strong> in free staging<span class="oh-offer-sub">For the next <strong data-slots-mirror>2</strong> homeowners who sign up</span></p>
