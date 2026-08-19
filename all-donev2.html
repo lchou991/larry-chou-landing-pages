@@ -708,6 +708,33 @@ img { max-width: 100%; height: auto; display: block; }
 .form-divider { height: 1px; background: var(--rule); margin: 22px 0; }
 .form-promise { margin: 14px 0 0; font-size: 14px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; max-width: none; }
 
+/* ---- capture form on a bold mallard block ----
+   Full-bleed mallard on mobile so it owns the screen; a contained mallard panel
+   on desktop. The emerald CTA and white field pop hard against it. */
+.form-band { background: var(--mallard); width: 100%; padding: clamp(30px,7vw,44px) 22px clamp(30px,7vw,42px); margin: clamp(20px,4vw,32px) 0 0; }
+.form-band-inner { max-width: 460px; margin: 0 auto; }
+.form-band .form-lead { color: #F4F1EA; }
+.form-band .form-lead strong { color: var(--gold); }
+.form-band .form-group label { color: rgba(244,241,234,0.72); }
+.form-band .form-promise { color: rgba(244,241,234,0.82); }
+.form-band .addr-recap { color: rgba(244,241,234,0.8); }
+.form-band .addr-recap span { color: #FFFFFF; }
+.form-band .agent-card .text-pill { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.55); }
+.form-band .agent-card .text-pill:hover { background: #FFFFFF; color: var(--mallard); border-color: #FFFFFF; }
+@media (min-width: 760px) {
+  .form-band { background: transparent; width: auto; padding: 0; margin: clamp(28px,4vw,40px) 0 0; }
+  .form-band-inner { background: var(--mallard); max-width: 540px; padding: clamp(34px,4vw,46px) clamp(30px,3.6vw,44px); box-shadow: 0 18px 42px rgba(17,17,17,.18); }
+}
+
+/* ---- sticky mobile CTA: always one tap from reserving, from anywhere on the
+   page. Hidden on desktop and while the form itself is in view. ---- */
+.mobile-cta { display: none; }
+@media (max-width: 759px) {
+  .mobile-cta { display: flex; align-items: center; justify-content: center; gap: 8px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 900; background: var(--action); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 17px; padding: 16px 20px; border-radius: 999px; text-decoration: none; box-shadow: 0 10px 26px rgba(17,17,17,.32); transition: opacity .25s ease, transform .25s ease; }
+  .mobile-cta.is-hidden { opacity: 0; transform: translateY(130%); pointer-events: none; }
+  body { padding-bottom: 78px; }
+}
+
 /* Step 2 opens with the address already given, so the visitor can see the form
    knows it and does not wonder whether it took. The change link goes back. */
 .fstep[hidden] { display: none; }
@@ -1218,8 +1245,10 @@ document.addEventListener('DOMContentLoaded', function () {
 .budget-band .bb-lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: var(--ink-mid); margin: 0 0 clamp(20px,3vw,28px); }
 .budget-band .bb-lead strong { color: var(--ink); font-weight: 700; }
 .budget-band .bb-card { background: var(--paper); border-left: 3px solid var(--gold); padding: clamp(20px,3vw,26px) clamp(20px,3vw,28px); margin: 0 0 clamp(20px,3vw,28px); }
-.budget-band .guarantee { background: var(--ink); border-radius: 0; padding: 16px 20px 17px; margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.45; color: #FFFFFF; }
-.budget-band .guarantee span { display: block; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 20px; line-height: 1.15; color: #FFFFFF; margin-bottom: 9px; }
+/* Quieted: was a solid black slab that out-shouted the form below it. Now a
+   calm bordered note so the mallard capture band is the loudest thing in the zone. */
+.budget-band .guarantee { background: var(--paper); border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 0; padding: 15px 20px 16px; margin: 0; font-family: var(--sans); font-size: 15px; line-height: 1.45; color: var(--ink-mid); }
+.budget-band .guarantee span { display: block; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 16px; line-height: 1.15; color: var(--mallard); margin-bottom: 7px; }
 .budget-band .bb-cta { margin-top: clamp(20px,3vw,26px); text-align: center; }
 .budget-band .bb-cta .final-cta-btn { width: auto; min-width: 0; display: inline-block; padding: 14px 44px; }
 /* The moved hero form now sits under the guarantee bar. Give it room and center it. */
@@ -1245,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /* The recent-sale proof now sits on a hand-inked paintbrush stroke (SVG, roughened
    with turbulence + displacement) instead of a rectangular black bar. Ties to the
    free-painting offer and reads as an artful accent, not a page-ending footer. */
-.stats-bar { position: relative; background: transparent; width: 100%; padding: clamp(30px,4.4vw,48px) 24px clamp(24px,3.4vw,38px); margin: clamp(22px,3.2vw,38px) 0 0; }
+.stats-bar { position: relative; background: transparent; width: 100%; padding: clamp(30px,4.4vw,48px) 24px clamp(24px,3.4vw,38px); margin: clamp(22px,3.2vw,38px) 0 0; overflow-x: clip; }
 .stats-stage { position: relative; max-width: 1000px; margin: clamp(10px,1.8vw,18px) auto 0; }
 .stats-brush { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: calc(100% + 150px); height: calc(100% + 84px); z-index: 0; pointer-events: none; }
 .stats-brush svg { width: 100%; height: 100%; display: block; }
@@ -1272,6 +1301,10 @@ document.addEventListener('DOMContentLoaded', function () {
   <p class="bb-lead">16DayPrep is built to solve the two things that <strong>go wrong</strong> on any home project: the <strong>budget</strong> and <strong>timeline</strong>.</p>
   <p class="bb-lead bb-card">I give you a written plan with itemized costs and a fixed budget, and the whole job is complete in 16 days. I coordinate the entire process with contractors without you needing to be there. You get real-time updates through an app on your phone.</p>
   <p class="guarantee"><span>My Budget Guarantee</span>Your prep bill won&rsquo;t exceed your approved budget by more than 10%.<br>If it does, I pay for the overage.</p>
+</section>
+
+<section class="form-band">
+  <div class="form-band-inner">
     <div class="hero-form" id="form">
       <p class="form-lead"><strong>$23,500</strong> in free painting and staging. Start with your address</p>
       <form name="consult-v2" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
@@ -1324,7 +1357,10 @@ document.addEventListener('DOMContentLoaded', function () {
         <a href="sms:+14087591201" class="text-pill">Questions? 408-759-1201</a>
       </div>
     </div>
+  </div>
 </section>
+
+<a class="mobile-cta is-hidden" href="#form">Reserve My Free Prep <span aria-hidden="true">&rarr;</span></a>
 
 <section class="stats-bar">
   <div class="stats-bar-head">
@@ -1775,6 +1811,18 @@ function initAddressAutocomplete(){
     if (mq.addEventListener) mq.addEventListener('change', remeasure);
     else if (mq.addListener) mq.addListener(remeasure);
   }
+})();
+</script>
+<script>
+/* Sticky mobile CTA: show it whenever the real form is off-screen, hide it while
+   the form is in view so there are never two competing CTAs at once. */
+(function(){
+  var cta = document.querySelector('.mobile-cta'), form = document.getElementById('form');
+  if (!cta || !form) return;
+  if (!('IntersectionObserver' in window)) { cta.classList.remove('is-hidden'); return; }
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ cta.classList.toggle('is-hidden', e.isIntersecting); });
+  }, { rootMargin: '0px 0px -25% 0px' }).observe(form);
 })();
 </script>
 </body>
