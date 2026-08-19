@@ -34,7 +34,7 @@
    lightened, arguments left-aligned and only the hooks centred. */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-padding-top: 72px; }
+html { scroll-padding-top: 72px; background: #FFFFFF; }
 :root {
   color-scheme: light;
   --paper:    #F2EFE9;   /* cream panel */
@@ -730,12 +730,17 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 /* ---- sticky mobile CTA: always one tap from reserving, from anywhere on the
-   page. Hidden on desktop and while the form itself is in view. ---- */
-.mobile-cta { display: none; }
+   page. Hidden on desktop and while the form itself is in view.
+   The button sits on a WHITE dock spanning the bottom edge: iOS Safari colors
+   its toolbar to match whatever is at the bottom of the page, so a bare emerald
+   button pinned there turns the whole toolbar emerald. A white dock (extended
+   through the home-indicator safe area) gives Safari a white surface to match. */
+.mobile-dock { display: none; }
 @media (max-width: 759px) {
-  .mobile-cta { display: flex; align-items: center; justify-content: center; gap: 8px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 900; background: var(--action); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 17px; padding: 16px 20px; border-radius: 999px; text-decoration: none; box-shadow: 0 10px 26px rgba(17,17,17,.32); transition: opacity .25s ease, transform .25s ease; }
-  .mobile-cta.is-hidden { opacity: 0; transform: translateY(130%); pointer-events: none; }
-  body { padding-bottom: 78px; }
+  .mobile-dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: #FFFFFF; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -6px 22px rgba(17,17,17,.12); transition: transform .28s ease, opacity .28s ease; }
+  .mobile-dock.is-hidden { transform: translateY(115%); opacity: 0; pointer-events: none; }
+  .mobile-cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--action); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 17px; padding: 15px 20px; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 16px rgba(18,122,95,.30); }
+  body { padding-bottom: 86px; }
 }
 
 /* Step 2 opens with the address already given, so the visitor can see the form
@@ -1363,7 +1368,9 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<a class="mobile-cta is-hidden" href="#form">Reserve My Free Prep <span aria-hidden="true">&rarr;</span></a>
+<div class="mobile-dock is-hidden">
+  <a class="mobile-cta" href="#form">Reserve My Free Prep <span aria-hidden="true">&rarr;</span></a>
+</div>
 
 <section class="stats-bar">
   <div class="stats-bar-head">
@@ -1820,7 +1827,7 @@ function initAddressAutocomplete(){
 /* Sticky mobile CTA: show it whenever the real form is off-screen, hide it while
    the form is in view so there are never two competing CTAs at once. */
 (function(){
-  var cta = document.querySelector('.mobile-cta'), form = document.getElementById('form');
+  var cta = document.querySelector('.mobile-dock'), form = document.getElementById('form');
   if (!cta || !form) return;
   if (!('IntersectionObserver' in window)) { cta.classList.remove('is-hidden'); return; }
   new IntersectionObserver(function(entries){
