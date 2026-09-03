@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<!-- Neutral toolbar tint: without this, iOS Safari samples the emerald sticky
-     CTA at the bottom edge and paints its toolbar emerald, killing the button's pop. -->
-<meta name="theme-color" content="#FFFFFF">
 <title>$23,500 in whole-house painting and staging | 16DayPrep</title>
 <meta name="description" content="Without a to-do list. Most homes don&rsquo;t need a full renovation. They need the right preparation.">
 <meta property="og:type" content="website">
@@ -34,7 +31,7 @@
    lightened, arguments left-aligned and only the hooks centred. */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-padding-top: 72px; background: #FFFFFF; }
+html { scroll-padding-top: 72px; }
 :root {
   color-scheme: light;
   --paper:    #F2EFE9;   /* cream panel */
@@ -152,31 +149,23 @@ img { max-width: 100%; height: auto; display: block; }
    The before/after photos left the hero; the carousel below already carries
    them. The offer is the biggest pull on the page now, so it IS the hero: one
    cream card, the number leading, the button dropping to the form. */
-/* Restrained masthead: the same name / brokerage / phone as before, but on the
-   light page ground with a hairline rule instead of a heavy black band. Keeps
-   the identity and the tap-to-call while opening the fold lighter. */
+/* Black masthead: name over brokerage on the left, phone vertically centered on the right. */
 .site-top {
-  background: var(--surface); padding: 12px var(--gutter);
-  border-bottom: 1px solid var(--rule);
+  background: var(--ink); padding: 12px var(--gutter);
   position: sticky; top: 0; z-index: 1000;
 }
 .site-top-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1080px; margin-inline: auto; }
 .site-top-contact {
-  font-size: 15px; font-weight: 700; color: var(--ink);
+  font-size: 15px; font-weight: 700; color: var(--paper);
   text-decoration: none; white-space: nowrap;
 }
-.site-top-contact:hover { color: var(--mallard); }
+.site-top-contact:hover { color: #FFFFFF; }
 .site-top p { margin: 0; max-width: none; font-family: var(--sans); line-height: 1.25; }
-.site-top-name { font-size: 16px; font-weight: 700; color: var(--ink); }
-/* The REALTOR mark: small, letterspaced caps in mallard, the credential set
-   quietly beside the name. The ® rides as a superscript so it reads as the mark
-   rather than part of the word. */
-.realtor-mark { font-size: 9px; font-weight: 700; letter-spacing: .1em; color: var(--mallard); vertical-align: 1px; margin-left: 4px; }
-.realtor-mark sup { font-size: 7px; }
-.site-top-brokerage { font-size: 12px; font-weight: 500; color: var(--taupe); }
+.site-top-name { font-size: 16px; font-weight: 700; color: var(--paper); }
+.site-top-brokerage { font-size: 12px; font-weight: 500; color: rgba(242,239,233,0.8); }
 .lp-hero-wrap { position: relative; }
 .offer-hero {
-  background: var(--paper); border: 1px solid var(--rule); text-align: left;
+  background: var(--paper); border: 1px solid var(--rule); text-align: center;
   container-type: inline-size; overflow: hidden;
   margin: clamp(12px, 3.4vw, 20px) var(--gutter) 0;
 }
@@ -184,7 +173,7 @@ img { max-width: 100%; height: auto; display: block; }
    on desktop so the horizontal space is used instead of left as dead margin. */
 .oh-grid { display: grid; grid-template-columns: 1fr; }
 .oh-col-content { padding: clamp(26px, 5vw, 40px) clamp(20px, 4.4vw, 32px); container-type: inline-size; }
-.oh-col-content > * { max-width: 460px; margin-inline: 0; }
+.oh-col-content > * { max-width: 460px; margin-inline: auto; }
 .oh-col-media { display: none; flex-direction: column; gap: 12px; justify-content: center; }
 .oh-col-media img { width: 100%; height: auto; display: block; }
 .ohm-shot { position: relative; display: block; margin: 0; line-height: 0; }
@@ -226,52 +215,10 @@ img { max-width: 100%; height: auto; display: block; }
    doing the work, then a rotating benefit so the reader is never the subject of
    a chore. Caslon, matching the luxury-hospitality reference. */
 .oh-eyebrow-lbl { font-family: var(--sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 14px; }
-.offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(32px, 5.2vw, 50px); line-height: 1.08; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 12px; max-width: 18ch; }
-.oh-bio { font-family: var(--sans); font-size: clamp(16px, 2.1vw, 18px); font-weight: 500; line-height: 1.5; color: var(--ink-mid); margin: 0 0 4px; max-width: 34ch; }
-/* Charlie's separator, borrowed: a short gold rule that closes off the headline
-   as its own unit, so the scope below reads as a new block instead of more
-   headline. The single most effective thing keeping his hero from being a wall. */
-.oh-hr { display: block; width: 56px; height: 3px; background: var(--gold); margin: 0 0 22px; }
+.offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(34px, 5.4vw, 52px); line-height: 1.06; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 10px; max-width: 14ch; }
 /* Same small, letterspaced prominence as the old eyebrow, now sitting under the
    headline as the supporting line. */
 .oh-subhead { font-family: var(--sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 18px; }
-
-/* The scope cascade. It replaces the one-line "hand me the keys" subhead with
-   the whole job, set as a decrescendo: the base size is the SMALL end and every
-   earlier word is scaled up in em, so the list starts large and shrinks to the
-   close. It reads as the to-do list from the headline, now being absorbed. The
-   base is in em so the whole ramp scales with the one clamp on the container. */
-.oh-scope { text-align: left; margin: 0 0 30px; }
-/* The lead-in reads as the front of the sentence the list completes, so it is
-   set prominent, not as a small eyebrow: display serif near the headline's
-   size, in mallard so it is clearly a different voice from the ink list, and
-   tight to the list so the two pair as one thought. */
-.oh-scope-lead {
-  display: block; font-family: "Libre Caslon Text", Georgia, serif;
-  font-size: clamp(24px, 5.2vw, 33px); font-weight: 700; letter-spacing: -0.01em;
-  text-transform: none; line-height: 1.08;
-  color: var(--mallard); margin: 0 0 6px;
-}
-.oh-scope-list {
-  display: block; font-family: "Libre Caslon Text", Georgia, serif; font-weight: 400;
-  color: var(--ink); font-size: clamp(15px, 4vw, 19px); line-height: 1.36;
-}
-.oh-scope-list b { font-weight: 400; white-space: nowrap; }
-.oh-scope-list b:nth-child(1)  { font-size: 1.70em; }
-.oh-scope-list b:nth-child(2)  { font-size: 1.65em; }
-.oh-scope-list b:nth-child(3)  { font-size: 1.60em; }
-.oh-scope-list b:nth-child(4)  { font-size: 1.55em; }
-.oh-scope-list b:nth-child(5)  { font-size: 1.50em; }
-.oh-scope-list b:nth-child(6)  { font-size: 1.45em; }
-.oh-scope-list b:nth-child(7)  { font-size: 1.40em; }
-.oh-scope-list b:nth-child(8)  { font-size: 1.35em; }
-.oh-scope-list b:nth-child(9)  { font-size: 1.30em; }
-.oh-scope-list b:nth-child(10) { font-size: 1.25em; }
-.oh-scope-list b:nth-child(11) { font-size: 1.20em; }
-.oh-scope-list b:nth-child(12) { font-size: 1.15em; }
-.oh-scope-list b:nth-child(13) { font-size: 1.10em; }
-.oh-scope-list b:nth-child(14) { font-size: 1.05em; }
-.oh-scope-list b:nth-child(15) { font-size: 1.00em; }
 /* The offer continues the headline sentence, so it speaks in the same serif
    voice at a step-down size: "Sell without the to-do list… and get up to
    $23,500…" reads as one thought, not headline plus fine print. */
@@ -310,7 +257,7 @@ img { max-width: 100%; height: auto; display: block; }
 .offer-hero .lp-hero-btn { display: inline-block; text-decoration: none; }
 /* Styled as a live status readout, not body copy: a chip with a pulsing
    indicator dot, so the number reads as a value being tracked. */
-.slots-row { text-align: left; margin: 0 0 20px; }
+.slots-row { text-align: center; margin: 0 0 20px; }
 .oh-slots {
   display: inline-block;
   margin: 0; padding: 7px 15px;
@@ -712,40 +659,6 @@ img { max-width: 100%; height: auto; display: block; }
 .form-divider { height: 1px; background: var(--rule); margin: 22px 0; }
 .form-promise { margin: 14px 0 0; font-size: 14px; font-weight: 500; color: var(--ink-mid); text-align: center; line-height: 1.45; max-width: none; }
 
-/* ---- capture form on a bold mallard block ----
-   Full-bleed mallard on mobile so it owns the screen; a contained mallard panel
-   on desktop. The emerald CTA and white field pop hard against it. */
-.form-band { background: var(--mallard); width: 100%; padding: clamp(30px,7vw,44px) 22px clamp(30px,7vw,42px); margin: clamp(20px,4vw,32px) 0 0; }
-.form-band-inner { max-width: 460px; margin: 0 auto; }
-.form-band .form-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(25px, 6.2vw, 32px); line-height: 1.1; letter-spacing: -0.01em; color: #FFFFFF; text-align: center; margin: 0 0 9px; }
-.form-band .form-lead { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(23px, 4.7vw, 30px); line-height: 1.16; letter-spacing: -0.005em; text-align: left; color: #FFFFFF; margin: 0 0 22px; }
-.form-band .agent-card { justify-content: flex-start; }
-.form-band .form-lead strong { color: #FFFFFF; font-weight: 700; font-style: italic; }
-.form-band .form-group label { color: rgba(244,241,234,0.72); }
-.form-band .form-promise { color: rgba(244,241,234,0.82); }
-.form-band .addr-recap { color: rgba(244,241,234,0.8); }
-.form-band .addr-recap span { color: #FFFFFF; }
-.form-band .agent-card .text-pill { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.55); }
-.form-band .agent-card .text-pill:hover { background: #FFFFFF; color: var(--mallard); border-color: #FFFFFF; }
-@media (min-width: 760px) {
-  .form-band { background: transparent; width: auto; padding: 0; margin: clamp(28px,4vw,40px) 0 0; }
-  .form-band-inner { background: var(--mallard); max-width: 540px; padding: clamp(34px,4vw,46px) clamp(30px,3.6vw,44px); box-shadow: 0 18px 42px rgba(17,17,17,.18); }
-}
-
-/* ---- sticky mobile CTA: always one tap from reserving, from anywhere on the
-   page. Hidden on desktop and while the form itself is in view.
-   The button sits on a WHITE dock spanning the bottom edge: iOS Safari colors
-   its toolbar to match whatever is at the bottom of the page, so a bare emerald
-   button pinned there turns the whole toolbar emerald. A white dock (extended
-   through the home-indicator safe area) gives Safari a white surface to match. */
-.mobile-dock { display: none; }
-@media (max-width: 759px) {
-  .mobile-dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: #FFFFFF; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -6px 22px rgba(17,17,17,.12); transition: transform .28s ease, opacity .28s ease; }
-  .mobile-dock.is-hidden { transform: translateY(115%); opacity: 0; pointer-events: none; }
-  .mobile-cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--action); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 17px; padding: 15px 20px; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 16px rgba(18,122,95,.30); }
-  body { padding-bottom: 86px; }
-}
-
 /* Step 2 opens with the address already given, so the visitor can see the form
    knows it and does not wonder whether it took. The change link goes back. */
 .fstep[hidden] { display: none; }
@@ -761,17 +674,14 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .form-submit, .final-cta-btn, .text-pill {
   display: inline-block; font-family: var(--sans); font-weight: 700; font-size: 18px;
-  padding: 15px 30px; border: 2px solid var(--action); border-radius: 999px;
-  background: var(--action); color: #fff; cursor: pointer; text-decoration: none; text-align: center;
+  padding: 15px 30px; border: 2px solid var(--mallard); border-radius: 999px;
+  background: var(--mallard); color: #fff; cursor: pointer; text-decoration: none; text-align: center;
   transition: background .2s ease, color .2s ease, border-color .2s ease, transform .14s ease, box-shadow .14s ease;
 }
-/* The primary submit is the loudest control on the page: the emerald action
-   colour, larger type, full width, and a coloured lift so it reads as a raised
-   button, not a tinted bar. */
-.form-submit { width: 100%; font-size: clamp(16px, 4.4vw, 20px); padding: 18px 22px; white-space: nowrap; box-shadow: 0 8px 20px rgba(18,122,95,.32); }
+.form-submit { width: 100%; }
 .form-submit:hover, .final-cta-btn:hover, .text-pill:hover {
-  background: var(--action-dk); color: #fff; border-color: var(--action-dk);
-  transform: translateY(-2px); box-shadow: 0 10px 22px rgba(18,122,95,.4);
+  background: #fff; color: var(--mallard); border-color: var(--mallard);
+  transform: translateY(-2px); box-shadow: 0 8px 18px rgba(17,17,17,.26);
 }
 .form-submit:active, .final-cta-btn:active, .text-pill:active { transform: translateY(0); box-shadow: 0 2px 6px rgba(17,17,17,.22); }
 @media (prefers-reduced-motion: reduce) {
@@ -1108,7 +1018,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <header class="site-top">
   <div class="site-top-inner">
     <div class="site-top-brand">
-      <p class="site-top-name">Larry Chou <span class="realtor-mark">REALTOR<sup>&reg;</sup></span></p>
+      <p class="site-top-name">Larry Chou</p>
       <p class="site-top-brokerage">Keller Williams Silicon Valley</p>
     </div>
     <a class="site-top-contact" href="tel:+14087591201">(408) 759-1201</a>
@@ -1123,15 +1033,10 @@ document.addEventListener('DOMContentLoaded', function () {
   <section class="offer-hero" id="top">
     <div class="oh-grid">
     <div class="oh-col-content">
-    <h1 class="oh-head">Get your home ready to sell without lifting a finger</h1>
-    <p class="oh-bio">My name is Larry Chou, and I&rsquo;m a former flipper turned Realtor.</p>
-    <span class="oh-hr" aria-hidden="true"></span>
-    <p class="oh-scope">
-      <span class="oh-scope-lead">I&rsquo;ll handle the</span>
-      <span class="oh-scope-list"><b>painting,</b> <b>lighting&nbsp;updates,</b> <b>repairs,</b> <b>trash-out,</b> <b>cleaning,</b> <b>landscaping,</b> <b>power&nbsp;washing,</b> <b>staging,</b> <b>photography,</b> <b>inspections,</b> <b>marketing,</b> <b>the&nbsp;launch,</b> <b>negotiations,</b> <b>the&nbsp;sale,</b> <b>and&nbsp;the&nbsp;close</b></span>
-    </p>
+    <h1 class="oh-head">Sell without the to-do list</h1>
+    <p class="oh-subhead">Hand me the keys, I&rsquo;ll handle the rest</p>
     <div class="offer-note">
-      <p class="oh-offer">Whole-house painting and staging included<span class="oh-offer-sub">Up to a <strong>$23,500</strong> value for the next <strong data-slots-mirror>2</strong> homeowners who list with me</span></p>
+      <p class="oh-offer">Up to <strong>$23,500</strong> in free<br>whole-house painting and staging<span class="oh-offer-sub">For the next <strong data-slots-mirror>2</strong> homeowners who sign up</span></p>
       <div class="slots-row"><p class="oh-slots"><span class="oh-slots-dot" aria-hidden="true"></span><strong data-slots-open>2</strong>&nbsp;spots open &middot; as of <span data-today></span></p></div>
     </div>
     </div>
@@ -1257,68 +1162,30 @@ document.addEventListener('DOMContentLoaded', function () {
 .budget-band .bb-lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: var(--ink-mid); margin: 0 0 clamp(20px,3vw,28px); }
 .budget-band .bb-lead strong { color: var(--ink); font-weight: 700; }
 .budget-band .bb-card { background: var(--paper); border-left: 3px solid var(--gold); padding: clamp(20px,3vw,26px) clamp(20px,3vw,28px); margin: 0 0 clamp(20px,3vw,28px); }
-/* Quieted: was a solid black slab that out-shouted the form below it. Now a
-   calm bordered note so the mallard capture band is the loudest thing in the zone. */
-.budget-band .guarantee { background: var(--paper); border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 0; padding: 15px 20px 16px; margin: 0; font-family: var(--sans); font-size: 15px; line-height: 1.45; color: var(--ink-mid); }
-.budget-band .guarantee span { display: block; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 16px; line-height: 1.15; color: var(--mallard); margin-bottom: 7px; }
+.budget-band .guarantee { background: var(--ink); border-radius: 0; padding: 16px 20px 17px; margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.45; color: #FFFFFF; }
+.budget-band .guarantee span { display: block; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 20px; line-height: 1.15; color: #FFFFFF; margin-bottom: 9px; }
 .budget-band .bb-cta { margin-top: clamp(20px,3vw,26px); text-align: center; }
 .budget-band .bb-cta .final-cta-btn { width: auto; min-width: 0; display: inline-block; padding: 14px 44px; }
 /* The moved hero form now sits under the guarantee bar. Give it room and center it. */
-/* The form is the whole point of the page, so it gets the loudest frame: a
-   cream card lifted off the white ground with a shadow and an emerald top edge
-   (the action colour), instead of a field and button floating on bare white. */
-.budget-band .hero-form {
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  border-top: 4px solid var(--action);
-  box-shadow: 0 14px 38px rgba(17,17,17,.13);
-  padding: clamp(22px, 4.4vw, 32px);
-  max-width: 500px;
-  margin: clamp(24px,3.4vw,34px) auto 0;
-}
-.budget-band .hero-form .form-lead {
-  font-family: var(--sans); font-weight: 700; font-size: clamp(18px, 2.4vw, 21px);
-  color: var(--ink); text-align: center; line-height: 1.3; margin: 0 0 18px;
-}
-.budget-band .hero-form .form-lead strong { color: var(--gold); font-weight: 700; }
+.budget-band .hero-form { margin-top: clamp(24px,3.4vw,34px); }
 /* Recent-sale stats on a full-bleed black band: the numbers become the loudest
    proof on the page, edge to edge, instead of quiet cells inside the column. */
-/* The recent-sale proof now sits on a hand-inked paintbrush stroke (SVG, roughened
-   with turbulence + displacement) instead of a rectangular black bar. Ties to the
-   free-painting offer and reads as an artful accent, not a page-ending footer. */
-.stats-bar { position: relative; background: transparent; width: 100%; padding: clamp(30px,4.4vw,48px) 24px clamp(24px,3.4vw,38px); margin: clamp(22px,3.2vw,38px) 0 0; overflow-x: clip; }
-.stats-stage { position: relative; max-width: 1000px; margin: clamp(10px,1.8vw,18px) auto 0; }
-.stats-brush { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: calc(100% + 150px); height: calc(100% + 84px); z-index: 0; pointer-events: none; }
-.stats-brush svg { width: 100%; height: 100%; display: block; }
-.stats-bar-inner { position: relative; z-index: 1; padding: clamp(24px,3.4vw,34px) 0; }
-.stats-bar-more { position: relative; z-index: 1; }
+.stats-bar { background: var(--ink); width: 100%; padding: clamp(30px,4.4vw,44px) 24px; margin: clamp(30px,4.4vw,48px) 0 0; }
 .stats-bar-head { max-width: 900px; margin: 0 auto clamp(20px,2.8vw,26px); text-align: center; }
 .stats-bar-eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin: 0 0 5px; }
-.stats-bar-addr { font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin: 0; }
+.stats-bar-addr { font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #FFFFFF; margin: 0; }
 .stats-bar-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
 .stats-bar .stat-cell { text-align: center; padding: 4px 12px; }
 .stats-bar .stat-cell + .stat-cell { border-left: 1px solid rgba(255,255,255,0.16); }
 .stats-bar .stat-num { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; color: #FFFFFF; }
 .stats-bar .stat-label { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(242,239,233,0.72); margin-top: 8px; line-height: 1.3; }
-/* Continuation cue: keeps the full-bleed black bar from reading as a page-end.
-   A lead-in into the next section (the review) plus a nudging down-arrow. */
-.stats-bar-more { max-width: 900px; margin: clamp(20px,2.8vw,28px) auto 0; text-align: center; }
-.stats-bar-more .sbm-text { display: block; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--taupe); }
-.stats-bar-more .sbm-chev { display: inline-block; margin-top: 9px; font-size: 24px; line-height: 1; color: var(--gold); animation: sbmbounce 1.8s ease-in-out infinite; }
-@keyframes sbmbounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-@media (prefers-reduced-motion: reduce) { .stats-bar-more .sbm-chev { animation: none; } }
 </style>
 <section class="budget-band">
   <h2>A written budget you can hold me to</h2>
   <p class="bb-lead">16DayPrep is built to solve the two things that <strong>go wrong</strong> on any home project: the <strong>budget</strong> and <strong>timeline</strong>.</p>
   <p class="bb-lead bb-card">I give you a written plan with itemized costs and a fixed budget, and the whole job is complete in 16 days. I coordinate the entire process with contractors without you needing to be there. You get real-time updates through an app on your phone.</p>
   <p class="guarantee"><span>My Budget Guarantee</span>Your prep bill won&rsquo;t exceed your approved budget by more than 10%.<br>If it does, I pay for the overage.</p>
-</section>
-
-<section class="form-band">
-  <div class="form-band-inner">
     <div class="hero-form" id="form">
-      <p class="form-lead">Interested? Get details and reserve <strong>free painting &amp; staging</strong></p>
       <form name="consult-v2" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="consult-v2">
         <input type="hidden" name="mailer" value="All Done">
@@ -1332,7 +1199,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="text" id="f-address" name="address" placeholder="Enter your address" autocomplete="street-address" required>
           </div>
           <div class="form-divider"></div>
-          <button type="button" class="form-submit" data-step-next>Reserve My Free Prep</button>
+          <button type="button" class="form-submit" data-step-next>Get my prep plan &amp; budget</button>
         </div>
 
         <div class="fstep" data-step="2" hidden>
@@ -1350,7 +1217,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="email" id="f-email" name="email" placeholder="jane@email.com" autocomplete="email" inputmode="email" required>
           </div>
           <div class="form-divider"></div>
-          <button type="submit" class="form-submit">Reserve My Free Prep</button>
+          <button type="submit" class="form-submit">Get my prep plan &amp; budget</button>
           <p class="form-promise">I&rsquo;ll personally review your home and call you today. Submitted after hours? First thing tomorrow.</p>
         </div>
       </form>
@@ -1369,33 +1236,13 @@ document.addEventListener('DOMContentLoaded', function () {
         <a href="sms:+14087591201" class="text-pill">Questions? 408-759-1201</a>
       </div>
     </div>
-  </div>
+    <p class="offer-terms"><button type="button" class="terms-link" onclick="openTerms()">Full offer terms</button></p>
 </section>
-
-<div class="mobile-dock is-hidden">
-  <a class="mobile-cta" href="#form">Reserve My Free Prep <span aria-hidden="true">&rarr;</span></a>
-</div>
 
 <section class="stats-bar">
   <div class="stats-bar-head">
     <p class="stats-bar-eyebrow">Results from a recent sale</p>
     <p class="stats-bar-addr">1458 Portobelo Dr &middot; San Jose</p>
-  </div>
-  <div class="stats-stage">
-  <div class="stats-brush" aria-hidden="true">
-    <svg viewBox="0 0 1160 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="paintbrush" x="-12%" y="-30%" width="124%" height="160%" color-interpolation-filters="sRGB">
-          <feTurbulence type="fractalNoise" baseFrequency="0.011 0.019" numOctaves="4" seed="11" result="edge"/>
-          <feDisplacementMap in="SourceGraphic" in2="edge" scale="15" xChannelSelector="R" yChannelSelector="G" result="rough"/>
-          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.55" numOctaves="2" seed="3" result="streak"/>
-          <feColorMatrix in="streak" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.26 0.78" result="streakA"/>
-          <feComposite in="rough" in2="streakA" operator="in"/>
-        </filter>
-      </defs>
-      <path filter="url(#paintbrush)" fill="#15120E"
-        d="M10,104 C 320,80 640,74 940,56 C 1050,49 1120,44 1150,34 C 1158,96 1156,182 1138,236 C 1096,252 760,250 470,260 C 300,266 150,268 26,282 C 12,240 6,158 10,104 Z"/>
-    </svg>
   </div>
   <div class="stats-bar-inner">
     <div class="stat-cell">
@@ -1410,11 +1257,6 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="stat-num">7</div>
       <div class="stat-label">Days to Accepted Offer</div>
     </div>
-  </div>
-  </div>
-  <div class="stats-bar-more">
-    <span class="sbm-text">In the seller&rsquo;s own words</span>
-    <span class="sbm-chev" aria-hidden="true">&#8595;</span>
   </div>
 </section>
 
@@ -1476,7 +1318,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
   </div>
 
-  <a href="#form" class="final-cta-btn">Reserve My Free Prep</a>
+  <a href="#form" class="final-cta-btn">Get my prep plan &amp; budget</a>
 </div>
 
 
@@ -1499,7 +1341,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <li><strong>Extended on-call support:</strong> direct answers 8 AM to 11 PM PT, 7 days a week.</li>
   </ul>
   <p class="hiw-note">Painting and staging cost you $0, and they&rsquo;re usually 75&ndash;80% of a home&rsquo;s prep. That leaves only minor prep for you, plus sales commission.</p>
-  <a href="#form" class="final-cta-btn">Reserve My Free Prep</a>
+  <a href="#form" class="final-cta-btn">Get my prep plan &amp; budget</a>
   </div>
 </div>
 
@@ -1825,18 +1667,6 @@ function initAddressAutocomplete(){
     if (mq.addEventListener) mq.addEventListener('change', remeasure);
     else if (mq.addListener) mq.addListener(remeasure);
   }
-})();
-</script>
-<script>
-/* Sticky mobile CTA: show it whenever the real form is off-screen, hide it while
-   the form is in view so there are never two competing CTAs at once. */
-(function(){
-  var cta = document.querySelector('.mobile-dock'), form = document.getElementById('form');
-  if (!cta || !form) return;
-  if (!('IntersectionObserver' in window)) { cta.classList.remove('is-hidden'); return; }
-  new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ cta.classList.toggle('is-hidden', e.isIntersecting); });
-  }, { rootMargin: '0px 0px -25% 0px' }).observe(form);
 })();
 </script>
 </body>
