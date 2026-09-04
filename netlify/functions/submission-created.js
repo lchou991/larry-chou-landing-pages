@@ -56,6 +56,7 @@ const FORMS_WITH_MAILER_TAGS = new Set(["consult", "consult-relief", "consult-v2
 // because getMailerTag() does first-substring-match. e.g. "/all-done2" must
 // come before "/all-done" or "/all-done2" submissions would match "/all-done".
 const MAILER_TAGS = {
+  "/sell-asis":        ["16 Day Prep System", "Sell As-Is", "Meta Ad"],
   "/prep-plan":        "16 Day Prep Mailer 02",
   "/gbp":              "GBP",
   "/campbell":         "CampbellPrepCTA",
@@ -296,6 +297,7 @@ export const handler = async (event) => {
     phone:   phone   ? `****${normalizePhone(phone).slice(-4)}` : "(missing)",
     address: address || "(missing)",
     tags:    tags.join(", "),
+    referrer: pageUrl || "(none)",
   });
 
   // ── 5. Basic validation ──────────────────────────────────────────────────
