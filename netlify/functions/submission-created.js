@@ -64,6 +64,10 @@ const MAILER_TAGS = {
   "/prettylistings-b": ["Pretty Listings B", "Meta Ad"],
   "/prettylistings":   ["Pretty Listings", "Meta Ad"],
   "/all-done2":        ["16 Day Prep System", "Relief", "All-Done v2", "Meta Ad"],
+  // Nextdoor traffic to a clone of the all-done page. MUST stay above "/all-done":
+  // "/all-donenext".includes("/all-done") is true, so listing it after would tag
+  // Nextdoor leads "Meta Ad". Same offer/creative, only the channel tag differs.
+  "/all-donenext":     ["16 Day Prep System", "Relief", "All-Done", "Nextdoor Ad"],
   "/all-done":         ["16 Day Prep System", "Relief", "All-Done", "Meta Ad"],
 };
 
