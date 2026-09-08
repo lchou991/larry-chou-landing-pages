@@ -227,11 +227,20 @@ img { max-width: 100%; height: auto; display: block; }
    a chore. Caslon, matching the luxury-hospitality reference. */
 .oh-eyebrow-lbl { font-family: var(--sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 14px; }
 .offer-hero h1.oh-head { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 700; font-size: clamp(27px, 7vw, 50px); line-height: 1.1; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 12px; max-width: none; }
+.oh-head-benefit { display: block; font-weight: 400; font-size: clamp(18px, 3.4vw, 28px); line-height: 1.18; letter-spacing: -0.01em; color: var(--ink); margin-top: 12px; }
+.oh-tag { display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mallard); background: rgba(41,78,79,0.10); padding: 7px 14px; border-radius: 999px; margin: 0 0 22px; align-self: flex-start; }
+.oh-amount { color: var(--mallard); }
+.final-cta-btn.oh-cta { display: inline-block; width: auto; max-width: none; margin: 10px 0 0; box-shadow: 0 8px 20px rgba(18,122,95,.30); align-self: flex-start; }
+.oh-checks { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.oh-checks li { display: flex; align-items: center; gap: 7px; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink-mid); }
+.oh-checks li::before { content: "✓"; color: var(--action); font-weight: 800; }
 .oh-bio { font-family: var(--sans); font-size: clamp(16px, 2.1vw, 18px); font-weight: 500; line-height: 1.5; color: var(--ink-mid); margin: 0 0 4px; max-width: 34ch; }
 /* Charlie's separator, borrowed: a short gold rule that closes off the headline
    as its own unit, so the scope below reads as a new block instead of more
    headline. The single most effective thing keeping his hero from being a wall. */
 .oh-hr { display: block; width: 56px; height: 3px; background: var(--gold); margin: 0 0 22px; }
+.oh-sub { font-family: var(--sans); font-size: clamp(16px, 2.1vw, 19px); font-weight: 500; line-height: 1.5; color: var(--ink-mid); margin: 0 0 22px; max-width: 46ch; }
+.oh-trust { font-family: var(--sans); font-size: 13px; font-weight: 600; line-height: 1.7; letter-spacing: 0.01em; color: var(--ink-mid); margin: 0; max-width: 46ch; }
 /* Same small, letterspaced prominence as the old eyebrow, now sitting under the
    headline as the supporting line. */
 .oh-subhead { font-family: var(--sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: var(--taupe); margin: 0 0 18px; }
@@ -727,6 +736,10 @@ img { max-width: 100%; height: auto; display: block; }
 .form-band .addr-recap span { color: #FFFFFF; }
 .form-band .agent-card .text-pill { background: transparent; color: #FFFFFF; border-color: rgba(255,255,255,0.55); }
 .form-band .agent-card .text-pill:hover { background: #FFFFFF; color: var(--mallard); border-color: #FFFFFF; }
+.form-band .agent-card .agent-name { color: #FFFFFF; }
+.form-band .agent-card .agent-meta { color: rgba(255,255,255,0.82); }
+.form-band .agent-card .realtor-mark { color: rgba(255,255,255,0.72); }
+.form-band .agent-lines { flex-shrink: 1; }
 @media (min-width: 760px) {
   .form-band { background: transparent; width: auto; padding: 0; margin: clamp(28px,4vw,40px) 0 0; }
   .form-band-inner { background: var(--mallard); max-width: 540px; padding: clamp(34px,4vw,46px) clamp(30px,3.6vw,44px); box-shadow: 0 18px 42px rgba(17,17,17,.18); }
@@ -742,6 +755,7 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 759px) {
   .mobile-dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; background: #FFFFFF; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -6px 22px rgba(17,17,17,.12); transition: transform .28s ease, opacity .28s ease; }
   .mobile-dock.is-hidden { transform: translateY(115%); opacity: 0; pointer-events: none; }
+  .final-cta-btn.oh-cta { display: none; }
   .mobile-cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--action); color: #fff; font-family: var(--sans); font-weight: 700; font-size: 17px; padding: 15px 20px; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 16px rgba(18,122,95,.30); }
   body { padding-bottom: 86px; }
 }
@@ -1123,16 +1137,15 @@ document.addEventListener('DOMContentLoaded', function () {
   <section class="offer-hero" id="top">
     <div class="oh-grid">
     <div class="oh-col-content">
-    <p class="oh-eyebrow-lbl">Before you sell</p>
-    <h1 class="oh-head">Transform your home in just 16 days</h1>
-    <span class="oh-hr" aria-hidden="true"></span>
-    <p class="oh-scope">
-      <span class="oh-scope-lead">I&rsquo;ll handle the</span>
-      <span class="oh-scope-list"><b>painting,</b> <b>lighting&nbsp;updates,</b> <b>repairs,</b> <b>trash-out,</b> <b>cleaning,</b> <b>landscaping,</b> <b>power&nbsp;washing,</b> <b>staging,</b> <b>photography,</b> <b>inspections,</b> <b>marketing,</b> <b>the&nbsp;launch,</b> <b>negotiations,</b> <b>the&nbsp;sale,</b> <b>and&nbsp;the&nbsp;close</b></span>
-    </p>
-    <div class="offer-note">
-      <p class="oh-offer">Whole-house painting included<span class="oh-offer-sub">Up to a <strong>$16,000</strong> value</span></p>
-    </div>
+    <span class="oh-tag">16-Day Pre-Sale Home Preparation</span>
+    <h1 class="oh-head">Get Up to <span class="oh-amount">$16,000</span> in Free Painting <span class="oh-head-benefit">so your home is worth more when you sell</span></h1>
+    <p class="oh-sub">We pay for the paint, coordinate the entire prep schedule, and get your home ready to sell in 16 days</p>
+    <a href="#form" class="final-cta-btn oh-cta">Reserve My Free Prep &rarr;</a>
+    <ul class="oh-checks">
+      <li>No obligation</li>
+      <li>Zero repayment at closing</li>
+      <li>Included when you sell your home with us</li>
+    </ul>
     </div>
     <div class="oh-col-media" aria-hidden="true">
       <figure class="ohm-shot"><img src="before-5.webp" alt="" decoding="async"><span class="ohm-tag">Before</span></figure>
@@ -1365,6 +1378,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="agent-card">
       <img class="agent-shot" src="larry-headshot.jpg" alt="Larry Chou" width="72" height="72" loading="lazy" decoding="async">
       <div class="agent-lines">
+        <p class="agent-name">Larry Chou <span class="realtor-mark">REALTOR<sup>&reg;</sup></span></p>
+        <p class="agent-meta">Brokered by Keller Williams Silicon Valley</p>
         <a href="sms:+14087591201" class="text-pill">Questions? 408-759-1201</a>
       </div>
     </div>
