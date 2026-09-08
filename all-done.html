@@ -1125,15 +1125,13 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="oh-col-content">
     <p class="oh-eyebrow-lbl">Before you sell</p>
     <h1 class="oh-head">Transform your home in just 16 days</h1>
-    <p class="oh-bio">My name is Larry Chou, and I&rsquo;m a former flipper turned Realtor.</p>
     <span class="oh-hr" aria-hidden="true"></span>
     <p class="oh-scope">
       <span class="oh-scope-lead">I&rsquo;ll handle the</span>
       <span class="oh-scope-list"><b>painting,</b> <b>lighting&nbsp;updates,</b> <b>repairs,</b> <b>trash-out,</b> <b>cleaning,</b> <b>landscaping,</b> <b>power&nbsp;washing,</b> <b>staging,</b> <b>photography,</b> <b>inspections,</b> <b>marketing,</b> <b>the&nbsp;launch,</b> <b>negotiations,</b> <b>the&nbsp;sale,</b> <b>and&nbsp;the&nbsp;close</b></span>
     </p>
     <div class="offer-note">
-      <p class="oh-offer">Whole-house painting included<span class="oh-offer-sub">Up to a <strong>$16,000</strong> value for the next <strong data-slots-mirror>2</strong> homeowners who list with me</span></p>
-      <div class="slots-row"><p class="oh-slots"><span class="oh-slots-dot" aria-hidden="true"></span><strong data-slots-open>2</strong>&nbsp;spots open &middot; as of <span data-today></span></p></div>
+      <p class="oh-offer">Whole-house painting included<span class="oh-offer-sub">Up to a <strong>$16,000</strong> value</span></p>
     </div>
     </div>
     <div class="oh-col-media" aria-hidden="true">
@@ -1525,30 +1523,6 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </footer>
 
-<div class="terms-modal" id="terms-modal" onclick="if(!event.target.closest('.terms-card')||event.target.closest('.terms-close'))closeTerms()" role="dialog" aria-label="Offer terms">
-  <div class="terms-card">
-    <button class="terms-close" onclick="closeTerms()" aria-label="Close">&times;</button>
-    <h3>Painting Offer Terms</h3>
-    <p class="terms-sub">16-Day Home Prep and Sales Service</p>
-
-    <h4>What you get</h4>
-    <p>Free whole-house painting (interior and exterior, surface preparation and paint). I pay for it.</p>
-
-    <h4>Who qualifies</h4>
-    <p>A single-family home valued at $1.5M or more, within 15 miles of San Jose, vacant, and listed with me within 90 days.</p>
-
-    <h4>What I ask in return</h4>
-    <p>You list your home for sale with me, keep it vacant through closing, cooperate with the prep and showings, and let me feature your home as a case study (photos, video, the address, and the results in my marketing).</p>
-
-    <h4>The one condition</h4>
-    <p>I pay these costs up front, before your home sells. If you take the home off the market, cancel, or list with another agent after painting has started, you reimburse me the actual amount I paid the painting vendors, with no markup and less any refunds. You always keep the right to accept or reject any offer.</p>
-
-    <h4>Availability</h4>
-    <p>Open to the next <span data-slots-mirror>2</span> qualifying homeowners. I may withdraw the offer at any time.</p>
-
-    <p class="terms-fine">This is a plain-language summary, not the agreement. The offer is governed by a written addendum to your listing agreement, which controls. Larry Chou, CA DRE&nbsp;#02247191, salesperson at Keller Williams Silicon Valley, CA DRE&nbsp;#01327739.</p>
-  </div>
-</div>
 
 <div class="zillow-lightbox" id="zillow-lightbox" onclick="if(event.target.tagName!=='IMG'&&!event.target.closest('.zillow-lightbox-close'))closeZillowLightbox()" role="dialog" aria-label="Photo enlargement">
   <button class="zillow-lightbox-close" onclick="closeZillowLightbox()" aria-label="Close">&times;</button>
@@ -1586,9 +1560,7 @@ function closeZillowLightbox(){
   document.getElementById('zillow-lightbox').classList.remove('active');
   document.body.style.overflow='';
 }
-function openTerms(){var m=document.getElementById('terms-modal');m.classList.add('active');document.body.style.overflow='hidden';}
-function closeTerms(){document.getElementById('terms-modal').classList.remove('active');document.body.style.overflow='';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeZillowLightbox();closeTerms();}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeZillowLightbox();}});
 </script>
 
 
